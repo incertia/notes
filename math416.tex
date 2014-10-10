@@ -1,0 +1,224 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{fancyhdr}
+
+% setup the header
+\pagestyle{fancy}
+\lhead{Will Song}
+\chead{MATH 416}
+\rhead{\today}
+
+% setup definition/theorem etc
+\newtheoremstyle{norm}
+{3pt}
+{3pt}
+{}
+{}
+{\bf}
+{:}
+{.5em}
+{}
+
+\theoremstyle{norm}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{df}[thm]{Definition}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{st}{Step}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{clm}[thm]{Claim}
+\newtheorem{exr}[thm]{Exercise}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{prb}[thm]{Problem}
+
+% just useful shorthand
+\renewcommand{\st}{\,\operatorname{s.t.}\,}
+
+% for easier math
+\everymath{\displaystyle}
+
+\title{Math 416 Notes}
+\author{Will Song}
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Definitions}
+\begin{df}
+A \textbf{semi-group} is a set $G$ with an associative binary operation $* : g
+\times G \rightarrow G$.
+\end{df}
+
+\begin{df}
+A semigroup $G$ is a \textbf{monoid} if we can find an identity $1 \in G \, \st
+\, \forall g \in g, g * 1 = 1 * g = g$.
+\end{df}
+
+\begin{prop}
+The identity is unique.
+\end{prop}
+\begin{proof}
+Suppose $1, 1' \in G$ are inverses. Then
+\[ 1 = 1 * 1' = 1'. \]
+\end{proof}
+
+\begin{df}
+A set $G$ with an associative binary operation $* : G \times G
+\rightarrow G$ is called a \textbf{group} if it satisfies the following
+properties:
+\begin{itemize}
+\item $\forall g \in G, \exists 1 \in G \st g * 1 = 1 * g = g$
+\item $\forall g \in G, \exists g^{-1} \in G \st g * g^{-1} = g^{-1} * g
+= 1$
+\end{itemize}
+\end{df}
+\begin{rem}
+A group is equivalent to a monoid with inverses.
+\end{rem}
+\begin{prop}
+Inverses are unique.
+\end{prop}
+\begin{proof}
+Let $x_1, x_2$ both be inverses of $g \in G$. Then
+\[ x_1 = x_1 * g * x_2 = x_2. \]
+\end{proof}
+
+\begin{df}
+A group $G$ is called abelian or commutative if and only if $\forall a,
+b \in G, a * b = b * a$.
+\end{df}
+
+\begin{df}
+Let $G, H$ be groups. A \textbf{group homomorphism} is a map $f : G
+\rightarrow H$ that preserves multiplication. In other words,
+\[ f(ab) = f(a) f(b) \quad \forall a, b \in G. \]
+\end{df}
+
+\begin{df}
+Given two sets $X, Y$, we define their direct product to be
+\[ X \times Y = \left\lbrace \left(x, y\right) : x \in X, y \in Y
+\right\rbrace. \]
+\end{df}
+
+\begin{df}
+Let $\varphi : G \rightarrow H$ be a group homomorphism. Define the
+\textbf{kernel} of $\varphi$ to be
+\[ \ker \varphi = \left\lbrace g \in G : \varphi(g) = 1 \right\rbrace \]
+where $1$ is the identity in $H$.
+\end{df}
+
+\begin{df}
+A \textbf{ring} is a set $R$ combined with two binary operations $+$ and
+$*$ such that,
+\begin{itemize}
+\item $R$ is an abelian group under $+$ with identity $0$. The inverse
+of $r \in R$ is usually denoted as $-r$.
+\item $R$ is a monoid under $*$ with identity $1$
+\item $*$ is distributive over $+$
+\end{itemize}
+\end{df}
+
+\begin{df}
+A ring is called commutative if multiplication in the ring is
+commutative.
+\end{df}
+
+\begin{prop}
+Let $R$ be a ring. Then $0 * r = 0 = 0 * r \quad \forall r \in R$.
+\end{prop}
+\begin{proof}
+We compute
+\[ 0 * r = \left(0 + 0\right) * r = 0 * r + 0 * r. \]
+We add the inverse to get $0 * r = 0$. The right hand equality is done
+in a similar fashion.
+\end{proof}
+
+\begin{prop}
+Let $R$ be a ring. Then $\left(-1\right) * r = -r = r * \left(-1\right)$.
+\end{prop}
+\begin{proof}
+Again, compute
+\[ \left(-1\right) * r + r = \left(-1\right) * r + 1 * r = \left(-1 +
+1\right) * r = 0 * r = 0. \]
+We get the desired result by adding the inverse of $r$. The same can be
+done with the right hand equality.
+\end{proof}
+
+\begin{df}
+A commutative ring $R$ is called a \textbf{field} if $R \backslash \lbrace 0
+\rbrace $ is a group with respect to multiplication.
+\end{df}
+
+\begin{df}
+We can also have a \textbf{ring homomorphism} $\varphi : R \rightarrow
+S$ which preserves both addition and multiplication. Most importantly,
+we should also have $\varphi(1) = 1$.
+\end{df}
+
+\begin{df}
+A \textbf{left $R$-module} is an additive group $M$ (meaning $M$ is an
+abelian group with operation $+$) with an additional left multiplication
+by elements in $R$, which shall be called \textbf{scalar
+multiplication}, denoted here by $\cdot : R \times M \rightarrow M$,
+such that
+\begin{itemize}
+\item $r_1 \cdot \left(r_2 \cdot m\right) = \left(r_1 * r_2\right) \cdot
+m \quad \forall r_1, r_2 \in R, m \in M$
+\item $\left(r_1 + r_2\right) \cdot m = r_1 \cdot m + r_2 \cdot m \quad
+\forall r_1, r_2 \in R, m \in M$ and $r \cdot \left(m_1 + m_2\right) = r
+\cdot m_1 + r \cdot m_2 \quad \forall r \in R, m_1, m_2 \in M$.
+\item $1 \cdot m = m \quad \forall m \in M$.
+\end{itemize}
+\end{df}
+
+\begin{df}
+A \textbf{right $R$-module} is defined similarly, except $R$ acts on $M$
+on the right.
+\end{df}
+
+\begin{df}
+If $M$ is a left $R$-module and a right $S$-module, then we call it an
+\textbf{$R$-$S$-bimodule} if it satisfies
+\[ r\left(ms\right) = \left(rm\right)s. \]
+\end{df}
+\begin{rem}
+An $R$-$R$-bimodule is also called an $R$-bimodule.
+\end{rem}
+
+\begin{rem}
+For a left $R$-module $M$, we can define an analogous right $R$-module
+$M$ by assigning $m \cdot r = rm$. Notice that this gives
+\[ \begin{aligned}
+\left(r_1 r_2\right) m &= r_1 \left(r_2 m\right) \\
+&= \left(m r_2\right) r_1 \\
+&= m \left(r_2 r_1\right) \\
+&\neq m \left(r_1 r_2\right)
+\end{aligned} \]
+in general. The first and last expressions are equal if and only if $R$
+is a commutative ring. If this is the case, we just say that $M$ is an
+$R$-module.
+\end{rem}
+
+\begin{cor}
+All abelian groups are $\mathbb{Z}$-modules.
+\end{cor}
+
+\begin{df}
+Let $M_1, M_2$ be $R$-modules. Define the direct sum of $M_1$ and $M_2$,
+denoted $M_1 \oplus M_2$, to be the module whose underlying group is
+$M_1 \times M_2$. The action of $R$ on $M_1 \times M_2$ is done
+component-wise.
+\end{df}
+
+\end{document}
