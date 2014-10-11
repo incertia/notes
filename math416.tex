@@ -39,6 +39,8 @@
 
 % just useful shorthand
 \renewcommand{\st}{\,\operatorname{s.t.}\,}
+\let\hom\relax
+\DeclareMathOperator{\hom}{Hom}
 
 % for easier math
 \everymath{\displaystyle}
@@ -156,9 +158,9 @@ subgroup so $h^{-1} \in H$ is true, so $b \sim a$ as well. \\
 \textbf{Transitivity:} Suppose $a \sim b$ and $b \sim c$. Then $a =
 bh_1$ and $b = ch_2$, so $a = ch_2h_1$, but $h_2 h_1 \in H$ because $H$
 is a subgroup. \\
-So the equivalence classes of this equivalence relation is precisely the
-left cosets of $X$. Whether or not this works for any other equivalence
-relation, if there are any, I do not know.
+So the equivalence classes of this equivalence relation are precisely
+the left cosets of $X$. Whether or not this works for any other
+equivalence relation, if there are any, I do not know.
 \end{proof}
 \begin{rem}
 Because of the previous proposition, it makes sense to speak of the
@@ -289,6 +291,10 @@ in general. The first and last expressions are equal if and only if $R$
 is a commutative ring. If this is the case, we just say that $M$ is an
 $R$-module.
 \end{rem}
+\begin{rem}
+Notice that $R$ is also a $R$ module, where scalar multiplication is
+just multiplication in $R$.
+\end{rem}
 
 \begin{cor}
 All abelian groups are $\mathbb{Z}$-modules.
@@ -311,6 +317,84 @@ We can also generalize this to
 where there are $n$ $R$s on the left hand side. We will also use $R^n$
 as the equivalent of $R^{\oplus n}$.
 \end{df}
+
+\section{More Modules}
+This section is reserved for some crucial propositions regarding
+modules.
+
+\subsection{Homomorphisms With Modules}
+
+\begin{df}
+We will use the notation $\hom(X, Y)$ to denote the set of all
+homomorphisms from $X$ to $Y$.
+\end{df}
+
+\begin{prop}
+Let $\varphi$ be a homomorphism. Then $\varphi$ is injective if and only
+if $\ker \varphi = \lbrace 0 \rbrace$.
+\end{prop}
+\begin{proof}
+We first prove that $\varphi$ is injective if $\ker \varphi = \lbrace 0
+\rbrace$. Suppose $\varphi(\alpha) = \varphi(\beta)$. Then
+$\varphi(\alpha) + (-\varphi(\beta)) = 0$, or $\varphi(\alpha) +
+\varphi(-\beta) = 0 \iff \varphi(\alpha + (-\beta)) = 0$. However, $\ker
+\varphi = \lbrace 0 \rbrace$ so $\alpha + (-\beta) = 0$, or $\alpha =
+\beta$. \\
+Now for the other direction. Suppose $\varphi$ is injective. We have
+that $\varphi(\alpha) = \varphi(0 + \alpha) = \varphi(0) +
+\varphi(\alpha) \implies \varphi(0) = 0$, so $\varphi(\alpha) = 0 =
+\varphi(0) \implies \alpha = 0$ by injectivity, so we are done.
+\end{proof}
+
+\begin{prop}
+Take a $R$-module $M$. The map $\chi : \hom_R(R, M) \rightarrow M$ by
+$\chi(\varphi) = \varphi(1)$, or $\varphi \mapsto \varphi(1)$ is an
+\textbf{isomorphism}, or a homomorphism that admits an inverse. In other
+words, a homomorphism from a ring $R$ to a $R$-module is determined by
+its value at $1$.
+\end{prop}
+\begin{proof}
+Let $\varphi, \psi \in \hom_R(R, M)$ and $r \in R$. We can compute that
+\[ \chi(\varphi + r \psi) = (\varphi + r \psi)(1) = \varphi(1) + r
+\psi(1) = \chi(\varphi) + r \chi(\psi), \]
+which gives that $\chi$ is a $R$-module homomorphism. \\
+Now suppose $\varphi = \ker \chi$. Then $\forall r \in R$, 
+\[ \varphi(r) = r \varphi(1) = r \chi(\varphi) = r * 0 = 0, \]
+implying $\varphi$ is injective. \\
+Now suppose $m \in M$. We can define a $\psi_m : R \rightarrow M$ by
+$\psi_m(r) = rm$. We can easily compute that
+\[ \psi_m(r_1 + k r_2) = = r_1 m + (k r_2) m = r_1 m + k (r_2 m) =
+\psi_m(r_1) + k \psi_m(r_2), \]
+so $\psi_m$ is a $R$-module homomorphism, meaning $\psi_m \in \hom_R(R,
+M)$. Moreover, $\chi(\psi_m) = \psi_m(1) = 1m = m$ so $\chi$ is
+surjective. \\
+Because $\chi$ is a homomorphism and is bijective, it is an isomorphism
+and we are done.
+\end{proof}
+
+\begin{prop}
+We also have the following bijections:
+\[ \hom_R(X_1 \cup X_2, Y) \leftrightarrow \hom_R(X_1, Y) \times
+\hom_R(X_2, Y) \]
+as well as
+\[ \hom_R(X, Y_1 \times Y_2) \leftrightarrow \hom_R(X, Y_1) \times
+\hom_R(X, Y_2). \]
+To see the first, take a homomorphism $\varphi : X_1 \cup X_2
+\rightarrow Y$ and two other homomorphisms $\alpha_1 : X_1 \rightarrow
+Y, \alpha_2 : X_2 \rightarrow Y$. Then set $\varphi(x) = $
+\end{prop}
+
+\begin{prop}
+Let $A$ be an indexing set, and consider the set of modules $(M_a)_{a
+\in A}$. Then
+\[ M = \prod_{a \in A} M_a \]
+also has a module structure.
+\end{prop}
+
+\begin{rem}
+We should be able to extend this to $\hom_R(R^{\oplus n}, M)$ given
+$m_1, m_2, \dots, m_n \in M$.
+\end{rem}
 
 \section{Vector Spaces}
 We should now have enough abstract definitions to introduce vector
