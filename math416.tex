@@ -63,7 +63,7 @@ propositions with very short proofs.
 
 \subsection{Groups}
 \begin{df}
-A \textbf{semi-group} is a set $G$ with an associative binary operation $* : g
+A \textbf{semi-group} is a set $G$ with an associative binary operation $* : G
 \times G \rightarrow G$.
 \end{df}
 
@@ -314,8 +314,7 @@ $M_1 \times M_2$. The action of $R$ on $M_1 \times M_2$ is done
 component-wise. \\
 We can also generalize this to
 \[ R \oplus R \oplus \cdots \oplus R = R^{\oplus n} \]
-where there are $n$ $R$s on the left hand side. We will also use $R^n$
-as the equivalent of $R^{\oplus n}$.
+where there are $n$ $R$s on the left hand side.
 \end{df}
 
 \section{More Modules}
@@ -376,13 +375,36 @@ and we are done.
 We also have the following bijections:
 \[ \hom_R(X_1 \cup X_2, Y) \leftrightarrow \hom_R(X_1, Y) \times
 \hom_R(X_2, Y) \]
-as well as
+and
 \[ \hom_R(X, Y_1 \times Y_2) \leftrightarrow \hom_R(X, Y_1) \times
-\hom_R(X, Y_2). \]
-To see the first, take a homomorphism $\varphi : X_1 \cup X_2
-\rightarrow Y$ and two other homomorphisms $\alpha_1 : X_1 \rightarrow
-Y, \alpha_2 : X_2 \rightarrow Y$. Then set $\varphi(x) = $
+\hom_R(X, Y_2) \]
 \end{prop}
+\begin{proof}
+I will include an example, taken from Evan Chen. Suppose you want to
+define a function on the set $\lbrace 1, 2, 3 \rbrace$. It is the same
+as defining a function on the set $\lbrace 1, 2 \rbrace$ and then
+another function on the set $\lbrace 3 \rbrace$. \\
+Basically, you take two projections $\alpha_1, \alpha_2$ into $X_1
+\sqcup X_2$ and the compose them with your function from $X_1 \sqcup
+X_2$ to $Y$. \\
+Seeing the logic behind the 2nd is left as an exercise to the reader.
+\end{proof}
+
+\begin{prop}
+We can extend this to direct sums as well. Take any two $R$-modules
+$M_1, M_2$. Then there exists a bijection
+\[ \hom_R(M_1 \oplus M_2, Y) \leftrightarrow \hom_R(M_1, Y) \times
+\hom_R(M_2, Y) \]
+and
+\[ \hom_R(X, M_1 \oplus M_2) \leftrightarrow \hom_R(X, M_1) \times
+\hom_R(X, M_2) \]
+\end{prop}
+
+\begin{rem}
+We can now consider larger direct sums $M_1, M_2, \dots, M_n$. However,
+we are more interested in the bijection
+\[ \hom_R(R^{\oplus n}, M) \leftrightarrow \hom_R(R, M)^n \simeq M^n \]
+\end{rem}
 
 \begin{prop}
 Let $A$ be an indexing set, and consider the set of modules $(M_a)_{a
@@ -391,10 +413,10 @@ Let $A$ be an indexing set, and consider the set of modules $(M_a)_{a
 also has a module structure.
 \end{prop}
 
-\begin{rem}
-We should be able to extend this to $\hom_R(R^{\oplus n}, M)$ given
-$m_1, m_2, \dots, m_n \in M$.
-\end{rem}
+\begin{df}
+We define the infinite direct sum $\bigoplus_a M_a$, which is a subset
+of $\prod_a M_a$, where all but finitely many indices $A$ is zero.
+\end{df}
 
 \section{Vector Spaces}
 We should now have enough abstract definitions to introduce vector
