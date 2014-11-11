@@ -5,6 +5,7 @@
 \usepackage{amsthm}
 \usepackage{amsfonts}
 \usepackage{fancyhdr}
+\usepackage{parskip}
 
 % setup the header
 \pagestyle{fancy}
@@ -423,5 +424,72 @@ We should now have enough abstract definitions to introduce vector
 spaces in an abstract enough way. I am purposefully trying to stay away
 from commutative maps because they confuse me and learning linear
 algebra at such an abstract level is confusing enough for me.
+
+\begin{df}
+A vector space $V$ over a field $F$ is an abelian group under $+$ and an
+$F$-module.
+\end{df}
+
+\begin{df}
+The span of a set of vectors $v_1, v_2, \dots, v_k$ is defined as the
+set
+\[ \left\lbrace \sum_i a_i v_i : a_i \in F \right\rbrace. \]
+Similarly, a set of vectors span a set of every element of that set can
+be written as a linear combination of the set of vectors.
+\end{df}
+
+\begin{df}
+A set of vectors $v_1, \dots, v_k$ are said to be linearly independent
+if $\sum_i a_i v_i = 0 \Leftrightarrow a_i = 0 \quad \forall i$.
+\end{df}
+
+\begin{rem}
+Notice that this guarantees that each decompisition into the linearly
+independent vectors is unique.
+\end{rem}
+
+We now prove a fundamental lemma regarding linearly independent,
+spanning sets.
+\begin{lem}[Steinitz Exchange Lemma]
+Let $V$ be a vector space. Let $v_1, v_2, \dots, v_k$ be a set of
+linearly independent vectors in $V$. Let $w_1, w_2, \dots, w_m$ span
+$V$. We then have $k \leq m$ and (possibly after reordering $w_i$), the
+set of vectors $v_1, \dots, v_k, w_{k + 1}, \dots, w_m$ also span $V$.
+\end{lem}
+
+\begin{proof}
+We induct on $k$ to get our result. The case $k = 0$ is obvious, as we
+don't need to replace anything and the statement of the lemma solves
+itself. So suppose the lemma holds positive for some $k < m$. Then,
+possibly after reordering, the vectors $v_1, v_2, \dots, v_k, w_{k + 1},
+\dots, w_m$ span $V$. We can then write
+\[ v_{k + 1} = \sum_i \alpha_i v_i + \sum_i \alpha_i w_i. \]
+At least one $\alpha_j$ must be non-zero, so we immediately get $k < m$,
+or $k + 1 \leq m$. We can now ``solve'' for $w_{k + 1}$ to get
+\[ w_{k + 1} = \frac{1}{\alpha_{k + 1}} \left(v_{k + 1} - \sum_{i =
+1}^{k} \alpha_i v_i - \sum_{i = k + 2}^{m} \alpha_i w_i\right). \]
+Hence $w_{k + 1}$ is in the span of the set $\lbrace v_1, \dots, v_{k +
+1}, w_{k + 2}, \dots, w_m \rbrace$, which means that everything in the
+span of $\lbrace v_1, \dots, v_k, w_{k + 1}, \dots, w_m \rbrace$ is also
+in the span of $\lbrace v_1, \dots, v_{k + 1}, w_{k + 2}, w_m \rbrace$,
+finishing the proof.
+\end{proof}
+
+\begin{df}
+The cardinality of a set of linearly independent vectors that span a
+vector space $V$ is called the dimension of $V$, denoted $\dim(V)$.
+
+This is also the cardinality of the largest set of linearly independent
+vectors in $V$. This is easily seen by the above lemma.
+\end{df}
+
+\begin{df}
+We say $W$ is a subspace of $V$ over $K$ if and only if $W$ satisfies:
+\begin{itemize}
+\item $0 \in W$
+\item $w_1 + w_2 \in W \quad \forall w_1, w_2 \in W$
+\item $k w \in W \quad \forall w \in W, k \in F$.
+\end{itemize}
+\end{df}
 
 \end{document}
