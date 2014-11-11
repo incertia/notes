@@ -419,28 +419,30 @@ We define the infinite direct sum $\bigoplus_a M_a$, which is a subset
 of $\prod_a M_a$, where all but finitely many indices $A$ is zero.
 \end{df}
 
-\section{Vector Spaces}
+\section{Vector Spaces and Related Things}
+\subsection{Vector Spaces}
 We should now have enough abstract definitions to introduce vector
 spaces in an abstract enough way. I am purposefully trying to stay away
 from commutative maps because they confuse me and learning linear
 algebra at such an abstract level is confusing enough for me.
 
 \begin{df}
-A vector space $V$ over a field $F$ is an abelian group under $+$ and an
-$F$-module.
+A \textbf{vector space} $V$ over a field $F$ is an abelian group under
+$+$ and an $F$-module.
 \end{df}
 
 \begin{df}
-The span of a set of vectors $v_1, v_2, \dots, v_k$ is defined as the
-set
+The \textbf{span} of a set of vectors $v_1, v_2, \dots, v_k$ is defined
+as the set
 \[ \left\lbrace \sum_i a_i v_i : a_i \in F \right\rbrace. \]
 Similarly, a set of vectors span a set of every element of that set can
 be written as a linear combination of the set of vectors.
 \end{df}
 
 \begin{df}
-A set of vectors $v_1, \dots, v_k$ are said to be linearly independent
-if $\sum_i a_i v_i = 0 \Leftrightarrow a_i = 0 \quad \forall i$.
+A set of vectors $v_1, \dots, v_k$ are said to be \textbf{linearly
+independent} if $\sum_i a_i v_i = 0 \Leftrightarrow a_i = 0 \quad
+\forall i$.
 \end{df}
 
 \begin{rem}
@@ -477,19 +479,141 @@ finishing the proof.
 
 \begin{df}
 The cardinality of a set of linearly independent vectors that span a
-vector space $V$ is called the dimension of $V$, denoted $\dim(V)$.
+vector space $V$ is called the \textbf{dimension} of $V$, denoted
+$\dim(V)$.
 
 This is also the cardinality of the largest set of linearly independent
 vectors in $V$. This is easily seen by the above lemma.
 \end{df}
 
 \begin{df}
-We say $W$ is a subspace of $V$ over $F$ if and only if $W$ satisfies:
+We say a set of vectors is a \textbf{basis} for a vector space $V$ if
+the set contains linearly independent vectors and spans $V$.
+\end{df}
+
+\begin{df}
+We say $W$ is a \textbf{subspace} of $V$ over $F$ if and only if $W$
+satisfies:
 \begin{itemize}
 \item $0 \in W$
 \item $w_1 + w_2 \in W \quad \forall w_1, w_2 \in W$
 \item $k w \in W \quad \forall w \in W, k \in F$.
 \end{itemize}
 \end{df}
+
+Anyways, here are some examples of vector spaces and subspaces
+\begin{itemize}
+\item Any field $F$, such as $\mathbb{R}$ or $\mathbb{C}$
+\item Any repeated direct sum of a field $F$, such as $\mathbb{R}^3$
+\item The space of functions on $\mathbb{R}$
+\begin{itemize}
+\item Odd functions on $\mathbb{R}$
+\item Even functions on $\mathbb{R}$
+\end{itemize}
+\end{itemize}
+
+\begin{prop}
+Let $V, W$ be subspaces. Then
+\[ \dim(V) + \dim(W) = \dim(V + W) + \dim(V \cap W) \]
+where $V + W = \lbrace v + w : v \in V, w \in W \rbrace$.
+\end{prop}
+
+\begin{proof}
+Let $\alpha_1, \dots, \alpha_n$ be a basis for $V \cap W$. We can then
+find the basis $\alpha_1, \dots, \alpha_n, v_1, \dots, v_k$ for $V$ and
+the same for $W$, $w_1, \dots, w_l, \alpha_1, \dots, \alpha_n$. If we
+can prove that $\alpha_1, \dots, \alpha_n, v_1, \dots, v_k, w_1, \dots,
+w_l$ are a basis for $V + W$, we are done because
+\[ (n + k) + (n + l) = (n + k + l) + n \]
+It is obvious that they span $V + W$ by the definition of span, so it
+suffices to show that they are linearly independent. Suppose that
+\[ 0 = \sum a_i \alpha_i + \sum b_i v_i + \sum c_i w_i \]
+We rearrange this equation to arrive at
+\[ -\sum a_i \alpha_i = \sum b_i v_i + \sum c_i w_i, \]
+implying $-\sum a_i \alpha_i, \sum b_i v_i + \sum c_i w_i \in V \cap W$.
+However, $v_i$ and $w_i$ are not in the set $V \cap W$, otherwise they
+would not be linearly independent with the $\alpha_i$, which implies
+that $b_i = c_i = 0$ for all $i$, otherwise the RHS would not be in the
+set $V \cap W$. Now use the fact that $\alpha_i$ form a basis to get
+that $a_i = 0$, so we are done.
+\end{proof}
+
+\begin{prop}
+A vector space $V$ over a field $F$ with dimension $d$ is isomorphic to
+$F^d$.
+\end{prop}
+
+\begin{proof}
+We just choose a basis and express each vector in $V$ as the
+coefficients in the expansion as a sum of linearly independent vectors.
+\end{proof}
+
+For example, consider the space of polynomials with complex coefficients
+with degree less than or equal to $3$. We will call this space
+$\mathcal{P}_3$. Then the vector $1 + (3 - 2i)x + 7x^2$ is the same as
+$(1, 3 - 2i, 7, 0)$ with the basis of $\lbrace 1, x, x^2, x^3 \rbrace$.
+
+\begin{prb}
+Determine a necessary and sufficient condition for a polynomial $P \in
+\mathbb{R}[X]$ such that $P(x) \in \mathbb{Z} \forall x \in
+\mathbb{Z}$.
+% TODO: Actually prove this thing
+\end{prb}
+
+\begin{proof}[Solution]
+I claim that $P$ must be an integral linear combination of the
+polynomials $\binom{X}{k} \forall k \in \mathbb{N}$.
+\end{proof}
+
+\subsection{Linear Maps}
+\begin{df}
+Let $V, W$ be vector spaces.  A map $L : V \rightarrow W$ is said to be
+\textbf{linear} if it satisfies:
+\begin{itemize}
+\item $L(v_1 + v_2) = L(v_1) + L(v_2) \quad \forall v_1, v_2 \in V$
+\item $L(c v) = c L(v) \quad \forall c \in F, v \in V$
+\end{itemize}
+\end{df}
+
+\begin{df}
+The \textbf{nullspace} of a linear map $L$ is the same as the kernel of
+$L$. We will denote the nullspace with $\mathcal{N}(L)$.
+\end{df}
+
+\begin{df}
+The \textbf{range} of $L$ is simply the set $\mathcal{R}(L) = \lbrace
+L(v) : v \in V \rbrace$.
+\end{df}
+
+\begin{prop}
+Let $V, W$ be vector spaces and let $L : V \rightarrow W$ be linear.
+Then $L$ is injective if and only if $\mathcal{N}(L) = \lbrace 0
+\rbrace$.
+\end{prop}
+
+\begin{proof}
+The forward direction is trivial because $L(v) = 0 = L(0) \Rightarrow v
+= 0$.
+
+Going backwards, suppose $L(v_1) = L(v_2)$. Then, we have
+\[ \begin{aligned}
+L(v_1) - L(v_2) &= 0 \\
+L(v_1 - v_2) &= 0 \\
+v_1 - v_2 &= 0 \\
+v_1 &= v_2
+\end{aligned} \]
+by linearity in $L$ and the fact that $v_1 - v_2 \in \mathcal{N}(L)$.
+\end{proof}
+
+\begin{prop}
+Let $V, W$ be finite dimensional vector spaces and let $L : V
+\rightarrow W$ be linear. Then
+\[ \dim(\mathcal{N}(L)) + \dim(\mathcal{R}(L)) = \dim(V). \]
+\end{prop}
+
+\begin{proof}
+% TODO
+filler
+\end{proof}
 
 \end{document}
