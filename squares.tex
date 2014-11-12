@@ -1,7 +1,73 @@
 \section{Square Matrices}
-\subsection{Linear Things}
 Square matrices are very special, so they get their own section.
 
+\subsection{More Matrices}
+\begin{df}
+We say a matrix $A$ is \textbf{invertible} if there exists another
+matrix $A^{-1}$ such that $A A^{-1} = A^{-1} A = I$ where $I$ represents
+the matrix of the trivial transformation. Note that this restricts $A$
+to square matrices.
+\end{df}
+
+\begin{rem}
+$(AB)^{-1} = B^{-1} A^{-1}$.
+\end{rem}
+
+\begin{prop}
+$AB = I$ only implies $BA = I$ in the finite dimensional case.
+\end{prop}
+
+\begin{proof}
+We have
+\[ B = IB = BI = B(AB) = (BA)B, \]
+or
+\[ (I - BA)B = 0 \implies I - BA = 0 \implies BA = I. \]
+\end{proof}
+
+\begin{rem}
+Suppose we want to solve the system of equations
+\[ \left\lbrace\begin{aligned}
+c_{11} x_1 + \dots + c_{1n} x_n &= b_1 \\
+c_{21} x_1 + \dots + c_{2n} x_n &= b_2 \\
+& \vdots \\
+c_{n1} x_1 + \dots + c_{nn} x_n &= b_n \\
+\end{aligned} \right. \]
+We can now rewrite this entire system as a linear transformation.
+\[ \begin{pmatrix}
+c_{11} & c_{12} & \cdots & c_{1n} \\
+\vdots & \vdots & \vdots & \vdots \\
+c_{n1} & c_{n2} & \cdots & c_{nn}
+\end{pmatrix} \begin{pmatrix}
+x_1 \\ \vdots \\ x_n
+\end{pmatrix} = \begin{pmatrix}
+b_1 \\ \vdots \\ b_n
+\end{pmatrix} \]
+and reduce the problem to finding the inverse of the big matrix on the
+left.
+\end{rem}
+
+\begin{df}
+There are three \textbf{elementary row operations}.
+\begin{enumerate}
+\item You swap rows $r_i$ and $r_j$
+\item Row $r_i \mapsto \lambda r_i$ with $\lambda \neq 0$
+\item Row $r_i \mapsto r_i + \lambda r_j$ some $i \neq j$
+\end{enumerate}
+Each of these operations has their own matrix to represent that
+operation, and their inverses also exist.
+\end{df}
+
+\begin{prop}
+Every invertible matrix $A$ can be transformed into its respective
+identity matrix with elementary row operations, or
+\[ I = E_n \cdots E_1 A, \]
+where $E_i$ denotes some elementary row operation. This is also
+equivalent to every invertible matrix is the product of elementary
+matrices.
+\end{prop}
+
+\subsection{Linear Things}
+It wouldn't be linear algebra without linear things.
 \begin{df}
 The identity transformation has a corresponding identity matrix $I_n$
 where the $ii$-th entries are $1$ and the other entries are $0$.
@@ -23,15 +89,60 @@ The trace of a matrix is the unique linear transformation $T :
 \end{prop}
 
 \begin{proof}
-% TODO: finish proof
 Suppose $f$ is another mapping that satisfies the above properties.
+Define the matrix $\mathcal{E}_{ij}$ to be the matrix with a $1$ in the
+$ij$ slot and a $0$ elsewhere. Here we show that $f(\mathcal{E}_{ij})$
+takes the value $0$ whenever $i \neq j$. Indeed, we have
+\[ f(\mathcal{E}_{ij}) = f(\mathcal{E}_{i1} \mathcal{E}_{1j}) =
+f(\mathcal{E}_{1j} \mathcal{E}_{i1}) = f(0) = 0. \]
+On the other hand,
+\[ f(\mathcal{E}_{ii}) = f(\mathcal{E}_{i1} \mathcal{E}_{1i}) =
+f(\mathcal{E}_{1i} \mathcal{E}_{i1}) = f(\mathcal{E}_{11}). \]
+By linearity, $f(A) = \sum A_{ij} f(\mathcal{E}_{ij}) = \sum A_{ii}
+f(\mathcal{E}_{11}) = f(\mathcal{E}_{11}) \sum A_{ii} = c \Tr(A)$. Now
+we use the value of $f$ on $I$ to get that $c = 1$, and we are done.
 \end{proof}
 
 \subsection{MULTIlinear???!}
 Yeah multilinearity is a thing.
 
 \begin{df}
-A function $f : V_1 \times \cdots \times V_n$ is $n$-linear if $f$ is
-linear in each argument, or $F(v_k) = f(c_1, c_2, \dots, c_{k - 1}, v_k,
-c_{k + 1}, \dots, c_n)$ is linear for each $k$.
+A function $f : V_1 \times \cdots \times V_n \rightarrow W$ is
+$n$-linear if $f$ is linear in each argument, or $F(v_k) = f(c_1, c_2,
+\dots, c_{k - 1}, v_k, c_{k + 1}, \dots, c_n)$ is linear for each $k$.
 \end{df}
+
+\begin{df}
+A $n$-linear function $f : V_1 \times \cdots \times V_n \rightarrow W$
+is said to be \textbf{alternating} if it vanishes when two arguments are
+the same.  Note that this can only really happen when at least two of
+the vector spaces $V_i$ are the same.
+\end{df}
+
+\begin{prop}
+Swapping two arguments (given they both belong to the same vector space)
+will change the sign of an alternating function.
+\end{prop}
+
+\begin{proof}
+It suffices to show that $f(a, b) = -f(b, a)$, or $f(a, b) + f(b, a) =
+0$, but this is trivial. Why it reduces to a two variable function is
+left as an exercise to the reader.
+\end{proof}
+
+\begin{rem}
+If $f$ is not necessarily linear, we require both $f(a, a) = 0$ and
+$f(a, b) + f(b, a) = 0$.
+\end{rem}
+
+\begin{thm}[Determinant Thing]
+There exists a unique $n$-linear, alternating function $\det(r_1, \dots,
+r_n) : V \times \dots, \times V \rightarrow F$ isomorphic to $\det(A) :
+\mathcal{M}(n, n) \rightarrow F$ satisfying $\det(I) = 1$. Basically
+what this is saying is that $\det$ should be $n$-linear in the rows and
+columns of an $n \times n$ matrix.
+\end{thm}
+
+\begin{proof}
+%TODO: finish
+\end{proof}

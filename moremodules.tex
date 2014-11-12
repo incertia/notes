@@ -43,7 +43,7 @@ Now suppose $\varphi = \ker \chi$. Then $\forall r \in R$,
 implying $\varphi$ is injective. \\
 Now suppose $m \in M$. We can define a $\psi_m : R \rightarrow M$ by
 $\psi_m(r) = rm$. We can easily compute that
-\[ \psi_m(r_1 + k r_2) = = r_1 m + (k r_2) m = r_1 m + k (r_2 m) =
+\[ \psi_m(r_1 + k r_2) = r_1 m + (k r_2) m = r_1 m + k (r_2 m) =
 \psi_m(r_1) + k \psi_m(r_2), \]
 so $\psi_m$ is a $R$-module homomorphism, meaning $\psi_m \in \hom_R(R,
 M)$. Moreover, $\chi(\psi_m) = \psi_m(1) = 1m = m$ so $\chi$ is
@@ -52,49 +52,49 @@ Because $\chi$ is a homomorphism and is bijective, it is an isomorphism
 and we are done.
 \end{proof}
 
-\begin{prop}
-We also have the following bijections:
-\[ \hom_R(X_1 \cup X_2, Y) \leftrightarrow \hom_R(X_1, Y) \times
-\hom_R(X_2, Y) \]
-and
-\[ \hom_R(X, Y_1 \times Y_2) \leftrightarrow \hom_R(X, Y_1) \times
-\hom_R(X, Y_2) \]
-\end{prop}
-\begin{proof}
-I will include an example, taken from Evan Chen. Suppose you want to
-define a function on the set $\lbrace 1, 2, 3 \rbrace$. It is the same
-as defining a function on the set $\lbrace 1, 2 \rbrace$ and then
-another function on the set $\lbrace 3 \rbrace$. \\
-Basically, you take two projections $\alpha_1, \alpha_2$ into $X_1
-\sqcup X_2$ and the compose them with your function from $X_1 \sqcup
-X_2$ to $Y$. \\
-Seeing the logic behind the 2nd is left as an exercise to the reader.
-\end{proof}
-
-\begin{prop}
-We can extend this to direct sums as well. Take any two $R$-modules
-$M_1, M_2$. Then there exists a bijection
-\[ \hom_R(M_1 \oplus M_2, Y) \leftrightarrow \hom_R(M_1, Y) \times
-\hom_R(M_2, Y) \]
-and
-\[ \hom_R(X, M_1 \oplus M_2) \leftrightarrow \hom_R(X, M_1) \times
-\hom_R(X, M_2) \]
-\end{prop}
-
-\begin{rem}
-We can now consider larger direct sums $M_1, M_2, \dots, M_n$. However,
-we are more interested in the bijection
-\[ \hom_R(R^{\oplus n}, M) \leftrightarrow \hom_R(R, M)^n \simeq M^n \]
-\end{rem}
-
-\begin{prop}
-Let $A$ be an indexing set, and consider the set of modules $(M_a)_{a
-\in A}$. Then
-\[ M = \prod_{a \in A} M_a \]
-also has a module structure.
-\end{prop}
-
-\begin{df}
-We define the infinite direct sum $\bigoplus_a M_a$, which is a subset
-of $\prod_a M_a$, where all but finitely many indices $A$ is zero.
-\end{df}
+% \begin{prop}
+% We also have the following bijections:
+% \[ \hom_R(X_1 \cup X_2, Y) \leftrightarrow \hom_R(X_1, Y) \times
+% \hom_R(X_2, Y) \]
+% and
+% \[ \hom_R(X, Y_1 \times Y_2) \leftrightarrow \hom_R(X, Y_1) \times
+% \hom_R(X, Y_2) \]
+% \end{prop}
+% \begin{proof}
+% I will include an example, taken from Evan Chen. Suppose you want to
+% define a function on the set $\lbrace 1, 2, 3 \rbrace$. It is the same
+% as defining a function on the set $\lbrace 1, 2 \rbrace$ and then
+% another function on the set $\lbrace 3 \rbrace$. \\
+% Basically, you take two projections $\alpha_1, \alpha_2$ into $X_1
+% \sqcup X_2$ and the compose them with your function from $X_1 \sqcup
+% X_2$ to $Y$. \\
+% Seeing the logic behind the 2nd is left as an exercise to the reader.
+% \end{proof}
+% 
+% \begin{prop}
+% We can extend this to direct sums as well. Take any two $R$-modules
+% $M_1, M_2$. Then there exists a bijection
+% \[ \hom_R(M_1 \oplus M_2, Y) \leftrightarrow \hom_R(M_1, Y) \times
+% \hom_R(M_2, Y) \]
+% and
+% \[ \hom_R(X, M_1 \oplus M_2) \leftrightarrow \hom_R(X, M_1) \times
+% \hom_R(X, M_2) \]
+% \end{prop}
+% 
+% \begin{rem}
+% We can now consider larger direct sums $M_1, M_2, \dots, M_n$. However,
+% we are more interested in the bijection
+% \[ \hom_R(R^{\oplus n}, M) \leftrightarrow \hom_R(R, M)^n \simeq M^n \]
+% \end{rem}
+% 
+% \begin{prop}
+% Let $A$ be an indexing set, and consider the set of modules $(M_a)_{a
+% \in A}$. Then
+% \[ M = \prod_{a \in A} M_a \]
+% also has a module structure.
+% \end{prop}
+% 
+% \begin{df}
+% We define the infinite direct sum $\bigoplus_a M_a$, which is a subset
+% of $\prod_a M_a$, where all but finitely many indices $A$ is zero.
+% \end{df}

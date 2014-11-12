@@ -257,3 +257,59 @@ We can also generalize this to
 \[ R \oplus R \oplus \cdots \oplus R = R^{\oplus n} \]
 where there are $n$ $R$s on the left hand side.
 \end{df}
+
+\subsection{Permutations}
+\begin{df}
+A \textbf{permutation} $\sigma$ is a bijection of the set $\lbrace 1, 2,
+\dots, n \rbrace$ to itself.
+\end{df}
+
+\begin{df}
+A \textbf{transposition} is a permutation $\sigma$ that satisfies
+$\sigma(i) = j, \sigma(j) = i$, and $\sigma(k) = k \quad \forall k \neq
+i, j$ for some $i, j$.
+\end{df}
+
+\begin{rem}
+$\sigma(\sigma(a)) = a$ when $\sigma$ is a transposition.
+\end{rem}
+
+\begin{prop}
+Every permutation is a composition of transpositions.
+\end{prop}
+
+\begin{proof}
+Every permutation can be represented as a product of \textbf{cycles},
+and every cycle can be represented as a product of transpositions.
+\end{proof}
+
+\begin{prop}
+We define the \textbf{signum}, or \textbf{sign}, of a permutation to be
+\[ \sgn(T_n \cdots T_1) = \sgn(\sigma) = \prod_{a < b} \frac{\sigma(b) -
+\sigma(a)}{b - a} = (-1)^n, \]
+where $T_i$ represents a transposition. We also claim that
+$\sgn(\sigma_1 \sigma_2) = \sgn(\sigma_1) \sgn(\sigma_2)$.
+\end{prop}
+
+\begin{proof}
+It's obvious that the product is either $1$ or $-1$, because it's the
+product of the same terms with possibly different signs and possibly
+different order. We only need to prove the multiplicativity for
+transpositions because every permutation is just a product of
+transpositions.
+\[ \begin{aligned}
+\sgn(\sigma_1 \sigma_2) &= \prod \frac{\sigma_1(\sigma_2(b)) -
+\sigma_1(\sigma_2(a))}{b - a} \\
+&= \prod \frac{\sigma_1(d) - \sigma_1(c)}{\sigma_2(d) - \sigma_2(c)} \\ 
+&= \prod \frac{\sigma_1(d) - \sigma_1(c)}{d - c} \prod \frac{d -
+c}{\sigma_2(d) - \sigma_2(c)} \\
+&= \sgn(\sigma_1) \sgn(\sigma_2)
+\end{aligned} \]
+where $\sigma_1$ can be an arbitrary permutation and $\sigma_2$ is an
+arbitrary transposition. This finishes the proof.
+\end{proof}
+
+\begin{df}
+We will let $S_n$ denote the set of permutations on the set $\lbrace 1,
+\dots, n \rbrace$.
+\end{df}

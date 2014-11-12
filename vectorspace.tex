@@ -1,4 +1,5 @@
 \section{Vector Spaces and Related Things}
+We can finally start getting into this linear algebra thing.
 \subsection{Vector Spaces}
 We should now have enough abstract definitions to introduce vector
 spaces in an abstract enough way. I am purposefully trying to stay away
@@ -9,6 +10,25 @@ algebra at such an abstract level is confusing enough for me.
 A \textbf{vector space} $V$ over a field $F$ is an abelian group under
 $+$ and an $F$-module.
 \end{df}
+
+\begin{prop}
+$0 = 0v$.
+\end{prop}
+
+\begin{proof}
+$0v + 0v = (0 + 0) v = 0v$.
+\end{proof}
+
+\begin{prop}
+$-v = -1 \cdot v$, or the additive inverse of $v$ is the additive
+inverse in $F$ times $v$.
+\end{prop}
+
+\begin{proof}
+$-1 \cdot v + v = -1 \cdot v + 1 \cdot v (-1 + 1) \cdot v = 0 \cdot v =
+0$. This follows from the $F$-module structure that is imposed upon $V$,
+where $1v = v$.
+\end{proof}
 
 \begin{df}
 The \textbf{span} of a set of vectors $v_1, v_2, \dots, v_k$ is defined
@@ -254,10 +274,10 @@ $1, x, x^2$ would be
 \end{ex}
 
 We can then easily compute the transformation of any vector once bases
-are chosen. This is done by "dotting", or multiplying each row vector's
-components with the components of the column vector representation of
-the vector being transformed, and then summing up the multiplied
-components.
+are chosen. This is done by ``dotting'', or multiplying each row
+vector's components with the components of the column vector
+representation of the vector being transformed, and then summing up the
+multiplied components.
 
 \begin{ex}
 \[ \begin{pmatrix}
@@ -285,11 +305,19 @@ experiment a little bit and see why this should be true.
 \end{rem}
 
 \begin{rem}
-Matrix multiplication is associative. The easiest way to see this is by
-going back to composition of transformations. $T_3 (T_2 T_1) = (T_3 T_2)
-T_1$ simply because $T_3 (T_2 T_1) u = T_3(T_2(T_1(u))) = (T_3 T_2) T_1
-u$.
+Matrix multiplication is associative in the finite dimensional case. The
+easiest way to see this is by going back to composition of
+transformations. $T_3 (T_2 T_1) = (T_3 T_2) T_1$ simply because $T_3
+(T_2 T_1) u = T_3(T_2(T_1(u))) = (T_3 T_2) T_1 u$. We can also see this
+by expanding out the $ij$-th entry in the resultant matrix and noticing
+that only the order of summation is changed, which is not important in
+finite dimensions.
 \end{rem}
+
+\begin{df}
+The \textbf{transpose} $A^T$ of a matrix $A$ is given by interchanging
+the rows and columns of $A$.
+\end{df}
 
 \begin{rem}
 $A_{ij}$ will denote the $i,j$-th entry of a matrix $A$, or the entry in
