@@ -1,8 +1,8 @@
 all: math416.pdf
 
-%.pdf: %.tex
-	pdflatex $<
-	pdflatex $<
+math416.pdf: *.tex
+	pdflatex math416.tex
+	pdflatex math416.tex
 
 .PHONY: clean
 
