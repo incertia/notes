@@ -1,2 +1,37 @@
 \section{Square Matrices}
+\subsection{Linear Things}
 Square matrices are very special, so they get their own section.
+
+\begin{df}
+The identity transformation has a corresponding identity matrix $I_n$
+where the $ii$-th entries are $1$ and the other entries are $0$.
+\end{df}
+
+\begin{df}
+We define the \textbf{trace} of a square matrix $A$, denoted $\Tr(A)$,
+to be the sum of the elements along the main diagonal of $M$, or,
+equivalently, $\sum A_{ii}$.
+\end{df}
+
+\begin{prop}
+The trace of a matrix is the unique linear transformation $T :
+\mathcal{M}(n, n) \rightarrow F$ satisfying:
+\begin{itemize}
+\item $T(I_n) = n$
+\item $T(AB) = T(BA)$
+\end{itemize}
+\end{prop}
+
+\begin{proof}
+% TODO: finish proof
+Suppose $f$ is another mapping that satisfies the above properties.
+\end{proof}
+
+\subsection{MULTIlinear???!}
+Yeah multilinearity is a thing.
+
+\begin{df}
+A function $f : V_1 \times \cdots \times V_n$ is $n$-linear if $f$ is
+linear in each argument, or $F(v_k) = f(c_1, c_2, \dots, c_{k - 1}, v_k,
+c_{k + 1}, \dots, c_n)$ is linear for each $k$.
+\end{df}
