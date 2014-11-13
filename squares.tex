@@ -136,13 +136,86 @@ $f(a, b) + f(b, a) = 0$.
 \end{rem}
 
 \begin{thm}[Determinant Thing]
-There exists a unique $n$-linear, alternating function $\det(r_1, \dots,
-r_n) : V \times \dots, \times V \rightarrow F$ isomorphic to $\det(A) :
-\mathcal{M}(n, n) \rightarrow F$ satisfying $\det(I) = 1$. Basically
-what this is saying is that $\det$ should be $n$-linear in the rows and
-columns of an $n \times n$ matrix.
+There exists a unique $n$-linear, alternating function $\det : V \times
+\cdots \times V \rightarrow F$ isomorphic to $\det : \mathcal{M}(n, n)
+\rightarrow F$ satisfying $\det(I) = 1$. This function is given by
+$\det(A) = \sum_{\sigma \in S_n} \sgn(\sigma) \prod A_{i \sigma(i)}$.
+Basically what this is saying is that $\det$ should be $n$-linear in the
+rows and columns of an $n \times n$ matrix.
 \end{thm}
 
 \begin{proof}
 %TODO: finish
+This nasty expansion for the determinant is credited to Leibniz. In this
+proof, columns and rows can be freely interchanged to get the same
+result.
+
+\textbf{Existence}: We show that the Leibniz formula is $n$-linear and
+alternating, as it obviously takes on $1$ at $I$. Let $r_i$ denote the
+$i$-th row of a matrix $A$ and $r_i^j$ denote the $j$-th entry in the
+$i$-th row. Then
+\[ \begin{aligned}
+\det(r_1, \dots, c r_j, \dots, r_n) &= \sum_{\sigma \in S_n}
+\sgn(\sigma) cr_j^{\sigma(j)} \prod_{i = 1, i \neq j}^n r_i^{\sigma(i)}
+\\
+&= c \sum_{\sigma \in S_n} \sgn(\sigma) \prod r_i^{\sigma(i)} \\
+&= c\det(r_1, \dots, r_n), \\
+\det(r_1, \dots, v + r_j, \dots, r_n) &= \sum_{\sigma \in S_n}
+\sgn(\sigma) \left(v^{\sigma(j)} + r_j^{\sigma(j)}\right) \prod_{i = 1,
+i \neq j}^n r_i^{\sigma(i)} \\
+&= \sum_{\sigma \in S_n} \sgn(\sigma) v^{\sigma(j)} \prod_{i = 1, i \neq
+j}^n r_i^{\sigma(i)} + \sum_{\sigma \in S_n} \sgn(\sigma) \prod
+r_i^{\sigma(i)} \\
+&= \det(r_1, \dots, v, \dots, r_n) + \det(r_1, \dots, r_n),
+\end{aligned} \]
+so $\det$ is $n$-linear. Additionally, if $\tau_j^k$ is the
+transposition that swaps the $j$-th and $k$-th entries and we let
+$\sigma' = \tau_j^k \sigma$, we also have
+\[ \begin{aligned}
+\det(A) &= \sum_{\sigma \in S_n, \sigma(j) < \sigma(k)} \sgn(\sigma)
+r_j^{\sigma(j)} r_k^{\sigma(k)} \prod_{i = 1, i \neq j, k}
+r_i^{\sigma(i)} + \sgn(\sigma') r_j^{\sigma'(j)} r_k^{\sigma'(j)}
+\prod_{i = 1, i \neq j, k} r_i^{\sigma'(j)} \\
+&= \sum_{\sigma \in S_n, \sigma(j) < \sigma(k)} \sgn(\sigma)
+\left(\prod_{i = 1, i \neq j, k}^n r_i^{\sigma(i)}\right)
+\left(r_j^{\sigma(j)} r_k^{\sigma(k)} - r_j^{\sigma(k)}
+r_k^{\sigma(j)}\right).
+\end{aligned} \]
+Hence if $r_j = r_k$, $\det(A) = 0$ so $\det$ is alternating as well. We
+have now shown that the Leibniz formula does indeed give a $n$-linear,
+alternating function on the row-space of a matrix.
+
+\textbf{Uniqueness}: Let $f$ be another such function. We can represent
+each row $r_i = \sum_k \mathcal{E}_k r_i^k$ (for columns, swap the
+order), where $\mathcal{E}_k$ represents the $k$-th row of $I$. By
+linearity, we then have
+\[ f(A) = f\left(\sum_k \mathcal{E}_k r_1^k, \dots, \sum_k \mathcal{E}_k
+r_n^k\right) = \sum_{k_1, \dots, k_n = 1}^n \left(\prod_{i = 1}^n
+r_i^{k_i}\right) f(\mathcal{E}_{k_1}, \dots, \mathcal{E}_{k_n}). \]
+However, $f$ is alternating, so it only suffices to consider
+permutations, so we have
+\[ f(A) = \sum_{\sigma \in S_n} \left(\prod_i r_i^{\sigma(i)}\right)
+f(\mathcal{E}_{\sigma(1)}, \dots, \mathcal{E}_{\sigma(n)}). \]
+We now use alternating again to rearrange the term on the right to
+$f(I)$, and we use $\sgn$ to count the number of transpositions needed,
+so we ultimately have
+\[ f(A) = \sum_{\sigma \in S_n} \sgn(\sigma) \prod_i r_i^{\sigma(i)}
+f(I). \]
+Now use $f(I) = 1$ to get the desired result.
+\end{proof}
+
+\begin{rem}
+Because the determinant is unique, you do not have to show that an
+alternate form for the determinant takes on that ugly Leibniz formula.
+You just have to show that it is $n$-linear, alternating, and $1$ on the
+identity.
+\end{rem}
+
+\begin{prb}
+Verify that the Leibniz formula produces the correct results for the $2
+\times 2$ and $3 \times 3$ case.
+\end{prb}
+
+\begin{proof}[Solution]
+Trivial.
 \end{proof}

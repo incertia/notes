@@ -34,7 +34,7 @@ where $1v = v$.
 The \textbf{span} of a set of vectors $v_1, v_2, \dots, v_k$ is defined
 as the set
 \[ \left\lbrace \sum_i a_i v_i : a_i \in F \right\rbrace. \]
-Similarly, a set of vectors span a set of every element of that set can
+Similarly, a set of vectors span a set if every element of that set can
 be written as a linear combination of the set of vectors.
 \end{df}
 
@@ -110,6 +110,19 @@ Anyways, here are some examples of vector spaces and subspaces
 \item Even functions on $\mathbb{R}$
 \end{itemize}
 \end{itemize}
+
+\begin{prb}
+Let $V$ be the space of functions $f : \mathbb{R} \rightarrow
+\mathbb{R}$. Show that $V$ is isomorphic to $V_e \oplus V_o$, the space
+of even and odd functions.
+\end{prb}
+
+\begin{proof}[Solution]
+Let $f \in V$. Then $f = \frac{f(x) + f(-x)}{2} + \frac{f(x) -
+f(-x)}{2} \cong \left(\frac{f(x) + f(-x)}{2}, \frac{f(x) -
+f(-x)}{2}\right)$ and isomorphism follows from this decomposition in the
+canonical fashion.
+\end{proof}
 
 \begin{prop}
 Let $V, W$ be subspaces. Then
@@ -314,6 +327,13 @@ that only the order of summation is changed, which is not important in
 finite dimensions.
 \end{rem}
 
+\begin{ex}
+Here is a case where multiplication of matrices or composition of linear
+operators is not associative. Consider the vector space $\mathbb{R}[X]$.
+Denote by $Df = \frac{df}{dX}, f \in \mathbb{R}[X]$ and $If = \int_0^X
+f(s) ds, f \in \mathbb{R}[X]$. Clearly $DIf = f$, but $IDf = f - f(0)$.
+\end{ex}
+
 \begin{df}
 The \textbf{transpose} $A^T$ of a matrix $A$ is given by interchanging
 the rows and columns of $A$.
@@ -329,3 +349,10 @@ We will denote by $\mathcal{M}(m, n)$ the space of $m \times n$
 matrices, or matrices with $m$ rows and $n$ columns with addition and
 scalar multiplication done component wise.
 \end{df}
+
+\begin{rem}
+Let $M = \left\lbrace \begin{pmatrix} a & -b \\ b & a \end{pmatrix} : a, b
+\in \mathbb{R}\right\rbrace$. Then there is the bijection $\mathbb{C}
+\leftrightarrow M$ given by $a + bi \leftrightarrow \begin{pmatrix} a &
+-b \\ b & a \end{pmatrix}$.
+\end{rem}
