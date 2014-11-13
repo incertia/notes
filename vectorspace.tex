@@ -125,6 +125,24 @@ canonical fashion.
 \end{proof}
 
 \begin{prop}
+$e^{\lambda x}$ and $e^{\mu x}$ are linearly independent if $\lambda
+\neq \mu$.
+\end{prop}
+
+\begin{proof}
+We set
+\[ \left\lbrace \begin{aligned}
+c_1 e^{\lambda x} + c_2 e^{\mu x} &= 0 \\
+c_1 \lambda e^{\lambda x} + c_2 \mu e^{\mu x} &= 0
+\end{aligned} \right. \]
+Take $x = 0$ to get
+\[ \left\lbrace \begin{aligned}
+c_1 + c_2 &= 0 \\
+c_1 \lambda + c_2 \mu &= 0
+\end{aligned} \right. \implies c_1 = c_2 = 0. \]
+\end{proof}
+
+\begin{prop}
 Let $V, W$ be subspaces. Then
 \[ \dim(V) + \dim(W) = \dim(V + W) + \dim(V \cap W) \]
 where $V + W = \lbrace v + w : v \in V, w \in W \rbrace$.
@@ -175,6 +193,22 @@ Determine a necessary and sufficient condition for a polynomial $P \in
 \begin{proof}[Solution]
 I claim that $P$ must be an integral linear combination of the
 polynomials $\binom{X}{k} \forall k \in \mathbb{N}$.
+\end{proof}
+
+\subsection{Algebraic Manipulation}
+Here we do various interesting things with subspaces.
+
+\begin{prop}
+Let $V, W$ be subspaces. Then $V \oplus W \cong V + W$ if $V \cap W =
+\lbrace 0 \rbrace$. I'm not sure if this can be extended to only if.
+\end{prop}
+
+\begin{proof}
+Take $\varphi(v, w) = v + w$, which is clearly bijective. We wish to
+show that $\varphi^{-1}(v + w) = (v, w)$ is also bijective. Suppose $v_1
++ w_1 = v_2 + w_2$. Then $v_1 - v_2 = w_2 - w_1 = 0$, so $v_1 = v_2$ and
+$w_1 = w_2$, completing the injectivity portion. Surjectivity is obvious
+so we are done as the preservation of structure is trivial.
 \end{proof}
 
 \subsection{Linear Maps}

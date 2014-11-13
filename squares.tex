@@ -66,6 +66,30 @@ equivalent to every invertible matrix is the product of elementary
 matrices.
 \end{prop}
 
+\begin{df}
+A matrix $D$ is said to be \textbf{diagonal} if $D_{ij} = 0$ for all $i
+\neq j$.  Computing the products of diagonal matrices is easy because
+you end up just multiplying the components. A matrix $A$ is
+\textbf{diagonalizable} if there is a basis for which $A$ becomes
+diagonal (i.e. a basis consisting of eigenvectors).
+\end{df}
+
+\begin{prop}
+If $A$ is diagonalizable, $A = PDP^{-1}$ for diagonal $D$ and some
+matrix $P$.
+\end{prop}
+
+\begin{proof}
+This is equivalent to $AP = PD = P \begin{pmatrix} \lambda_1 & & \\ &
+\lambda_2 & & \\ & & \ddots & \\ & & & \lambda_n \end{pmatrix} =
+\begin{pmatrix} | & | & & | \\ \lambda_1 \mathcal{P}_1 & \lambda_2
+\mathcal{P}_2 & \cdots & \lambda_n \mathcal{P}_n \\ | & | & & |
+\end{pmatrix}$, where $\mathcal{P}_i$ represents the $i$-th column of
+$P$. However, if we look at the LHS, we have $A \mathcal{P}_i =
+\lambda_i \mathcal{P}_i$, so $P$'s columns are precisely eigenvectors
+for its corresponding eigenvalue.
+\end{proof}
+
 \subsection{Linear Things}
 It wouldn't be linear algebra without linear things.
 \begin{df}
@@ -217,4 +241,139 @@ Verify that the Leibniz formula produces the correct results for the $2
 
 \begin{proof}[Solution]
 Trivial.
+\end{proof}
+
+\begin{df}
+The \textbf{cofactor} $C_{ij}$ of a matrix $A$ is defined as $C_{ij} =
+(-1)^{i + j} M_A(i, j)$ where $M_A(i, j)$ is the $ij$ \textbf{minor} of
+$A$, found by taking the determinant of the resultant matrix given by
+deleting the $i$-th row and $j$-th column of $A$. This gives rise to the
+\textbf{cofactor matrix}.
+\end{df}
+
+\begin{df}
+The \textbf{adjugate} or \textbf{adjunct} of a matrix $A$ is the
+transpose of the cofactor matrix, $\adj(A) = C^T$.
+\end{df}
+
+\begin{thm}[Cofactor Expansion]
+An alternate form for the determinant is given by
+\[ \det(A) = \sum A_{ij} C_{ij}, \]
+where the sum is taken over \textbf{ONE OF} $i, j$, depending on what
+you are expanding along, a row or a column.
+\end{thm}
+
+\begin{thm}[Adjunct Determinant]
+$\adj(A) A = \det(A) I$.
+\end{thm}
+
+\subsection{Eigenstuff}
+
+\begin{df}
+$\lambda$ is said to be an \textbf{eigenvalue} for $L : V \rightarrow V$
+with corresponding non-zero \textbf{eigenvector} $v$ if and only if $Lv
+= \lambda v$.
+\end{df}
+
+\begin{df}
+We say that the \textbf{eigenspace} of $\lambda$ is the set
+\[ E_{\lambda} = \lbrace v \in V : Lv = \lambda v \rbrace. \]
+Notice that $0 \in E_{\lambda}$.
+\end{df}
+
+\begin{df}
+We can extend this notion of eigenvalue to a \textbf{generalized
+eigenvalue} $\lambda$ if some non-zero vector $v \in V$ satisfies $(L -
+\lambda I)^k (v) = 0$ for some $k$.
+\end{df}
+
+\begin{df}
+Similarly, we define the \textbf{generalized eigenspace} to be
+\[ K_{\lambda} = \lbrace v \in V : \exists k : (L - \lambda I)^k (v) = 0
+\rbrace. \]
+\end{df}
+
+\begin{prop}
+$K_{\lambda}$ is an \textbf{invariant subspace}. That is, $Lv \in
+K_{\lambda} \quad \forall v \in K_{\lambda}$.
+\end{prop}
+
+\begin{proof}
+$K_{\lambda}$ is obviously a subspace, so we show that it is invariant.
+Compute
+\[ (L - \lambda I)^k (Lv) = L (L - \lambda I)^k (v) = L(0) = 0. \]
+The key fact here is that $L$ commutes with itself and $I$.
+\end{proof}
+
+\begin{prop}
+Suppose $\lambda \neq \mu$. Then $K_{\lambda} \cap K_{\mu} = \lbrace 0
+\rbrace$.
+\end{prop}
+
+\begin{proof}
+Recall that $L : V \rightarrow W$ is injective if and only if
+$\mathcal{N}(L) = \lbrace 0 \rbrace$. Take $(L - \mu I) : K_{\lambda}
+\rightarrow V$. It is sufficient to show that that is injective
+(composition of injective functions is injective, so $(L - \mu I)^j (v)
+= 0 \implies v = 0$), so suppose $(L - \lambda I)^k (v) = 0 = (L - \mu
+I)(v)$. We get $Lv = \mu v$, so we substitute
+\[ 0 = (L - \lambda I)^k (v) = (\mu - \lambda)^k (v) \implies v = 0 \]
+because $\mu \neq \lambda$.
+\end{proof}
+
+\begin{df}
+The \textbf{characteristic polynomial} of a matrix $L$ is the polynomial
+$\chi_L = \det(L - \lambda I)$.
+\end{df}
+
+\begin{df}
+The \textbf{minimal polynomial} $\pi_L$ of a matrix $L$ is the unique
+monic polynomial of lowest degree that kills $L$.
+\end{df}
+
+\begin{thm}[Cayley-Hamilton]
+$\chi_L(L) = 0$.
+\end{thm}
+
+\begin{proof}
+This should intuitively make sense, as $\chi_L(L) = \det(L - LI) =
+\det(0) = 0$, but what this is really saying is we are plugging in $L$
+as $\lambda$ in the \emph{polynomial expansion} of $\det(L - \lambda
+I)$.
+
+Suppose $L$ is diagonalizeable. Then $L = PDP^{-1}$. We easily compute
+that
+\[ \chi_L(D) = \begin{pmatrix}
+\chi_L(\lambda_1) & & \\
+& \chi_L(\lambda_2) & & \\
+& & \ddots & \\
+& & & \chi_L(\lambda_n)
+\end{pmatrix}, \]
+but $\chi_L(\lambda_k) = 0$ so $\chi_L(D) = 0$. Now compute
+\[ \chi_L(L) = \chi_L(PDP^{-1}) = P\chi_L(D)P^{-1} = 0 \]
+to get the result for diagonalizable matrices.
+
+Now we use the fact that every matrix can be represented as a limit of
+an infinite sequence of diagonalizable matrices (the limit of a sequence
+of matrices is the limit of the entries) to get the desired result.
+\end{proof}
+
+\begin{cor}
+$\pi_L \mid \chi_L$.
+\end{cor}
+
+\begin{prop}
+The zeroes of $\chi_L$ are the eigenvalues of $L$.
+\end{prop}
+
+\begin{lem}
+Let $\lambda_1, \dots, \lambda_k$ be the distinct eigenvalues of $L : V
+\rightarrow V$. Then
+\[ V = K_{\lambda_1} + \cdots + K_{\lambda_k}. \]
+\end{lem}
+
+\begin{proof}
+We induct on $k$. In the case $k = 1$, we have by Cayley-Hamilton that
+$(L - \lambda_1 I)^n = 0$ where $n = \dim V$, which automatically
+implies $V = K_{\lambda_1}$. Now suppose $k - 1$ is true.
 \end{proof}
