@@ -90,6 +90,22 @@ $P$. However, if we look at the LHS, we have $A \mathcal{P}_i =
 for its corresponding eigenvalue.
 \end{proof}
 
+\begin{prb}
+Matrices behave very much like modules. In fact, $\mathcal{M}(n, n)
+\cong F^{n^2}$ as a vector space. Find a matrix representation of $M
+\oplus N$ with $M, N$ two arbitrary square matrix spaces.
+\end{prb}
+
+\begin{proof}[Solution]
+We basically construct a block diagonal matrix as follows
+\[ \begin{pmatrix} A_1 & 0 \\ 0 & A_2 \end{pmatrix} A_1 \in M, A_2 \in
+N, \]
+but actually expanding out the matrices and zeroes in full. This gives
+us an injection $\mathcal{M}(m, m) \oplus \mathcal{M}(n, n)
+\rightarrowtail \mathcal{M}(m + n, m + n)$ by preserving addition,
+scalar multiplication, as well as matrix multiplication.
+\end{proof}
+
 \subsection{Linear Things}
 It wouldn't be linear algebra without linear things.
 \begin{df}
@@ -375,5 +391,6 @@ Let $\lambda_1, \dots, \lambda_k$ be the distinct eigenvalues of $L : V
 \begin{proof}
 We induct on $k$. In the case $k = 1$, we have by Cayley-Hamilton that
 $(L - \lambda_1 I)^n = 0$ where $n = \dim V$, which automatically
-implies $V = K_{\lambda_1}$. Now suppose $k - 1$ is true.
+implies $V = K_{\lambda_1}$. Now suppose $k - 1$ is true. Consider $L$
+as $L : \mathcal{R}((L - \lambda_k I)^j) \rightarrow V$.
 \end{proof}

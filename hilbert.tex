@@ -1,0 +1,102 @@
+\section{Moving Towards Concreteness}
+A lot of the things here will be restricted to the fields $\mathbb{F}
+\in \lbrace \mathbb{C}, \mathbb{R}, \overline{\mathbb{Q}} \rbrace $.
+
+\subsection{I'm In Space}
+Because we needed more spaces in linear algebra.
+
+\begin{df}
+A \textbf{inner product space} $V$ is a vector space with an additional
+structure called the \textbf{inner product} $\langle \cdot, \cdot
+\rangle : V \times V \rightarrow \mathbb{F}$ satisfying
+\begin{itemize}
+\item \textbf{Conjugate symmetry} or \textbf{Hermitian symmetry}:
+$\langle x, y \rangle = \overline{\langle y, x \rangle}$.
+\item Linearity in the first argument: $\langle ax, y \rangle = a
+\langle x, y \rangle$ and $\langle x + y, z \rangle = \langle x, z
+\rangle + \langle y, z \rangle$.
+\item \textbf{Positive definiteness}: $\langle x, x \rangle \geq 0$ and
+$\langle x, x \rangle = 0 \implies x = 0$.
+\end{itemize}
+\end{df}
+
+\begin{rem}
+Because of conjugate symmetry, we have
+\begin{enumerate}
+\item $\langle x, cy \rangle = \overline{\langle cy, x \rangle} =
+\overline{c} \overline{\langle y, x \rangle} = \overline{c} \langle x, y
+\rangle$.
+\item $\langle x, y + z \rangle = \overline{\langle y + z, x \rangle} =
+\overline{\langle y, x \rangle} + \overline{\langle z, x \rangle} =
+\langle x, y \rangle + \langle x, z \rangle$.
+\end{enumerate}
+\end{rem}
+
+\begin{df}
+A \textbf{metric space} is a set $M$ in which there is a metric
+(distance) $d : M \times M \rightarrow \mathbb{R}$ such that
+\begin{itemize}
+\item $d(x, y) \geq 0$
+\item $d(x, y) = 0 \Leftrightarrow x = y$
+\item $d(x, y) = d(y, x)$
+\item $d(x, z) \leq d(x, y) + d(y, z)$
+\end{itemize}
+\end{df}
+
+\begin{df}
+A \textbf{Cauchy sequence} is an infinite sequence that has a limit with
+respect a consistent norm.
+\end{df}
+
+\begin{df}
+A metric space is called \textbf{complete} if every Cauchy sequence in
+$M$ has its limit in $M$.
+\end{df}
+
+\begin{df}
+A \textbf{Hilbert space} is an inner product space that is also a
+complete metrix space given by the norm $d(x, y) = \sqrt{\langle x - y,
+x - y \rangle}$.
+\end{df}
+
+\begin{prb}
+Verify that the triangle inequality holds for the above norm.
+\end{prb}
+
+\begin{proof}[Solution]
+\begin{lem}[Cauchy-Schwarz]
+$|\langle x, y \rangle | \leq \sqrt{\langle x, x \rangle} \sqrt{\langle y,
+y \rangle}$.
+\end{lem}
+\begin{proof}
+We have $|\langle x, y \rangle | = \sqrt{\langle x, y \rangle \langle y,
+x \rangle}$, so we square to get $\langle x, y \rangle \langle y, x
+\rangle \leq \langle x, x \rangle \langle y, y \rangle$, or $\langle x,
+x \rangle \langle y, y \rangle - \langle x, y \rangle \langle y, x
+\rangle \geq 0$. The inequality is clearly true when $x = 0$, so we
+ignore that case and divide through by $\langle x, x \rangle$ to get
+$\langle y, y \rangle - c \langle x, y \rangle = \langle y - cx, y
+\rangle \geq 0$ where $c = \frac{\langle y, x \rangle}{\langle x, x
+\rangle}$.
+
+We can expand $\langle y - cx, y - cx \rangle = \langle y - cx, y
+\rangle - \overline{c} \langle y - cx, x \rangle$, but $\langle y - cx,
+x \rangle = \langle y, x \rangle - c \langle x, x \rangle = \langle y, x
+\rangle - \langle y, x \rangle = 0$, so we get
+\[ \langle y - cx, y \rangle = \langle y - cx, y - cx \rangle \geq 0, \]
+as desired.
+
+\end{proof}
+We wish to show
+\[ \sqrt{\langle x + y, x + y \rangle} \leq \sqrt{\langle x, x \rangle}
++ \sqrt{\langle y, y \rangle}. \]
+Squaring gives
+\[ \langle x, x \rangle + \langle x, y \rangle + \langle y, x \rangle +
+\langle y, y \rangle \leq \langle x, x \rangle + \langle y, y \rangle +
+2 \sqrt{\langle x, x \rangle \langle y, y \rangle}, \]
+or
+\[ \sqrt{\langle x, x \rangle} \sqrt{\langle y, y \rangle} +
+\sqrt{\langle y, y \rangle} \sqrt{\langle x, x \rangle} \leq 2
+\sqrt{\langle x, x \rangle \langle y, y \rangle} \]
+by Cauchy-Schwarz, so we are done.
+\end{proof}

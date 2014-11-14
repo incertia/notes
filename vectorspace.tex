@@ -285,6 +285,40 @@ $\dim(\mathcal{R}(L))$ is usually called the rank of $L$, hence the name
 of the theorem.
 \end{rem}
 
+\begin{prop}
+The following are equivalent.
+\begin{enumerate}
+\item $L(Lv) = 0 \implies Lv = 0$
+\item $\mathcal{N}(L) = \mathcal{N}(L^2)$
+\item $\mathcal{N}(L) \cap \mathcal{R}(L) = \lbrace 0 \rbrace$
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+$1 \implies 2$ is trivial.
+
+For $2 \implies 3$, let $v \in V$ such that $\exists w$ such that $Lw =
+v$ and $Lv = 0$. Then $0 = Lv = L(Lw) = L^2 w \implies Lw, w \in
+\mathcal{N}(L)$, but $w \in \mathcal{N}(L) \implies v = Lw = 0$.
+
+All that is left is $3 \implies 1$. $Lv \in \mathcal{R}(L)$ and $Lv \in
+\mathcal{N}(L)$ means $Lv = 0$.
+\end{proof}
+
+The previous two result gives rise to a logical proposition.
+\begin{prop}
+Let $V$ be a vector space and let $L : V \rightarrow V$ be linear. Then
+$V \cong \mathcal{N}(L) \oplus \mathcal{R}(L)$ if $\mathcal{N}(L) \cap
+\mathcal{R}(L) = \lbrace 0 \rbrace$.
+\end{prop}
+
+\begin{proof}
+We just take the canonical isomorphism $\varphi : \mathcal{N}(L) \oplus
+\mathcal{R}(L) \rightarrow V $ to be $\varphi(n, r) = n + r$. The
+decomposition $v = n + r, n \in \mathcal{N}(L), r \in \mathcal{R}(L)$ is
+guaranteed to be unique because they only share the 0 vector.
+\end{proof}
+
 \subsection{Matrices of Linear Maps}
 Because linear maps are linear, they are given completely by what they
 do on a basis. This motivates us to find some sort of compact
