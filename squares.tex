@@ -259,6 +259,58 @@ Verify that the Leibniz formula produces the correct results for the $2
 Trivial.
 \end{proof}
 
+\begin{rem}
+It is easy to calculate the determinant of triangular matrices.
+\end{rem}
+
+\begin{prop}
+The determinant is completely multiplicative, or
+\[ \det(AB) = \det(A)\det(B). \]
+\end{prop}
+
+\begin{proof}
+%TODO: finish the proof
+filler
+\end{proof}
+
+\begin{prb}
+Define the square matrix $\mathcal{G}_n$ as the square matrix where the
+$(i, j)$ entry is $\gcd(i, j)$. Compute $\det(\mathcal{G}_n)$.
+\end{prb}
+
+\begin{proof}[Solution]
+A common way to compute determinants of complex matrices is to use what
+is called the $LU$-decomposition, where we write a matrix $M$ as $M =
+LU$ where $L$ is lower triangular and $U$ is upper triangular. So now
+define
+\[ \begin{aligned}
+L_{ij} &= \left\lbrace \begin{aligned}
+1 \qquad j \mid i \\
+0 \qquad j \nmid i
+\end{aligned}\right. \\
+U_{ij} &= \left\lbrace \begin{aligned}
+\varphi(j) \qquad i \mid j \\
+0 \qquad i \nmid j
+\end{aligned}\right.
+\end{aligned} \]
+We can now compute
+\[ \begin{aligned}
+M_{ij} &= \sum_k L_{ik} U_{kj} \\
+&= \sum_{k \mid i, j} \varphi(k) \\
+&= \gcd(i, j)
+\end{aligned} \]
+
+Then we easily have that the determinant $\det(\mathcal{G}_n) = \det(LU)
+= \det(L) \det(U) = \prod_{i = 1}^{n} \varphi(i).$
+
+\begin{rem}
+In this proof, we used the fact that $\sum_{d \mid n} \varphi(d) = n$.
+The easiest way to see why this is true is to count the number of
+fractions $\frac{1}{n}, \frac{2}{n}, \frac{3}{n}, \dots, \frac{n}{n}$
+after reducing.
+\end{rem}
+\end{proof}
+
 \begin{df}
 The \textbf{cofactor} $C_{ij}$ of a matrix $A$ is defined as $C_{ij} =
 (-1)^{i + j} M_A(i, j)$ where $M_A(i, j)$ is the $ij$ \textbf{minor} of
@@ -393,4 +445,27 @@ We induct on $k$. In the case $k = 1$, we have by Cayley-Hamilton that
 $(L - \lambda_1 I)^n = 0$ where $n = \dim V$, which automatically
 implies $V = K_{\lambda_1}$. Now suppose $k - 1$ is true. Consider $L$
 as $L : \mathcal{R}((L - \lambda_k I)^j) \rightarrow V$.
+\end{proof}
+
+\begin{prb}[Fall 2014 Final Exam]
+Compute the determinant of the square matrix whose entries along the
+main diagonal are $x$ and $1$ everywhere else.
+\end{prb}
+
+\begin{proof}[Solution]
+We use small matrices as examples to get some motivation. We will also
+use $M$ to denote these matrices, indexed by their size $n$.
+\[ \begin{aligned}
+\det\begin{pmatrix} x \end{pmatrix} &= x = (x - 1)^0 (x + 0) \\
+\det\begin{pmatrix} x & 1 \\ 1 & x \end{pmatrix} &= x^2 - 1 = (x -
+1)^1(x + 1) \\
+\det\begin{pmatrix} x & 1 & 1 \\ 1 & x & 1 \\ 1 & 1 & x \end{pmatrix} &=
+x^3 + 2 - 3x = (x - 1)^2 (x + 2)
+\end{aligned} \]
+So it seems that $\det(M_n) = (x - 1)^{n - 1} (x + (n - 1))$. I claim
+that this is indeed the determinant.
+
+We can easily see that $x - 1$ is a factor in the determinant because it
+is an eigenvalue (or zero of the characteristic polynomial).
+%TODO: finish solution unlike final
 \end{proof}
