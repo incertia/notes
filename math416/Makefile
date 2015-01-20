@@ -1,8 +1,11 @@
-all: math416.pdf
+TEX=pdflatex
+TARGET=math416
 
-math416.pdf: *.tex
-	pdflatex math416.tex
-	pdflatex math416.tex
+all: $(TARGET).pdf
+
+$(TARGET).pdf: *.tex
+	$(TEX) $(TARGET).tex
+	$(TEX) $(TARGET).tex
 
 .PHONY: clean
 
