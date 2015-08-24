@@ -1,0 +1,48 @@
+\section{Day 1 - Well Ordering}
+
+\begin{prop}
+Well ordering implies induction.
+\end{prop}
+
+\begin{proof}
+Take $S \subseteq \mathbb{N}$ such that $1 \in S$ and $n + 1 \in S$ if
+$n \in S$. Suppose for the sake of contradiction that $S \neq
+\mathbb{N}$. Consider $S' = S \backslash \mathbb{N}$. By well ordering,
+$S'$ has minimal element $m \neq 1$ due to $1 \in S$, so $m - 1 \in S$
+by set difference. But then $m \in S$ by assumption on $S$ so $m \not
+\in S'$ so $S'$ has no minimal element which contradicts well ordering.
+\end{proof}
+
+\begin{prop}
+Induction implies well ordering
+\end{prop}
+
+\begin{proof}
+Suppose $S \subseteq \mathbb{N}, S \neq \varnothing$.
+
+Suppose that $S$ has no smallest element. Then $1 \not \in S$ because
+$1$ is the minimal element of $\mathbb{N}$ and thus $S$. Suppose $1, 2,
+3, \dots, k \not \in S$, then $k + 1 \not \in S$ because it would then be
+the smallest element in $S$. Then $n \not \in S \forall n \in
+\mathbb{N}$, so $S = \varnothing$.
+\end{proof}
+
+\begin{prop}
+For any $a, d \in \mathbb{Z}, d \neq 0$, then we can write $a = qd + r,
+0 \leq r < d$ with $q, d$ unique.
+\end{prop}
+
+\begin{proof}
+% cheating
+$ $\newline
+\textbf{Existence}: Consider the set $S = \lbrace x = a - qd \mid x
+\geq 0 \rbrace$. At least one of $a$, $-a$ is in $S$ so $S$ is non-empty
+and has a minimal element by well ordering. We take $r = \min S$ and $q$
+to be the corresponding $r = a - qd$. If $r \not < d$, then $r - d = a -
+(q + 1)d \in S$ which contradicts the minimality of $r$, so we are done
+(for existence).
+
+\textbf{Uniqueness}: Let $a = q_1 d + r_1 = q_2 d + r_2$. Then $0 = a -
+a = (q_1 - q_2) d + (r_1 - r_2)$, or $q_1 - q_2 = 0, r_1 - r_2 = 0$
+because of restrictions on $r_1, r_2$.
+\end{proof}

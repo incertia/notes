@@ -1,5 +1,5 @@
 TEX=pdflatex
-TARGET=phys325
+TARGET=math424
 
 all: $(TARGET).pdf
 
