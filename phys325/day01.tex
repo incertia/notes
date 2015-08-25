@@ -1,1 +1,59 @@
-\section{Day 1}
+\section{Day 1 - Math Reboot}
+
+\subsection{Discussion Review}
+
+\begin{prb}
+From discussion (P4), given $\vec{b} \cdot \vec{v} = \lambda$ and $\vec{b}
+\times \vec{v} = \vec{c}$, what is $\vec{v}$ in terms of $\lambda,
+\vec{b}, \vec{c}$.
+\end{prb}
+
+\begin{proof}[Solution]
+Given orthogonal vectors $\vec{e_b}, \pvec{e_b}'$, we write $\vec{v} = a
+\vec{e_b} + b \pvec{e_b}'$ where $a$ is the length along $\vec{b}$ and
+$b$ is the length perpendicular to $\vec{b}$. However, $a = |\vec{v}|
+\cos \theta = |\vec{v}| \frac{\vec{v} \cdot \vec{b}}{|\vec{v}|
+|\vec{b}|} = \frac{\lambda}{|\vec{b}|}$ and $b = |\vec{v}| \sin \theta =
+|\vec{v}| \frac{|\vec{c}|}{|\vec{v}| |\vec{b}|} =
+\frac{|\vec{c}|}{|\vec{b}|}$. Now take $\vec{e_b} = \frac{1}{|\vec{b}|}
+\vec{b} = x \vec{e_x} + y \vec{e_y}$ and $\pvec{e_b}' = y \vec{e_x} - x
+\vec{e_y}$ where $\vec{e_x}, \vec{e_y}$ are arbitrary choices of
+orthogonal unit vectors lying in the plane containing $\vec{v}, \vec{b}$
+(usually $(1, 0), (0, 1)$, respectively).
+\end{proof}
+
+\subsection{Differential Equations}
+
+How to practically solve differential equations in this class.
+
+For $n$-th order ODEs...
+\begin{enumerate}
+\item Separation of variables
+\item Guess, and then chug and plug (guess must have $\geq n$
+parameters)
+\item Use Wolfram{\textbar}Alpha
+\end{enumerate}
+
+\begin{prb}
+Consider a block of mass $m$ sitting on an inclined plane of angle
+$\theta$ with standard gravity $\vec{g}$. The plane has frictional
+coefficient $\mu$. Given that the block starts at rest, determine the
+position of the block at arbitrary time $t$.
+\end{prb}
+
+\begin{proof}[Solution]
+We refer back to the magical formula
+\[ \vec{F} = m\ddot{\vec{r}}. \]
+$\ddot{\vec{r}}$ is trivially $\ddot{x} \vec{e_x} + \ddot{y} \vec{e_y}$.
+
+Luckily we have the relations
+\[ \begin{aligned}
+\vec{F_g} &= m\vec{g} = mg(\vec{e_x} \sin \theta - \vec{e_y} \cos
+\theta) \\
+\vec{F_f} &= -\mu |\vec{F_N}| \vec{e_x} \\
+\vec{F_N} &= -\proj_{\vec{e_y}} \vec{F_g} = -mg\cos\theta \vec{e_y}, \\
+\end{aligned} \]
+so basically we have $F_x = mg\sin\theta - \mu mg \cos \theta =
+m\ddot{r}_x$, or $\ddot{r}_x = c \implies r_x = c_1 t^2 + c_2 t + c_3$
+and solving for the constants is trivial.
+\end{proof}
