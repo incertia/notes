@@ -11,10 +11,14 @@ Trying to understand the connection between these two sets of notes is
 likely to improve my understanding of linear algebra, which is why I am
 doing this.
 
-## Math 424: Honors Real Analysis
+## Math 347: Honors Fundamentals of Mathematics
 Notes arranged in a day by day format until I consolidate everything at
-the end of the class
+the end of the class. Yay easy class?
 
 ## Math 427: Honors Abstract Algebra
 Notes arranged in a day by day format until I consolidate everything at
-the end of the class
+the end of the class. Algebra is fun isn't it?
+
+## Phys 325: Classical Mechanics I
+Notes arranged in a day by day format until I consolidate everything at
+the end of the class. Yay CS major in physics classes.
