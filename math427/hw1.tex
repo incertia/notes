@@ -1,0 +1,116 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{parskip}
+
+% setup the header
+\pagestyle{fancy}
+\lhead{Will Song}
+\chead{Math 427}
+\rhead{HW1}
+
+% setup definition/theorem etc
+\newtheoremstyle{norm}
+{3pt}
+{3pt}
+{}
+{}
+{\bf}
+{:}
+{.5em}
+{}
+
+\theoremstyle{norm}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{df}[thm]{Definition}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{st}{Step}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{clm}[thm]{Claim}
+\newtheorem{exr}[thm]{Exercise}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{prb}[thm]{Problem}
+
+% just useful shorthand
+\renewcommand{\st}{\,\operatorname{s.t.}\,}
+\let\hom\relax
+\DeclareMathOperator{\hom}{Hom}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\adj}{adj}
+
+% for easier math
+\everymath{\displaystyle}
+
+\begin{document}
+
+\begin{enumerate}
+\item \begin{enumerate}
+\item $n = 1 \cdot n + 0$
+\item $n = q_1 m, m = q_2 d \implies n = (q_1 q_2) d$
+\item $m = q_1 d, n = q_2 d \implies xm + yn = (xq_1 + yq_2) d$
+\end{enumerate}
+
+\item Consider the mapping $\phi : \mathbb{Z} \to
+\mathbb{Z}/8\mathbb{Z}$ given by $n \mapsto \left[n^2\right]$. We then
+have $\lbrace 1, 3, 5, 7 \rbrace \xrightarrow{\phi} \lbrace 1, 1, 1, 1
+\rbrace$, which gives the desired result.
+
+We could also write $(2n + 1)^2 = 4n^2 + 4n + 1 = 4n(n + 1) + 1$ which
+is equivalent to $\frac{n}{2}(n + 1) \cdot 8 + 1$ or $\frac{n + 1}{2} n
+\cdot 8 + 1$, which works because one of $\frac{n}{2}$ and $\frac{n +
+1}{2}$ is integral.
+
+\item Consider the mapping $\gamma : \lbrace 0, 1, 2 \rbrace \to \lbrace
+0, 1, 2 \rbrace^3$ given by
+\[ \begin{aligned}
+0 &\mapsto (0, 1, 2) \\
+1 &\mapsto (1, 2, 0) \\
+2 &\mapsto (2, 0, 1) \\
+\end{aligned} \]
+and the natural injection $\pi : \mathbb{Z} \to \lbrace 0, 1, 2 \rbrace$
+given by $3q + r \mapsto r$ with $0 \leq r < 3$. Naturally, $\gamma
+\circ \pi$ becomes the injection from $n$ to the residues modulo $3$ of
+the $3$ consecutive integers starting fron $n$, and $0$ is always one of
+them.
+
+\item We take the canonical definition of a prime in an integral domain
+to be that $p$ is considered prime if and only if $k \nmid p$, $\forall
+k \in \mathbb{Z}^+ \backslash \lbrace 1, p \rbrace$.
+
+For the forwards direction, assume the contrary and say that $p \mid mn
+\implies p \nmid m, p \nmid n$. Then $m = q_1 p + r_1, n = q_2 p + r_2
+\implies qp + 0 = mn = (q_1 q_2) p^2 + (q_1 r_2 + q_2 r_1) p + r_1 r_2 =
+(q_1 q_2 p + q_1 r_2 + q_2 r_1) p + r_1 r_2 \implies r_1 r_2 = 0$, but
+$r_1, r_2 > 0$ so we arrive at a contradiction.
+
+For the backwards direction, again assume the contrary and claim that $k
+\mid p$ for some $k \neq 1, p$.  We wish to contradict the statement
+that one of $p \mid m, p \mid n$ must be true, but this is easy because
+$p = jk$ and the construction $m = j, n = k$ clearly works as $p > j, k$
+due to the silly fact that $a \nmid b$ if $a > b > 0$.
+
+\item The backwards direction is true by definition (i.e. $\gcd(a, b) =
+\max \lbrace n : n \mid a, n \mid b \rbrace$). If $m \mid n$, then $m
+\leq n$ and $\gcd(m, n) \geq m$ ($m \mid m, m \mid n$), but $\gcd(a, b)
+\leq \min(a, b)$ because (again) of the fact that $a \nmid b$ if $a > b
+> 0$, so $\gcd(m, n \leq m$ as well, implying $\gcd(m, n) = m$.
+
+\item Let $d = \gcd(m, n)$. $d \mid m$ so $d \mid m_1$ and $d \mid n$ so
+$d \mid n_1$, so $d \in S = \lbrace k : k \mid m_1, k \mid n_1 \rbrace$.
+If $s \in S \implies s \mid \max S$, we are done. We then have, by
+Bezout,
+\[ \gcd(m_1, n_1) = \max S = a m_1 + b n_1 = a q_1 d + b q_2 d = (a q_1
++ b q_2) d, \]
+which gives the desired result.
+\end{enumerate}
+
+\end{document}

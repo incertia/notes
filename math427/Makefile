@@ -1,11 +1,14 @@
 TEX=pdflatex
 TARGET=math427
 
-all: $(TARGET).pdf
+all: $(TARGET).pdf hw1.pdf
 
-$(TARGET).pdf: *.tex
+$(TARGET).pdf: $(TARGET).tex day*.tex
 	$(TEX) $(TARGET).tex
 	$(TEX) $(TARGET).tex
+
+%.pdf: %.tex
+	$(TEX) $<
 
 .PHONY: clean
 
