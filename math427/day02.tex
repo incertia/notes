@@ -1,0 +1,35 @@
+\section{Day 2 - GCD}
+
+\begin{df}
+An integer $a \in \mathbb{Z}$ \textbf{divides} $b \in \mathbb{Z}$ if
+$\exists q \in \mathbb{Z} : b = qa$, notated by $a \mid b$. If not, then
+$a \nmid b$.
+\end{df}
+
+\begin{df}
+The \textbf{greatest common divisor}, or \textbf{gcd} of $a, b \in
+\mathbb{Z}$, denoted $\gcd(a, b) = (a, b)$, is a $d \in \mathbb{Z}_0^+$
+such that
+\[ \begin{aligned}
+d \mid a&, d \mid b \\
+c \mid a&, c \mid b \implies c \mid d.
+\end{aligned} \]
+\end{df}
+
+\begin{thm}[Bezout]
+Let $a, b \in \mathbb{Z}$ such that they are not both zero. Then
+$\gcd(a, b)$ exists and $\exists x, y \in \mathbb{Z} : (a, b) = xa +
+yb$.
+\end{thm}
+
+\begin{proof}
+Let $S = \lbrace ua + vb : u, v \in \mathbb{Z}, ua + vb > 0 \rbrace$.
+One of $aa, bb \in S$ so well ordering gives us a $d = \min S$. We claim
+$d = \gcd(a, b)$.
+
+By division, we have $q, r \in \mathbb{Z} : a = qd + r, 0 \leq r < d$.
+If $r \neq 0$, then $d > r = a - qd \implies r = ua + vb \implies r \in
+S$, contradicting the minimality of $d$.
+
+If $c \mid a, c \mid b$, then $c \mid xa + yb = d$.
+\end{proof}
