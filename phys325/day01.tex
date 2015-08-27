@@ -39,19 +39,44 @@ Consider a block of mass $m$ sitting on an inclined plane of angle
 $\theta$ with standard gravity $\vec{g}$. The plane has frictional
 coefficient $\mu$. Given that the block starts at rest, determine the
 position of the block at arbitrary time $t$.
+
+\begin{center}
+\begin{asy}
+size(6cm);
+
+pair O = (0, 0);
+pair B = (0, 1);
+pair C = (3, 0);
+
+path p = B -- C;
+pair p1 = point(p, 0.1);
+pair p2 = point(p, 0.23);
+pair n = 2 * (1, 3) / 25;
+pair m = point(p1 -- p2, 0.5);
+
+draw(O -- B -- C -- cycle);
+draw(p1 -- p1 + n -- p2 + n -- p2);
+
+draw("$\theta$", arc(C, 0.5, 162, 180), left + (0, 0.1));
+draw("$g$", m -- m + (0, -0.5), Arrow);
+
+label("$m$", m + n / 2);
+label("$\mu$", point(p, 0.5), N, blue);
+\end{asy}
+\end{center}
 \end{prb}
 
 \begin{proof}[Solution]
 We refer back to the magical formula
 \[ \vec{F} = m\ddot{\vec{r}}. \]
-$\ddot{\vec{r}}$ is trivially $\ddot{x} \vec{e_x} + \ddot{y} \vec{e_y}$.
+$\ddot{\vec{r}}$ is trivially $\ddot{x} \vec{e}_x + \ddot{y} \vec{e}_y$.
 
 Luckily we have the relations
 \[ \begin{aligned}
-\vec{F_g} &= m\vec{g} = mg(\vec{e_x} \sin \theta - \vec{e_y} \cos
+\vec{F}_g &= m\vec{g} = mg(\vec{e}_x \sin \theta - \vec{e}_y \cos
 \theta) \\
-\vec{F_f} &= -\mu |\vec{F_N}| \vec{e_x} \\
-\vec{F_N} &= -\proj_{\vec{e_y}} \vec{F_g} = -mg\cos\theta \vec{e_y}, \\
+\vec{F}_f &= -\mu |\vec{F}_N| \vec{e}_x \\
+\vec{F}_N &= -\proj_{\vec{e}_y} \vec{F}_g = -mg\cos\theta \vec{e}_y, \\
 \end{aligned} \]
 so basically we have $F_x = mg\sin\theta - \mu mg \cos \theta =
 m\ddot{r}_x$, or $\ddot{r}_x = c \implies r_x = c_1 t^2 + c_2 t + c_3$
