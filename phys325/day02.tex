@@ -1,1 +1,180 @@
 \section{Day 2}
+
+\subsection{Cylindrical Coordinates}
+
+\begin{minipage}{0.5 \textwidth}
+\centering
+\begin{asy}
+size(6cm);
+
+pair X = (1, 0);
+pair Y = (0, 1);
+pair O = (0, 0);
+
+draw("x", O -- 3X, red);
+draw("y", O -- 3Y, left, blue);
+
+draw("$\vec{s}$", O -- (2, 1), Arrow);
+draw("$x$", (0, 1) -- (2, 1), dashed);
+draw("$y$", (2, 0) -- (2, 1), dashed);
+
+draw("$\phi$", arc(O, 0.3, 0, 26), right + (0, 0.2));
+
+dot((2, 1));
+label("$P = (s, \phi, z)$", (2, 1), NE);
+
+label("z", O, SW, green);
+\end{asy}
+
+Front: projection onto the $xy$-plane
+\end{minipage}
+\begin{minipage}{0.5 \textwidth}
+\centering
+\begin{asy}
+size(6cm);
+
+pair X = (1, 0);
+pair Z = (0, 1);
+pair O = (0, 0);
+pair P = (2, 2.5);
+
+draw("x", O -- 3X, red);
+draw("z", O -- 3Z, left, green);
+
+draw("$z$", P -- (2, 0), dashed);
+draw("$x$", P -- (0, 2.5), dashed);
+
+dot(P);
+label("$P = (s, \phi, z)$", P, NE);
+
+label("y", O, SW, blue);
+\end{asy}
+
+Top: projection onto the $xz$-plane
+\end{minipage}
+
+We have the coordinates $(s, \phi, z)$ where $s$ is the distance from
+the vertical axis, $\phi$ is the rotational angle with respect to the
+plane perpendicular to the vertical axis, and $z$ is the position on the
+vertical axis. This gives us a nice definition for the position vector.
+\[ \vec{r} = s \hat{s} + z \hat{z} \]
+
+\begin{note}
+The unit vectors $\hat{s}, \hat{\phi}$ are position dependent! More
+specifically, they depend on $\phi$.
+
+We have
+\[ \frac{\partial \hat{s}}{\partial \phi} = \hat{\phi} \quad
+\frac{\partial \hat{\phi}}{\partial \phi} = -\hat{s}. \]
+\end{note}
+
+\begin{cor}
+We then have the line element
+\[ d \vec{r} = d \vec{l} = \left( \frac{\partial}{\partial s} ds +
+\frac{\partial}{\partial \phi} d \phi + \frac{\partial}{\partial z} dz
+\right) \vec{r} = ds \hat{s} + s d \phi \hat{\phi} + dz \hat{z}, \]
+% \[ d \vec{r} = d \vec{l} = d(s \hat{s} + z \hat{z}), \]
+velocity
+\[ \vec{v} = \frac{d \vec{r}}{dt} = \frac{ds}{dt} \hat{s} + s \frac{d
+\phi}{dt} \hat{\phi} + \frac{dz}{dt} \hat{z} = \dot{s} \hat{s} + s
+\dot{\phi} \hat{\phi} + \dot{z} \hat{z}, \]
+and acceleration
+\[ \begin{aligned}
+\vec{a} = \frac{d \vec{v}}{dt} &= \frac{d}{dt} \left( \dot{s} \hat{s}
++ s \dot{\phi} \hat{\phi} + \dot{z} \hat{z} \right) \\
+&= \ddot{s} \hat{s} + \dot{s} \frac{d \hat{s}}{dt}  + \dot{s} \dot{\phi}
+\hat{\phi} + s \ddot{\phi} \hat{\phi} + s \dot{\phi} \frac{d
+\hat{\phi}}{dt} + \ddot{z} \hat{z} + \dot{z} \frac{d \hat{z}}{dt} \quad
+\textrm{(product rule rocks)} \\
+&= \ddot{s} \hat{s} + \dot{s} \frac{d \hat{s}}{d \phi}\frac{d \phi}{dt}
++ \dot{s} \dot{\phi} \hat{\phi} + s \ddot{\phi} \hat{\phi} + s
+\dot{\phi} \frac{d \hat{\phi}}{d \phi} \frac{d \phi}{dt} + \ddot{z}
+\hat{z} \\
+&= \ddot{s} \hat{s} + \dot{s} \hat{\phi} \dot{\phi} + \dot{s} \dot{\phi}
+\hat{\phi} + s \ddot{\phi} \hat{\phi} - s \dot{\phi} \hat{s} \dot{\phi}
++ \ddot{z} \hat{z} \\
+&= \left( \ddot{s} - s \dot{\phi}^2 \right) \hat{s} + \left( s
+\ddot{\phi} + 2 \dot{s} \dot{\phi} \right) \hat{\phi} + \ddot{z} \hat{z}
+\end{aligned} \]
+\end{cor}
+
+\begin{rem}
+Notice here that $d \hat{s}$ refers to the total differential of
+$\hat{s}$, as well as $d \hat{\phi}$ and $d \hat{z}$. Where total
+differential of a function $f : \mathbb{R} \times \mathbb{R} \times
+\cdots \times \mathbb{R} \to \mathbb{R}$ is defined as
+\[ df(x_1, x_2, \dots, x_n) = \left( \sum_{i = 1}^n
+\frac{\partial}{\partial x_i} d x_i \right) f. \]
+\end{rem}
+
+\begin{ex}
+We have a trajectory
+\[ \begin{aligned}
+s(t) &= R, \\
+\phi(t) &= \omega t, \\
+z(t) &= \alpha t. \\
+\end{aligned} \]
+Compute $|\vec{v}(t)|$ and $\vec{a}$.
+\end{ex}
+
+\begin{proof}[Solution]
+We simply plug.
+\[ \begin{aligned}
+\vec{v} &= \dot{s} \hat{s} + s \dot{\phi} \hat{\phi} + \dot{z} \hat{z}
+\\
+&= 0 \hat{s} + R \omega \hat{\phi} + \alpha \hat{z} \\
+&\Downarrow \\
+\Aboxed{|\vec{v}| &= \sqrt{R^2 \omega^2 + \alpha^2}} \\
+\vec{a} &= (0 - R \omega^2) \hat{s} + (0 + 0) \hat{\phi} + 0 \hat{z} \\
+\Aboxed{ &= -R \omega^2 \hat{s}.}
+\end{aligned} \]
+
+Notice how this makes sense because $a = \frac{v^2}{r} = \frac{R^2
+\omega^2}{R}$
+\end{proof}
+
+\begin{ex}
+Consider a mass of mass $m$ swinging on a rope of length $R$ with normal
+gravity $g$. Assuming no friction, determine $\phi(t)$ where $\phi$
+represents the angle from rest of the mass.
+
+\begin{center}
+\begin{asy}
+size(6cm);
+
+pair O = (0, 0);
+pair P = (-1, -sqrt(3));
+
+draw(arc(O, 2, 210, 330), Arrows);
+draw("$R$", O -- P);
+draw(O -- (0, -2), dashed);
+
+draw("$\phi$", arc(O, 0.3, 240, 270));
+draw("$g$", P -- (P + 0.8S), right, Arrow);
+
+dot(O);
+dot(P);
+
+label("$m$", P, SW);
+\end{asy}
+\end{center}
+\end{ex}
+
+\begin{proof}[Solution]
+Again we will refer back to the glorious equation $\vec{F} = m
+\ddot{\vec{r}}$. Luckily $z = 0$ so we can leave that out of our
+calculations.
+
+\[ \vec{F} = mg(\cos \phi \hat{s} - \sin \phi \hat{\phi}) + \vec{F}_N \]
+but $\vec{F}_N$ is such that $\frac{ds}{dt} = 0$ so we end up with
+\[ \vec{F} = -mg \sin \phi \hat{\phi} = m \ddot{\vec{r}} \implies
+\ddot{\vec{r}} = -g \sin \phi \hat{\phi}, \]
+which we can rewrite as
+\[ \left(s \ddot{\phi} + 2 \dot{s} \dot{\phi} \right) \hat{\phi} = -g
+\sin \phi \hat{\phi} \implies \ddot{\phi} = -\frac{g}{s} \sin \phi, \]
+which does not have a very nice solution, but we can approximate $\sin
+\phi \approx \phi$ for small $\phi$, so this becomes $\ddot{\phi} =
+-\frac{g}{s} \phi$, which has the nice solution
+\[ \phi(t) = \alpha \sin\left( \sqrt{\frac{g}{s}} t + \psi \right) \]
+for some optimal choice of $\psi$ and $\alpha = \max \phi$.
+\end{proof}
