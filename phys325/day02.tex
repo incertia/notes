@@ -1,57 +1,54 @@
 \section{Day 2}
 
 \subsection{Cylindrical Coordinates}
-
-\begin{minipage}{0.5 \textwidth}
-\centering
+\begin{center}
 \begin{asy}
-size(6cm);
+import three;
+import graph3;
 
-pair X = (1, 0);
-pair Y = (0, 1);
-pair O = (0, 0);
+settings.render = 0;
+settings.prc = false;
 
-draw("x", O -- 3X, red);
-draw("y", O -- 3Y, left, blue);
+size(8cm);
 
-draw("$\vec{s}$", O -- (2, 1), Arrow);
-draw("$x$", (0, 1) -- (2, 1), dashed);
-draw("$y$", (2, 0) -- (2, 1), dashed);
+currentprojection = perspective(5, 1, 3.5);
 
-draw("$\phi$", arc(O, 0.3, 0, 26), right + (0, 0.2));
+real z = 4;
+triple p  = (0, 0, z);
+triple q  = (1, sqrt(3), z);
+triple x  = (1, sqrt(3), 0);
+triple ap = point(O -- x, 0.3);
+triple aq = rotate(-60, Z) * ap;
+//path c = 2X .. 2Y .. -2X .. -2Y .. cycle;
 
-dot((2, 1));
-label("$P = (s, \phi, z)$", (2, 1), NE);
+draw(L = Label("$x$", position = Relative(1.1), align = SW), O -- 5 X,
+red + 0.75, Arrow3);
+draw(L = Label("$y$", position = Relative(1.1), align = SE), O -- 5 Y,
+blue + 0.75, Arrow3);
+draw(L = Label("$z$", position = Relative(1.1), align =  N), O -- 6 Z,
+green + 0.75, Arrow3);
 
-label("z", O, SW, green);
+draw(L = Label("$\vec{s}$", position = Relative(0.5), align = N), p --
+q, Arrow3);
+draw(L = Label("$\vec{r}$", position = Relative(0.5), align = E), O --
+q, Arrow3);
+
+draw(O -- x);
+draw(L = Label("$z$", position = Relative(0.5), align = E), q -- x, dashed);
+draw(L = Label("$\phi$", position = Relative(0.5), align = (0.0005,
+-0.0005)), arc(O, ap, aq));
+
+draw(2X .. 2Y .. -2X .. -2Y .. cycle, dashed);
+draw(2X + z * Z .. 2Y + z * Z .. -2X + z * Z .. -2Y + z * Z .. cycle,
+dashed);
+
+//draw(rotate(180, Z) * q -- rotate(180, Z) * x, dashed);
+
+dot(q);
+
+label("$P = (s, \phi, z)$", q, SE);
 \end{asy}
-
-Front: projection onto the $xy$-plane
-\end{minipage}
-\begin{minipage}{0.5 \textwidth}
-\centering
-\begin{asy}
-size(6cm);
-
-pair X = (1, 0);
-pair Z = (0, 1);
-pair O = (0, 0);
-pair P = (2, 2.5);
-
-draw("x", O -- 3X, red);
-draw("z", O -- 3Z, left, green);
-
-draw("$z$", P -- (2, 0), dashed);
-draw("$x$", P -- (0, 2.5), dashed);
-
-dot(P);
-label("$P = (s, \phi, z)$", P, NE);
-
-label("y", O, SW, blue);
-\end{asy}
-
-Top: projection onto the $xz$-plane
-\end{minipage}
+\end{center}
 
 We have the coordinates $(s, \phi, z)$ where $s$ is the distance from
 the vertical axis, $\phi$ is the rotational angle with respect to the
