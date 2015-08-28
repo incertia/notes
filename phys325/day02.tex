@@ -26,6 +26,10 @@ path3 c1 = 2X .. 2Y .. -2X .. -2Y .. cycle;
 path3 c2 = 2X + z * Z .. 2Y + z * Z .. -2X + z * Z .. -2Y + z * Z ..
 cycle;
 
+draw(surface(c1), emissive(gray + opacity(0.25)));
+draw(cy, emissive(gray + opacity(0.125)));
+draw(surface(c2), emissive(gray + opacity(0.25)));
+
 draw(L = Label("$x$", position = Relative(1.1), align = SW), O -- 5 X,
 red + 0.75, Arrow3);
 draw(L = Label("$y$", position = Relative(1.1), align = SE), O -- 5 Y,
@@ -43,10 +47,6 @@ draw(L = Label("$z$", position = Relative(0.5), align = E), q -- x,
 dashed);
 draw(L = Label("$\phi$", position = Relative(0.5), align = (0.0005,
 -0.0005)), arc(O, ap, aq));
-
-draw(surface(c1), emissive(gray + opacity(0.25)));
-draw(cy, emissive(gray + opacity(0.125)));
-draw(surface(c2), emissive(gray + opacity(0.25)));
 
 dot(q);
 
