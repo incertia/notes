@@ -1,0 +1,166 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{asymptote}
+\usepackage{fancyhdr}
+\usepackage{mathtools}
+\usepackage{parskip}
+
+% setup the header
+\pagestyle{fancy}
+\lhead{Will Song}
+\chead{Phys 325}
+\rhead{HW1}
+
+% setup definition/theorem etc
+\newtheoremstyle{norm}
+{3pt}
+{3pt}
+{}
+{}
+{\bf}
+{:}
+{.5em}
+{}
+
+\theoremstyle{norm}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{df}[thm]{Definition}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{st}{Step}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{clm}[thm]{Claim}
+\newtheorem{exr}[thm]{Exercise}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{prb}[thm]{Problem}
+\newtheorem{note}[thm]{Note}
+
+% just useful shorthand
+\renewcommand{\st}{\,\operatorname{s.t.}\,}
+\let\hom\relax
+\DeclareMathOperator{\hom}{Hom}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\proj}{proj}
+\newcommand{\pvec}[1]{\vec{#1}\mkern2mu\vphantom{#1}}
+
+% for easier math
+\everymath{\displaystyle}
+
+\begin{document}
+
+\section{Homework 1}
+
+\begin{prb}[Projectile Motion]
+Consider a inclined plane angled at an angle of $\theta$ with respect to
+the $xy$ plane. Call one corner touching the ground the origin and the
+edge lying against the ground the $x$ axis. The $y$ axis runs along the
+inclined edge of the inclined plane and the $z$ axis is normal to the
+plane. A frictionless puck at rest is kicked so that it slides along the
+plane with initial velocity $\vec{v}_0 = v_{0_x} \hat{x} + v_{0_y}
+\hat{y}$ and normal gravity $g$. Compute how far the puck travles once
+it returns to floor level.
+\end{prb}
+
+\begin{proof}[Solution]
+We begin by drawing a very nice diagram.
+\begin{center}
+\begin{asy}
+import three;
+import graph3;
+import solids;
+
+settings.render = 0;
+settings.prc = false;
+settings.multisample = 1;
+
+size(10cm);
+
+currentprojection = perspective(30, 25, 8);
+
+real z = 7;
+real x = 25;
+triple o = x * X + 24 Y;
+path3 pl = z * Z -- x * X + z * Z -- o -- 24Y -- cycle;
+
+// draw axes
+draw(L = Label("$x'$", position = Relative(1.1), align = SW), O -- x*X,
+red + 0.75, Arrow3);
+draw(L = Label("$y'$", position = Relative(1.1), align = SE), O -- 28Y,
+red + 0.75, Arrow3);
+draw(L = Label("$z'$", position = Relative(1.1), align =  N), O --
+(z+1)*Z, red + 0.75, Arrow3);
+
+// draw plane
+draw(surface(O -- x*X -- x*X + 24Y -- 24Y -- cycle), emissive(gray +
+opacity(0.4)));
+draw(surface(pl), emissive(gray + opacity(0.5)));
+
+// compute new unit vectors
+triple xp = unit(24Y - o);
+triple yp = unit(x*X + z*Z - o);
+triple zp = cross(xp, yp);
+
+// draw new coordinates
+draw(L = Label("$x$", position = Relative(1.1), align = S), o -- o + 6
+xp, blue + 0.75, Arrow3);
+draw(L = Label("$y$", position = Relative(1.1), align = W), o -- o + 6
+yp, blue + 0.75, Arrow3);
+draw(L = Label("$z$", position = Relative(1.1), align = E), o -- o + 6
+zp, blue + 0.75, Arrow3);
+dot(L = Label("$O$", align = SW), o);
+
+// draw initial vector
+path3 p = o -- o + 6 xp + 8 yp;
+triple dir = unit(6 xp + 8 yp);
+draw(L = Label("$\vec{v}_0 = v_{0_x} \hat{x} + v_{0_y} \hat{y}$",
+position = Relative(1.6), align = unit(NW + 2N)), p, Arrow3);
+
+// mark angle to vector
+triple pp = o + 2 dir;
+triple xx = o + 2 xp;
+triple yy = o - 2 Y;
+triple yz = o + 2 yp;
+
+draw(arc(o, pp, xx));
+draw(L = Label("$\theta$", align = SW), arc(o, yz, yy));
+
+label(Label("$m$", align = SE), o);
+
+// draw gravity
+draw(L = Label("$g$", position = Relative(0.5), align = E), o -- o -
+5Z, Arrow3);
+\end{asy}
+\end{center}
+
+Again we refer back to the magical law $\vec{F} = m \ddot{\vec{r}}$ and
+realize this is fairly simple as the only force we experience here is
+gravity and the normal force. In other words,
+\[ \begin{aligned}
+\vec{F} = -mg \hat{z}' + \vec{F}_N &= -mg(\proj_{\hat{x}} \hat{z}' +
+\proj_{\hat{y}} \hat{z}' + \proj_{\hat{z}} \hat{z}') + \vec{F}_N \\
+&= -mg\left( (\hat{y} \cdot \hat{g}) \hat{y} + k \hat{z} \right) +
+\vec{F}_N \\
+&= -mg \left( \sin \theta \hat{y} + k \hat{z} \right) + \vec{F}_N.
+\end{aligned} \]
+
+Luckily $\vec{F}_N$ is constrained along the $z$ axis such that $z = 0$
+so we can disregard that and just look at the $y$ coordinate. There is
+no acceleration in the $x$ direction so we just have $x = v_{0_x} t$.
+However, the $y$ coordinate experiences constant acceleration $-mg \sin
+\theta$ so we have $y = - \frac{g}{2} \sin \theta t^2 + v_{0_y} t$ which
+reaches its maximum at $t = \frac{2 v_{0_y}}{g \sin \theta}$ So the
+distance from the $x$ coordinate is just
+\[ \boxed{\frac{2 v_{0_x} v_{0_y}}{g \sin \theta}}, \]
+which is what we would expect from normal projectile motion.
+\end{proof}
+
+\end{document}

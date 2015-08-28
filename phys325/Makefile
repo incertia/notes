@@ -2,10 +2,13 @@ TEX=latexmk -pdf
 TARGET=phys325
 ASY=asy
 
-all: $(TARGET).pdf
+all: $(TARGET).pdf hw01.pdf
 
 $(TARGET).pdf: *.tex
 	$(TEX) $(TARGET).tex
+
+%.pdf: %.tex
+	$(TEX) $<
 
 $(TARGET)-%.pdf: $(TARGET)-%.asy
 	$(ASY) $<
