@@ -34,15 +34,14 @@ draw(L = Label("$\vec{r}$", position = Relative(0.5), align = E), O --
 q, Arrow3);
 
 draw(O -- x);
-draw(L = Label("$z$", position = Relative(0.5), align = E), q -- x, dashed);
+draw(L = Label("$z$", position = Relative(0.5), align = E), q -- x,
+dashed);
 draw(L = Label("$\phi$", position = Relative(0.5), align = (0.0005,
 -0.0005)), arc(O, ap, aq));
 
 draw(2X .. 2Y .. -2X .. -2Y .. cycle, dashed);
 draw(2X + z * Z .. 2Y + z * Z .. -2X + z * Z .. -2Y + z * Z .. cycle,
 dashed);
-
-//draw(rotate(180, Z) * q -- rotate(180, Z) * x, dashed);
 
 dot(q);
 
