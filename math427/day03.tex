@@ -1,0 +1,66 @@
+\section{Day 3 - Unique Factorization}
+
+Meanwhile I'm questioning why we are discussing this before Euclidean
+Domains.
+
+\begin{df}
+We say two integers $a, b$ are said to be \textbf{relatively prime} or
+\textbf{coprime} iff $(a, b) = 1$.
+\end{df}
+
+\begin{rem}
+$a, b$ are coprime iff $\exists x, y \in \mathbb{Z} : ax + by = 1$.
+\end{rem}
+
+\begin{thm}
+$(a, n) = 1, a \mid mn \implies a \mid m$.
+\end{thm}
+
+\begin{proof}
+We have $1 = xa + yn \implies m = xam + ymn$ and $a \mid xam, a \mid ymn
+\implies a \mid xam + ymn = m$.
+\end{proof}
+
+\begin{df}
+An integer $p \geq 2$ is considered to be \textbf{prime} iff the only
+positive divisors of $p$ are $1$ and itself.
+\end{df}
+
+\begin{cor}[Euclid's Lemma]
+Suppose $p$ is prime and $m_1, \dots, m_k \in \mathbb{Z}$ and $p \mid
+m_1 m_2 \cdots m_k$. Then $p \mid m_i$ for some $i$.
+\end{cor}
+
+\begin{thm}
+Every integer $n \geq 2$ is a prime or an unique product of primes (up
+to order).
+\end{thm}
+
+\begin{proof}
+Suppose not. Then there is a non-empty set $S = \lbrace m \in Z : m \geq
+2, m \neq p, m \neq \prod p_k \rbrace$. Let $n = \min S$, so $n = kl :
+k, l \neq 1 \implies k, l < n = \min S \implies k, l \not \in S$ so $k,
+l$ are prime or a product of primes, which means that $n$ is a product
+of primes.
+
+For uniqueness, suppose not again. Then there is some smallest integer
+$n = \prod_1^r p_i = \prod_1^s q_i$, so we get
+\[ \begin{aligned}
+p_i & \mid q_j \quad \textrm{for some } j \\
+\implies q_j & \mid p_i \\
+\implies p_i &= q_j.
+\end{aligned} \]
+If $r = 1$, then $1 = \frac{\prod q_i}{q_j}$ which is false unless $s =
+1$, but then $p_1 = q_1$. If $r > 1$, then $\frac{n}{p_i} = \prod_{i
+\neq k} q_i$, which is unique so $n$ has unique factorization.
+\end{proof}
+
+\begin{thm}[Euclid]
+There are infinitely many primes.
+\end{thm}
+
+\begin{proof}
+If there are finitely many primes $p_1, \dots, p_n$, then $N = \prod p_i
++ 1 \not \equiv 0 \pmod{p_i}, \forall i = 1, \dots, n$ so $N$ is either
+a prime or contains a prime not in our list.
+\end{proof}
