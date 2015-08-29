@@ -1,59 +1,12 @@
 \documentclass{article}
 
-\usepackage[margin=1in]{geometry}
-\usepackage{amsmath}
-\usepackage{amsthm}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{asymptote}
-\usepackage{fancyhdr}
-\usepackage{mathtools}
-\usepackage{parskip}
+\usepackage{incertia}
 
 % setup the header
 \pagestyle{fancy}
 \lhead{Will Song}
 \chead{Phys 325}
 \rhead{\today}
-
-% setup definition/theorem etc
-\newtheoremstyle{norm}
-{3pt}
-{3pt}
-{}
-{}
-{\bf}
-{:}
-{.5em}
-{}
-
-\theoremstyle{norm}
-\newtheorem{thm}{Theorem}[section]
-\newtheorem{lem}[thm]{Lemma}
-\newtheorem{df}[thm]{Definition}
-\newtheorem{rem}[thm]{Remark}
-\newtheorem{st}{Step}
-\newtheorem{prop}[thm]{Proposition}
-\newtheorem{cor}[thm]{Corollary}
-\newtheorem{conj}[thm]{Conjecture}
-\newtheorem{clm}[thm]{Claim}
-\newtheorem{exr}[thm]{Exercise}
-\newtheorem{ex}[thm]{Example}
-\newtheorem{prb}[thm]{Problem}
-\newtheorem{note}[thm]{Note}
-
-% just useful shorthand
-\renewcommand{\st}{\,\operatorname{s.t.}\,}
-\let\hom\relax
-\DeclareMathOperator{\hom}{Hom}
-\DeclareMathOperator{\Tr}{Tr}
-\DeclareMathOperator{\sgn}{sgn}
-\DeclareMathOperator{\adj}{adj}
-\DeclareMathOperator{\proj}{proj}
-\newcommand{\pvec}[1]{\vec{#1}\mkern2mu\vphantom{#1}}
-
-% for easier math
-\everymath{\displaystyle}
 
 \title{Phys 325 Notes}
 \author{Will Song}
