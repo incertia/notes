@@ -4,7 +4,7 @@ ASY=asy
 
 all: $(TARGET).pdf hw01.pdf
 
-$(TARGET).pdf: *.tex
+$(TARGET).pdf: $(TARGET).tex day*.tex
 	$(TEX) $(TARGET).tex
 
 %.pdf: %.tex
