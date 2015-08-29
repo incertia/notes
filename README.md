@@ -11,10 +11,6 @@ Trying to understand the connection between these two sets of notes is
 likely to improve my understanding of linear algebra, which is why I am
 doing this.
 
-## Math 347: Honors Fundamentals of Mathematics
-Notes arranged in a day by day format until I consolidate everything at
-the end of the class. Yay easy class?
-
 ## Math 427: Honors Abstract Algebra
 Notes arranged in a day by day format until I consolidate everything at
 the end of the class. Algebra is fun isn't it?
