@@ -4,7 +4,8 @@ to be taking at the time.
 
 All tex files require `incertia.sty`, which will be made available
 shortly. Any files with Asymptote diagrams will also require
-`olympiad.asy` and `cse5.asy`.
+[`olympiad.asy`](http://www.mit.edu/~evanchen/handouts/olympiad.asy) and
+[`cse5.asy`](http://www.mit.edu/~evanchen/handouts/cse5.asy).
 
 ## Math 416: Abstract Linear Algebra
 This collection of notes is a mix between the very abstract stuff I
