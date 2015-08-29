@@ -6,6 +6,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{asymptote}
+\usepackage{enumerate}
 \usepackage{fancyhdr}
 \usepackage{mathtools}
 \usepackage{parskip}
@@ -59,7 +60,7 @@
 
 \section{Homework 1}
 
-\begin{prb}[Projectile Motion]
+\begin{prb}[Hard Projectile Motion]
 Consider a inclined plane angled at an angle of $\theta$ with respect to
 the $xy$ plane. Call one corner touching the ground the origin and the
 edge lying against the ground the $x$ axis. The $y$ axis runs along the
@@ -157,10 +158,244 @@ so we can disregard that and just look at the $y$ coordinate. There is
 no acceleration in the $x$ direction so we just have $x = v_{0_x} t$.
 However, the $y$ coordinate experiences constant acceleration $-mg \sin
 \theta$ so we have $y = - \frac{g}{2} \sin \theta t^2 + v_{0_y} t$ which
-reaches its maximum at $t = \frac{2 v_{0_y}}{g \sin \theta}$ So the
-distance from the $x$ coordinate is just
+reaches $0$ ($2 * \textrm{maximum}$ due to symmetry) at $t = \frac{2
+v_{0_y}}{g \sin \theta}$ So the distance from the $x$ coordinate is just
 \[ \boxed{\frac{2 v_{0_x} v_{0_y}}{g \sin \theta}}, \]
 which is what we would expect from normal projectile motion.
+\end{proof}
+
+\begin{prb}
+Consider an inclined plane angled at an angle $\phi$. A ball is thrown
+up towards the plane with initial velocity $v_0$ at an angle of $\theta$
+above the plane. Let the $x$ axis be pointing up the slope and the $y$
+axis normal to the slope. Disregard the $z$ axis as there is no motion
+in that direction. Compute
+
+\begin{enumerate}[(a)]
+\item The ball's position $\vec{r}(t)$. This needs to be valid whenever
+the ball is above the plane.
+\item Show that the ball lands at a distance $\frac{2 v_0^2 \sin \theta
+\cos (\theta + \phi)}{g \cos^2 \phi}$ from the origin.
+\item With fixed $v_0, \phi$, the maximum distance is at $\frac{v_0^2}{g
++ g \sin \phi}$.
+\end{enumerate}
+\end{prb}
+
+\begin{proof}[Solution]
+We begin with another detailed diagram. This time in $2$ dimensions as
+there is nothing to worry about with respect to $z$.
+
+\begin{center}
+\begin{asy}
+size(10cm);
+
+pair O = (0, 0);
+pair X = (1, 0);
+pair Y = (0, 1);
+
+pair A = O;
+pair B = 7Y;
+pair C = 24X;
+
+draw(A -- B -- C -- cycle);
+
+// get axes
+pair xp = unit(B - C);
+pair yp = rotate(-90) * xp;
+
+// draw axes
+draw(L = Label("$x$", position = Relative(1.0), align = N), C -- C + 7
+xp, black + 0.75, Arrow);
+draw(L = Label("$y$", position = Relative(1.0), align = N), C -- C + 7
+yp, black + 0.75, Arrow);
+
+// get a random vector
+pair v = unit((-5, 12));
+
+// draw the v and v_0
+draw(L = Label("$v_0$", align = NE), C -- C + 8 v, Arrow);
+
+label("$\vec{v}$", C + 8 v, N);
+
+// mark phi
+draw(L = Label("$\phi$", position = Relative(0.5), align = unit(40W +
+6N)), arc(C, C + 3 * xp, C - 3 * X));
+
+// mark theta
+draw(L = Label("$\theta$", align = NW), arc(C, C + 3 * v, C + 3 * xp));
+
+// gravity
+draw(L = Label("$g$", align = E), C -- C - 5Y, Arrow);
+draw(C -- C + 5Y, dashed);
+
+// origin
+label("$O$", C, E);
+\end{asy}
+\end{center}
+
+So this problem is easier than the last problem! There is no normal
+force to worry about and the components of gravity are fairly easy.
+\[ \vec{F} = -mg \hat{y}' = -mg (\sin \phi \hat{x} + \cos \phi \hat{y}).
+\]
+This gives us the nice equations
+\[ \left.\begin{aligned}
+F_x &= -mg \sin \phi = m \ddot{x} \\
+\implies x &= -\frac{g}{2} \sin \phi t^2 + v_0 \cos \theta t \\
+F_y &= -mg \cos \phi = m \ddot{y} \\
+\implies y &= -\frac{g}{2} \cos \phi t^2 + v_0 \sin \theta t. \\
+\end{aligned} \right \rbrace
+\implies
+\boxed{\vec{r} = \left(-\frac{g}{2} \sin \phi t^2 + v_0 \cos \theta t,
+-\frac{g}{2} \cos \phi t^2 + v_0 \sin \theta t\right)}. \quad
+\textrm{(a)} \]
+From this, we see that $y = 0$ at $t = \frac{2 v_0 \sin \theta}{g \cos
+\phi}$ and plugging into the $x$ equation, we get
+\[ \begin{aligned}
+x &= -\frac{g}{2} \sin \phi \left(\frac{4 v_0^2 \sin^2 \theta}{g^2
+\cos^2 \phi}\right) + v_0 \cos \theta \left(\frac{2 v_0 \sin \theta}{g
+\cos \phi}\right) \\
+&= -\frac{2 v_0^2 \sin^2 \theta \sin \phi}{g \cos^2 \phi} + \frac{2
+v_0^2 \sin \theta \cos \theta \cos \phi}{g \cos^2 \phi} \\
+&= \boxed{\frac{2 v_0^2 \sin \theta \cos(\theta + \phi)}{g \cos^2
+\phi}}. \quad \textrm{(b)}
+\end{aligned} \]
+To maximize $x$, we must maximize the numerator because it is fixed.
+Thus we differentiate with respect to $\theta$ and get
+\[ \frac{dx}{d \theta} = 2 v_0^2 (\cos \theta \cos(\theta + \phi) - \sin
+\theta \sin(\theta + \phi)) = 2 v_0^2 \cos (2 \theta + \phi), \]
+which vanishes when $2 \theta + \phi = \frac{\pi}{2}$. Now we
+can plug into
+\[ \begin{aligned}
+x &= \frac{2 v_0^2 \sin \theta \cos(\theta + \phi)}{g \cos^2 \phi} \\
+&= \frac{v_0^2 (\sin -\phi + \sin(2 \theta + \phi))}{g \cos^2 \phi} \\
+&= \frac{v_0^2 (1 - \sin \phi)}{g (1 - \sin^2 \phi)} \\
+\Aboxed{ &= \frac{v_0^2}{g (1 + \sin \phi)}}, \quad \textrm{(c)} \\
+\end{aligned} \]
+as desired.
+\end{proof}
+
+\begin{prb}[A New Take on Projectiles]
+You launch a projectile at an angle $\theta$ with initial velocity
+$v_0$. Neglecting air resistance, determine
+\begin{enumerate}[(a)]
+\item The ball's position $\vec{r}(t)$ with $x$ being the horizontal
+position and $y$ being the vertical position.
+\item The maximum $\theta$ such that $|\vec{r}|$ is non-decreasing.
+\end{enumerate}
+\end{prb}
+
+\begin{proof}[Solution]
+This is the classical projectile motion problem, which we solved in
+problem 1 with slightly different parameters.
+\[ \vec{r} = \left(v_0 \cos \theta t, -\frac{g}{2} t^2 + v_0 \sin \theta
+t \right). \quad \textrm{(a)} \]
+A non-decreasing norm is equivalent to the square of the norm
+non-decreasing so we want
+\[ v_0^2 \cos^2 \theta t^2 + \frac{g^2}{4} t^4 - v_0 g \sin \theta t^3 +
+v_0^2 \sin^2 \theta t^2  = v_0^2 t^2 + \frac{g^2}{4} t^4 - v_0 g \sin
+\theta t^3 \]
+to be non-decreasing, so we differentiate to get
+\[ \begin{aligned}
+2v_0^2 t + g^2 t^3 - 3 v_0 g \sin \theta t^2 &\geq 0 \\
+2v_0^2 t + g^2 t^3 &\geq 3 v_0 g \sin \theta t^2 \\
+\frac{2 v_0^2 + g^2 t^2}{3 v_0 g t} &\geq \sin \theta \\
+\implies \min \frac{2 v_0^2 + g^2 t^2}{3 v_0 g t} &\geq \sin \theta. \\
+\end{aligned} \]
+We now differentiate the LHS to compute the minimum, which occurs at
+\[ \begin{aligned}
+(3v_0 gt) (2 g^2 t) - (2 v_0^2 + g^2 t^2)(3v_0 g) &= 0 \\
+6 v_0 g^3 t^2 - 6v_0^3 g - 3 v_0 g^3t^2 &= 0 \\
+v_0 g^3 t^2 &= 2 v_0^3 g \\
+t^2 &= \frac{2 v_0^2}{g^2}, \\
+\end{aligned} \]
+which allows us to plug back in.
+\[ \begin{aligned}
+\sin \theta &\leq \frac{2v_0^2 + 2v_0^2}{3 v_0 g \sqrt{2} \dfrac{v_0}{g}} \\
+\sin \theta &\leq \frac{4}{3 \sqrt{2}} = \frac{2 \sqrt{2}}{3} \\
+\implies \Aboxed{\theta &= \arcsin \frac{2 \sqrt{2}}{3}} \quad
+\textrm{(b)} \\
+\end{aligned} \]
+\end{proof}
+
+\begin{prb}[Cylindrical Space Fun]
+Consider a mass $m$ being twirled in a circle at the end of a massless
+string of length $R$ with constant angular velocity $\omega$ in an
+inertial reference frame and a gravity free environment. Use a
+coordinate system such that the fixed end of the string is at the origin
+and the mass is orbiting on the plane $z = 0$.
+\begin{enumerate}[(a)]
+\item Write down Newton's second law in cylindrical coordinates (polar
+coordinates in this case) and determine the string tension.
+\item Supose $\phi = 0$ at $t = 0$ and $\dot{\phi} \geq 0$. At $t =
+\frac{2 \pi}{3 \omega}$, the string breaks. Determine the mass's
+trajectory after this time.
+\end{enumerate}
+\end{prb}
+
+\begin{proof}[Solution]
+Here is a diagram.
+\begin{center}
+\begin{asy}
+size(7cm);
+
+pair O  = (0, 0);
+pair X  = (1, 0);
+pair Y  = (0, 1);
+path c  = unitcircle;
+path dc = scale(0.25) * c;
+real ps = 0.4;
+pair b  = point(dc, 0);
+pair e  = point(dc, ps);
+pair p  = point(c, ps);
+
+draw(unitcircle);
+draw(L = Label("$\phi = \omega t$", align = unit(3E + N)), arc(O, b, e),
+Arrow);
+
+draw(L = Label("$R$", align = S), O -- X, dashed);
+draw(O -- unit(e));
+
+// Ft
+pair ft = 0.6 * unit(O - e);
+draw(p -- p + 0.6 * unit(O - e), black + 1.25);
+draw(L = Label("$\vec{F}_T$", align = 1.7N), p -- p + ft, Arrow);
+
+// v
+draw(L = Label("$\vec{v}$", align = E), p -- p + rotate(-90) * ft,
+Arrow);
+
+// m
+dot(p);
+label("$m$", p, NE);
+
+// other things
+label("$O$", O, W);
+label("$\phi = 0$", X, E);
+\end{asy}
+\end{center}
+The diagram is representative of a system constrained by $s = R, \phi =
+\omega t$, so we have something like
+\[ \boxed{\vec{F}_T = \vec{F} = m \ddot{\vec{r}} = m \left( \left(
+\ddot{s} - s \dot{\phi}^2\right) \hat{s} + \left(s \ddot{\phi} + 2
+\dot{s} \dot{\phi} \right) \hat{\phi}\right) = -mR \omega^2 \hat{s}}.
+\quad \textrm{(a)} \]
+Our velocity is just
+\[ \vec{v} = \dot{s} \hat{s} + s \dot{\phi} \hat{\phi} = R \omega
+\hat{\phi} \]
+which implies that our velocity when the string breaks and there is no
+force is
+\[ \vec{r} = R \hat{s} + R \omega \hat{\phi} t, \]
+where $\hat{s}, \hat{\phi}$ are representatives of time $t = \frac{2
+\pi}{3 \omega}$. Converting back into cartesian coordinates, this is
+simply
+\[ \begin{aligned}
+\vec{r} &= R\left(\cos \frac{2 \pi}{3 \omega}, \sin \frac{2 \pi}{3
+\omega}\right) + R \omega t \left(\sin \frac{2 \pi}{3 \omega}, -\cos
+\frac{2 \pi}{3 \omega}\right) \\
+\Aboxed{&= R \left(\cos \frac{2 \pi}{3 \omega} + \omega \sin \frac{2
+\pi}{3 \omega} t, \sin \frac{2 \pi}{3 \omega} - \omega \cos \frac{2
+\pi}{3 \omega} t\right)} \quad \textrm{(b)} \\
+\end{aligned} \]
 \end{proof}
 
 \end{document}
