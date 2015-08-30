@@ -221,7 +221,7 @@ can plug into
 x &= \frac{2 v_0^2 \sin \theta \cos(\theta + \phi)}{g \cos^2 \phi} \\
 &= \frac{v_0^2 (\sin -\phi + \sin(2 \theta + \phi))}{g \cos^2 \phi} \\
 &= \frac{v_0^2 (1 - \sin \phi)}{g (1 - \sin^2 \phi)} \\
-\Aboxed{ &= \frac{v_0^2}{g (1 + \sin \phi)}}, \quad \textrm{(c)} \\
+&= \boxed{\frac{v_0^2}{g (1 + \sin \phi)}}, \quad \textrm{(c)} \\
 \end{aligned} \]
 as desired.
 \end{proof}
@@ -241,8 +241,8 @@ This is the classical projectile motion problem, which we solved in
 problem 1 with slightly different parameters.
 \[ \vec{r} = \left(v_0 \cos \theta t, -\frac{g}{2} t^2 + v_0 \sin \theta
 t \right). \quad \textrm{(a)} \]
-A non-decreasing norm is equivalent to the square of the norm
-non-decreasing so we want
+A non-decreasing norm implies that the square of the norm non-decreasing
+so we want
 \[ v_0^2 \cos^2 \theta t^2 + \frac{g^2}{4} t^4 - v_0 g \sin \theta t^3 +
 v_0^2 \sin^2 \theta t^2  = v_0^2 t^2 + \frac{g^2}{4} t^4 - v_0 g \sin
 \theta t^3 \]
@@ -304,12 +304,12 @@ draw(unitcircle);
 draw(L = Label("$\phi = \omega t$", align = unit(3E + N)), arc(O, b, e),
 Arrow);
 
-draw(L = Label("$R$", align = S), O -- X, dashed);
+draw(L = Label("$R$", align = S), O -- X);
 draw(O -- unit(e));
 
 // Ft
 pair ft = 0.6 * unit(O - e);
-draw(p -- p + 0.6 * unit(O - e), black + 1.25);
+draw(p -- p + 0.93 * 0.6 * unit(O - e), black + 1.25);
 draw(L = Label("$\vec{F}_T$", align = 1.7N), p -- p + ft, Arrow);
 
 // v
@@ -338,16 +338,18 @@ which implies that our velocity when the string breaks and there is no
 force is
 \[ \vec{r} = R \hat{s} + R \omega \hat{\phi} t, \]
 where $\hat{s}, \hat{\phi}$ are representatives of time $t = \frac{2
-\pi}{3 \omega}$. Converting back into cartesian coordinates, this is
-simply
+\pi}{3 \omega}, \phi = \omega t = \frac{2 \pi}{3}$. Converting back into
+cartesian coordinates, this is simply
 \[ \begin{aligned}
-\vec{r} &= R\left(\cos \frac{2 \pi}{3 \omega}, \sin \frac{2 \pi}{3
-\omega}\right) + R \omega t \left(\sin \frac{2 \pi}{3 \omega}, -\cos
-\frac{2 \pi}{3 \omega}\right) \\
-\Aboxed{&= R \left(\cos \frac{2 \pi}{3 \omega} + \omega \sin \frac{2
-\pi}{3 \omega} t, \sin \frac{2 \pi}{3 \omega} - \omega \cos \frac{2
-\pi}{3 \omega} t\right)} \quad \textrm{(b)} \\
+\vec{r} &= R\left(\cos \frac{2 \pi}{3}, \sin \frac{2 \pi}{3 }\right) + R
+\omega t \left(-\sin \frac{2 \pi}{3}, \cos \frac{2 \pi}{3}\right) \\
+&= R \left(-\frac{1}{2} - \frac{\sqrt{3}}{2} \omega t,
+\frac{\sqrt{3}}{2} - \frac{1}{2} \omega t\right) \\
+&= \boxed{R \left(-\frac{1}{2} - \frac{\sqrt{3}}{2} \omega t +
+\frac{\pi}{\sqrt{3}}, \frac{\sqrt{3}}{2} - \frac{1}{2} \omega t +
+\frac{\pi}{\sqrt{3}} \right)} \quad \textrm{(b)} \\
 \end{aligned} \]
+after applying $t \mapsto t + \frac{2\pi}{3\omega}$.
 \end{proof}
 
 \begin{prb}[More Cylinders]
@@ -370,9 +372,8 @@ the stopping time $t$ and the total distance travelled before stopping.
 \end{prb}
 
 \begin{proof}[Solution]
-I believe we proceed assuming $\ddot{\phi} = 0$. If not, then we have a
-system of differential equations for $\phi$. Again, we have by
-Newton's second law,
+We proceed assuming $\ddot{\phi} = 0$. Again, we have by Newton's second
+law,
 \[ \begin{aligned}
 \vec{F} &= F_N \hat{s} - g \hat{z} \\
 \vec{F} &= m \ddot{\vec{r}} \\
@@ -385,24 +386,28 @@ s &= R \\
 \phi &= \dot{\phi} t + \phi_0 \\
 z &= -\frac{g}{2} t^2 + v_{0_z} t + z_0 \\
 \end{aligned} \right.}. \quad \textrm{(a)} \]
+which is slightly more correct in my opinion due to unknown constraints.
+However, this would also imply that $m \ddot{z} = F_z$, which may or may
+not be constant as well.
 
 For the weird gravitational field, we have the differential equation
 \[ \ddot{z} = -Kt. \]
 This has a standard solution of $\boxed{z = -\frac{K}{6} t^3 + v_{0_z}
 t} \quad \textrm{(b)}$ via integration.
 
-With a drag force $R \ddot{\phi} \hat{\phi} = \vec{F}_d = -K \vec{v} =
+With a drag force $m R \ddot{\phi} \hat{\phi} = \vec{F}_d = -K \vec{v} =
 -K (\dot{s} \hat{s} + s \dot{\phi} \hat{\phi} + \dot{z} \hat{z}) = -KR
 \dot{\phi}\hat{\phi}$, we have $\ddot{\phi} = \frac{d \dot{\phi}}{dt} =
--K \dot{\phi} \implies \dot{\phi} = \omega_0 e^{-K t} \implies \phi =
-\frac{\omega_0}{K} \left(1 - e^{-Kt}\right) \implies \boxed{(s, \phi, z)
-= \left(R, \frac{\omega_0}{K}\left(1 - e^{-Kt}\right), 0\right)} \quad
+-\frac{K}{m} \dot{\phi} \implies \dot{\phi} = \omega_0 e^{-\frac{K}{m}
+t} \implies \phi = \frac{m \omega_0}{K} \left(1 - e^{-\frac{K}{m}
+t}\right) \implies \boxed{(s, \phi, z) = \left(R, \frac{m
+\omega_0}{K}\left(1 - e^{-\frac{K}{m} t}\right), 0\right)} \quad
 \textrm{(c)}$.
 
 From the above, it is then easy to see that $\lim_{t \to \infty} \phi =
-\frac{\omega_0}{K}$, so the puck does stop (eventually) with parameters
-$\boxed{d(t) \xrightarrow[t \to \infty]{} \frac{R \omega_0}{K}} \quad
-\textrm{(d)}$.
+\frac{m \omega_0}{K}$, so the puck does stop (eventually) with
+parameters $\boxed{d(t) \xrightarrow[t \to \infty]{} \frac{m R
+\omega_0}{K}} \quad \textrm{(d)}$.
 \end{proof}
 
 \end{document}
