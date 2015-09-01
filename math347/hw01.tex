@@ -1,0 +1,83 @@
+\documentclass{article}
+
+\usepackage{incertia}
+
+% setup the header
+\pagestyle{fancy}
+\lhead{Will Song}
+\chead{Math 347}
+\rhead{HW1}
+
+\begin{document}
+
+\section{Homework 1}
+
+\begin{enumerate}
+
+\item Let $a = A \cap B \cap \bar{C}, b = B \cap C \cap \bar{A}, c = C
+\cap A \cap \bar{B}, d = A \cap B \cap C$. This gives us $a + d = A \cap
+B, b + d = B \cap C, c + d \ C \cap A$, so $a + b + c + d = ((a + d) +
+(b + d) + (c + d)) - 2d \implies (r, s) = (1, -2)$.
+
+\item \begin{enumerate}[(i)]
+\item $1 \not \in 3\ZZ$.
+\item $\frac{1}{9} = \frac{1}{3} \cdot \frac{1}{3} \not \in \frac{1}{3}\ZZ$.
+\item $\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} \begin{pmatrix} 4 &
+3 \\ 2 & 1 \end{pmatrix} \neq \begin{pmatrix} 4 & 3 \\ 2 & 1
+\end{pmatrix} \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}$.
+\end{enumerate}
+
+\item $F_{2015 + n + 1} = F_{2015 + n - 1} + F_{2015 + n} = F_{2014}
+F_{n - 1} + F_{2015} F_{n} + F_{2014} F_{n} + F_{2015} F_{n + 1} =
+F_{2014} F_{n + 1} + F_{2015} F_{n + 2}, F_{2015} = F_{2015 + 0} =
+F_{2014} F_{0} + F_{2015} F_{1} = F_{2015} \implies F_{n + 2015} =
+F_{2014} F_{n} + F_{2015} F_{n + 1} \quad \forall n \in \ZZ_0^+$.
+
+\item $\lbrace 1, 2, 3 \rbrace \, R \, \lbrace 2, 3, 4 \rbrace \, R \,
+\lbrace 3, 4, 5 \rbrace$, but $| \lbrace 1, 2, 3 \rbrace \cap \lbrace 3,
+4, 5 \rbrace | = 1$.
+
+\item Consider the set $S = \lbrace x = a - kb : k \in \ZZ_0^+, x \geq 0
+\rbrace$. Let $m = a - nb = \min S$. By minimality of $m$, we have $a -
+(n + 1)b < 0 \leq a - nb \implies a < (n + 1)b$ because $n + 1 > n
+\implies (n + 1)b > nb \implies -(n + 1)b < -nb$. Now just take $n = n +
+1$ to get the desired result.
+
+\item \begin{enumerate}[(i)]
+\item \begin{enumerate}[(x)]
+\item Take an $x \in A, x \in B \triangle C$. Either $x \in B
+\setminus (B \cap C)$ or $x \in C \setminus (B \cap C)$ so $x \in A \cap
+B$ or $x \in A \cap C$ but not both so $x \in (A \cap B) \triangle (A
+\cap C)$, implying $A \cap (B \triangle C) \subseteq (A \cap B)
+\triangle (A \cap C)$.
+
+Now take some $x \in A \cap B$ or $x \in A \cap C$, but not both. In
+either case, $x \in A$. $x \in B \implies x \not \in C, x \in C \implies
+x \not \in B$ so those two imply $x \in B \triangle C$, which gets us
+the relation $(A \cap B) \triangle (A \cap C) \subseteq A \cap (B
+\triangle C)$.
+
+The two relations above taken together imply that $A \cap (B \triangle
+C) = (A \cap B) \triangle (A \cap C)$.
+\end{enumerate}
+\item Sally section 1.6
+\begin{enumerate}[1.]
+\setcounter{enumiii}{7}
+\item $0 = 0 * a + 0$.
+\item If $|a| > |b|$, then $a \nmid b$ because $|b| = 0 * a + |b|$.
+Hence $|a \mid b \implies |a| \leq |b|$ and $b \mid a \implies |b| \leq
+|a|$, so $|a| = |b| \implies a = \pm b$.
+\item $c \mid sa, c \mid tb \implies sa = jc, tb = kc \implies sa + tb =
+(j + k)c \implies c \mid sa + tb$.
+\end{enumerate}
+\end{enumerate}
+
+\item Clearly $c_1 = 7$. We then have $c_2 = -4, c_3 = -7, c_4 = -7$ by
+considering elements in just one of $A, B, C$. Next, we compute $c_5 =
+4, c_6 = 7, c_7 = 4$ by taking imaginary elements in sets $A \cap B \cap
+\bar{C}$, etc. Now, trivially, $c_8 = -6$. Notice here we have the
+notation $c_5 I_A I_B, c_6 I_B I_C, c_7 I_C I_A$.
+
+\end{enumerate}
+
+\end{document}
