@@ -1,0 +1,83 @@
+\section{Day 4}
+
+\begin{df}
+A \textbf{relation} $R$ on a set $X$ is a subset $R \subseteq X \times
+X$ and is written $x \, R \, y \Leftrightarrow (x, y) \in R$.
+\end{df}
+
+\begin{df}
+A relation $\sim \, \subseteq X \times X$ is an \textbf{equivalence
+relation} iff
+\[ \begin{aligned}
+x \in X &\implies x \sim x \\
+x \sim y &\implies y \sim x \quad \forall x, y \in X \\
+x \sim y, y \sim z &\implies x \sim z \quad \forall x, y, z \in X \\
+\end{aligned} \]
+\end{df}
+
+\begin{df}
+A \textbf{partition} of a set $x$ is a collection of subsets
+$\mathcal{C}_{\alpha \in A} \in \mathcal{P}(X)$ such that
+\[ \begin{aligned}
+X &= \bigcup_{\alpha \in A} \mathcal{C}_\alpha \\
+\mathcal{C}_\alpha \cap \mathcal{C}_\beta \neq \varnothing &\implies
+\mathcal{C}_\alpha = \mathcal{C}_\beta \\
+\end{aligned} \]
+\end{df}
+
+\begin{df}
+Let $\sim$ be an equivalence relation on a set $X$. Then the equivalence
+class of $x \in X$ is the set
+\[ [x] = \lbrace y \in X : x \sim y \rbrace \]
+\end{df}
+
+\begin{thm}
+Let $\sim$ be an equivalence relation on a non-empty set $X$. Then
+\begin{enumerate}
+\item The set of equivalence classes form a partition on $X$.
+\item Any partition of $X$ defines an equivalence relation on $X$.
+\end{enumerate}
+\end{thm}
+
+\begin{proof}
+$ $\\
+\begin{enumerate}
+\item We have
+\[ x \sim x \implies x \in [x] \implies X = \bigcup_{x \in X} [x]. \]
+Now suppose $[x] \cap [y] \neq \varnothing$, which means $\exists z \in
+X : z \in [x], z \in [y]$. Now take some representative element $w \in
+[x]$ and write $z \sim x, w \sim x \implies w \sim z$. Now $z \in [y]$
+so $z \sim y$, so $w \sim y \implies w \in [y]$, implying $[x] \subseteq
+[y]$. Similarly, $[y] \subseteq [x]$ so $[x] = [y]$, finishing the proof
+that the equivalence classes of $\sim$ form a partition on $X$.
+
+\item For the other half, suppose we have a partition
+$\mathcal{C}_{\alpha \in A}$. This implies that $\forall x \in X$,
+$\exists \alpha \st x \in \mathcal{C}_\alpha$, which implies $x \sim x$.
+If $x \sim y$, then $x, y \in \mathcal{C}_\alpha$ for some $\alpha$ so
+$y \sim x$ as well. If $x, y \in \mathcal{C}_\alpha, y, z \in
+\mathcal{C}_\beta$, then $\mathcal{C}_\alpha \cap \mathcal{C}_\beta \neq
+\varnothing \implies x, y, z \in \mathcal{C}_\alpha = \mathcal{C}_\beta
+\implies x \sim z$, which finishes the proof.
+\end{enumerate}
+\end{proof}
+
+\begin{ex}
+Take the relation $a \sim_n b \Leftrightarrow n \mid a - b, \quad a, b
+\in \ZZ, n \in \NN$. Then $\sim_n$ is an equivalece relation on $\ZZ$.
+\end{ex}
+
+\begin{df}
+The set of equivalence classes modulo $n$ are denoted $\ZZ/n\ZZ =
+\lbrace [0], [1], \dots, [n - 1] \rbrace$ with a fairly standard
+surjection $\pi : \ZZ \surj \ZZ/n\ZZ$ given by $a \mapsto [a]$.
+\end{df}
+
+\begin{thm}
+$\ZZ/n\ZZ$ is a commutative ring with the usual operations $[a] + [b] =
+[a + b]$ and $[a] \cdot [b] = [a \cdot b]$.
+\end{thm}
+
+\begin{proof}
+Standard.
+\end{proof}
