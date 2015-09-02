@@ -1,6 +1,8 @@
 \section{Day 2}
 
 \subsection{Cylindrical Coordinates}
+\label{cylindrical}
+
 \begin{center}
 \begin{asy}
 import three;
@@ -177,5 +179,8 @@ which does not have a very nice solution, but we can approximate $\sin
 \phi \approx \phi$ for small $\phi$, so this becomes $\ddot{\phi} =
 -\frac{g}{R} \phi$, which has the nice solution
 \[ \phi(t) = \alpha \sin\left( \sqrt{\frac{g}{R}} t + \psi \right) \]
-for some optimal choice of $\psi$ and $\alpha = \max \phi$.
+for some optimal choice of $\psi$ and $\alpha = \max \phi$. In this
+problem, we would set $\alpha = \phi_0, \psi = \frac{\pi}{2}$ to arrive
+at
+\[ \phi(t) = \phi_0 \cos \left( \sqrt{\frac{g}{R}} t \right). \]
 \end{proof}

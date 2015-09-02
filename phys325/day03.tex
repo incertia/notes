@@ -1,1 +1,67 @@
 \section{Day 3}
+
+\subsection{Notes on Homework 1}
+Learn how to do math. For example $1 - x^2 = (1 + x)(1 - x)$. Also trig
+is nice.
+\[ \begin{aligned}
+\sin (A + B) &= \sin A \cos B + \cos A \sin B \\
+\cos (A + B) &= \cos A \cos B + \sin A \sin B \\
+\end{aligned} \]
+Please use $\vec{F} = m \vec{a}$. Don't be stupid.
+
+\subsection{Things}
+Most of the time was spent covering the final example from
+section~\ref{cylindrical}, which is kept in section~\ref{cylindrical}.
+
+\subsection{2 Second Problems}
+\begin{prb}[Triangle Inequality]
+Show that $|\vec{a} + \vec{b}| \leq a + b$.
+\end{prb}
+\begin{proof}[Solution]
+Expand.
+\[ a^2 + b^2 + 2ab\cos\theta \leq a^2 + b^2 + 2ab. \]
+\end{proof}
+
+\begin{prb}
+Evaluate
+\[ \frac{d}{dt}\left(\vec{a} \cdot \left( \vec{v} \times \vec{r} \right)
+\right). \]
+\end{prb}
+\begin{proof}[Solution]
+Use product rule.
+\[ \dot{\vec{a}} \cdot \left(\vec{v} \times \vec{r}\right)  + \vec{a}
+\cdot \left(\vec{a} \times \vec{r}\right) + \vec{a} \cdot \left(\vec{v}
+\times \vec{v}\right) = \dot{\vec{a}} \cdot \left(\vec{v} \times \vec{r}
+\right). \]
+\end{proof}
+
+\begin{prb}
+Consider $\vec{F} = F(x) \hat{x}$. Solve $F(x) = ma = m \ddot{x}$.
+\end{prb}
+\begin{proof}[Solution]
+Write
+\[ \begin{aligned}
+F(x) &= ma = m \frac{dv}{dt} = m \frac{dx}{dt} \frac{dv}{dx} \\
+\implies F(x) dx &= mv dv \\
+\int_{x_0}^x F(u) du &= \frac{1}{2} m(v^2 - v_0^2) \\
+v &= \sqrt{\frac{2}m \int_{x_0}^x F(u) du + v_0^2} \\
+x &= \int_{t_0}^t \sqrt{\frac{2}m \int_{x_0}^x F(u) du + v_0^2} ds \\
+\end{aligned} \]
+and pray.
+\end{proof}
+
+\begin{prb}
+Consider a bead located on a circular hoop of radius $R$ aligned with
+the $z$ axis rotating with angular velocity $\omega$.
+\end{prb}
+
+\begin{proof}[Solution]
+Here we have $\phi = \omega t + \phi_0, \dot{\phi} = \omega$. We have
+$\vec{F}_g = -g\hat{z}, \vec{F}_s = -mR \omega^2 \hat{s}, \vec{F}_\theta
+= -mR \dot{\theta}^2 \hat{r}$.
+
+We also have $F_\theta = \sin \theta (r \ddot{\phi} + 2 \dot{r}
+\dot{\phi}) + \cos \theta (2 r \dot{\theta} \dot{\phi})$, but
+$\ddot{\phi} = 0, \dot{r} = 0$ so $F_\theta = 2 R \omega \dot{\theta}
+\cos \theta$.
+\end{proof}
