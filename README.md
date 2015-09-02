@@ -2,8 +2,10 @@
 Welcome to my compilation of lecture notes for whatever classes I happen
 to be taking at the time.
 
-All tex files require `incertia.sty`, which will be made available
-shortly. Any files with Asymptote diagrams will also require
+All tex files require
+[`incertia.sty`](https://github.com/incertia/dotfiles/blob/master/tex/texmf/tex/latex/incertia/incertia.sty)`,
+which will be made available shortly. Any files with Asymptote diagrams
+will also require
 [`olympiad.asy`](http://www.mit.edu/~evanchen/handouts/olympiad.asy) and
 [`cse5.asy`](http://www.mit.edu/~evanchen/handouts/cse5.asy).
 
