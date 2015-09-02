@@ -1,0 +1,70 @@
+\section{Day 5}
+
+\subsection{Review}
+Last time, we proved that equivalence relation $\Leftrightarrow$
+partitions. However, we did not prove that the two implicit maps used in
+the proof of \ref{eqpart} are inverses of each other.
+
+We also got that the operations
+\[ \begin{aligned}
++ : \ZZ/n\ZZ \times \ZZ/n\ZZ &\to \ZZ/n\ZZ \\
+([a], [b]) &\mapsto [a + b] \\
+* : \ZZ/n\ZZ \times \ZZ/n\ZZ &\to \ZZ/n\ZZ \\
+([a], [b]) &\mapsto [a \cdot b] \\
+\end{aligned} \]
+are well defined.
+
+\subsection{Groups}
+\begin{df}
+\label{binop}
+A \textbf{binary operation} $\star$ on a set $S$ is a map $\star : S
+\times S \to S$ which is often notated $a \star b := \star(a, b)$.
+\end{df}
+
+\begin{df}
+\label{assoc}
+A binary operation $\star$ is \textbf{associative} if $a \star (b \star
+c) = (a \star b) \star c$.
+\end{df}
+
+\begin{df}
+\label{commute}
+A binary operation $\star$ is \textbf{commutative} if $a \star b = b
+\star a$.
+\end{df}
+
+\begin{df}
+\label{group}
+A \textbf{group} is a set $G$ together with a binary operation $* : G
+\times G \to G$, usually notated $(G, *)$, and a distinguished element
+$e \in G$ such that
+\begin{enumerate}
+\item $*$ is associative.
+\item $e * a = a = a * e \quad \forall a \in G$.
+\item $\forall a \in g, \exists b \in G \st a * b = e = b * a$.
+\end{enumerate}
+\end{df}
+
+\begin{prop}
+In any group, inverses are unique.
+\end{prop}
+
+\begin{proof}
+Suppose $b, c$ are inverses of $a$. Compute
+\[ b = e * b = (c * a) * b = c * (a * b) = c * e = c. \]
+\end{proof}
+
+\begin{cor}
+We can define a function $\operatorname{inv} : G \to G$ such that $g *
+\operatorname{inv}(g) = e$. This is normally denoted $-a$ when the
+operation is $+$ and $a^{-1}$ otherwise.
+\end{cor}
+
+\begin{df}
+Define $GL_n(F) := \lbrace A \in M_n(F) : \det(A) \neq 0 \rbrace$ as the
+set of invertible $n \times n$ matrices over $F$.
+\end{df}
+
+\begin{prop}
+$GL_n(\RR)$ is a group with the usual multiplication.
+\end{prop}
