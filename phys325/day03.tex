@@ -51,17 +51,29 @@ and pray.
 \end{proof}
 
 \begin{prb}
+\label{rotatinghoop}
 Consider a bead located on a circular hoop of radius $R$ aligned with
-the $z$ axis rotating with angular velocity $\omega$.
+the $z$ axis rotating with angular velocity $\omega$. Given normal
+gravity $g$, find the general motion of the bead.
 \end{prb}
 
 \begin{proof}[Solution]
-Here we have $\phi = \omega t + \phi_0, \dot{\phi} = \omega$. We have
-$\vec{F}_g = -g\hat{z}, \vec{F}_s = -mR \omega^2 \hat{s}, \vec{F}_\theta
-= -mR \dot{\theta}^2 \hat{r}$.
+Here we have $\phi = \omega t + \phi_0, \dot{\phi} = \omega$. The
+primary forces are $\vec{F}_g = -mg\hat{z} = -mg \cos \theta \hat{r} +
+mg \sin \theta \hat{\theta}, \vec{F}_N = F_{N,r} \hat{r}
++ F_{N,\phi} \hat{\phi}$. $F_\theta$ on the LHS is equivalent to
+$mg\sin \theta$.
 
-We also have $F_\theta = \sin \theta (r \ddot{\phi} + 2 \dot{r}
-\dot{\phi}) + \cos \theta (2 r \dot{\theta} \dot{\phi})$, but
-$\ddot{\phi} = 0, \dot{r} = 0$ so $F_\theta = 2 R \omega \dot{\theta}
-\cos \theta$.
+We also have $F_\theta = m \vec{a} = m \left( r \ddot{\theta} + 2
+\dot{r} \dot{\theta} - r \dot{\phi}^2 \sin \theta \cos \theta \right)$,
+but $\dot{\phi} = \omega, \dot{r} = 0$ so $F_\theta = m R
+\left(\ddot{\theta} - \omega^2 \sin \theta \cos \theta\right)$.
+
+This implies that $\ddot{\theta} = \left(\frac{g}{R} + \omega^2 \cos
+\theta \right) \sin \theta$. Doing some rearranging, we get
+$\ddot{\theta} = \frac{d\dot{\theta}}{dt} \frac{d\theta}{d\theta} =
+\frac{d\dot{\theta}}{d\theta} \dot{\theta}$, which gives us
+\[ \left(\frac{g}{R} + \omega^2 \cos \theta\right) \sin \theta d \theta
+= \dot{\theta} d \dot{\theta}, \]
+which is solvable for $\dot{\theta}$ which gives $\theta$.
 \end{proof}
