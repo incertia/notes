@@ -1,0 +1,62 @@
+\section{Day 6}
+
+\begin{df}
+A group is said to be commutative or \textbf{abelian} if the operation
+commutes.
+\end{df}
+
+\begin{ex}
+Let $X$ be a set. Then the set of automorphisms $\aut(X) = \lbrace f : X
+\to X \mid f \textrm{ invertible} \rbrace$ is a group under composition.
+\end{ex}
+
+\begin{prop}
+$(a^{-1})^{-1} = a$.
+\end{prop}
+
+\begin{proof}
+$a^{-1} * a = e$.
+\end{proof}
+
+\begin{df}
+Let $G, H$ be two groups. A map $\varphi : G \to H$ is called a
+\textbf{group homomorphism} iff $\varphi(a * b) = \varphi(a) *
+\varphi(b) \quad \forall a, b \in G$.
+\end{df}
+
+\begin{ex}
+We have the homomorphism from $\RR$ under $+$ to $\RR^*$ under $\cdot$
+by $\exp(x) = e^x$.
+\end{ex}
+
+\begin{ex}
+$\det : GL_n(F) \to F^*$ is a homomorphism.
+\end{ex}
+
+\begin{df}
+Define the identity map on a set $X$ to be $\id_X : X \to X$ given by $x
+\mapsto x$.
+\end{df}
+
+\begin{df}
+A homomorphism $\varphi : G \to H$ is an \textbf{isomorphism} if there
+is an inverse $\psi : H \to G$ such that $\varphi \circ \psi = \id_G,
+\psi \circ \varphi = \id_H$.
+\end{df}
+
+\begin{prop}
+Let $\varphi : G \to H$ be a bijective homomorphism. Then $\varphi^{-1}
+: H \to G$ is a homomorphism.
+\end{prop}
+
+\begin{proof}
+We want $\varphi^{-1}(xy) = \varphi^{-1}(x) \varphi^{-1}(y)$. Take
+\[ \varphi(\varphi^{-1}(x) \varphi^{-1}(y)) = \varphi(\varphi^{-1}(x))
+\varphi(\varphi^{-1}(y)) = xy = \varphi(\varphi^{-1}(xy)). \]
+Injectivity on $\varphi$ gives the desired result.
+\end{proof}
+
+\begin{ex}
+$\ln : (0, \infty) \to \RR^+$ has the inverse $\exp : \RR \to (0,
+\infty)$.
+\end{ex}
