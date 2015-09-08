@@ -1,7 +1,7 @@
 TEX=pdflatex
 TARGET=math427
 
-all: $(TARGET).pdf hw1.pdf
+all: $(TARGET).pdf hw1.pdf hw02.pdf
 
 $(TARGET).pdf: $(TARGET).tex day*.tex
 	$(TEX) $(TARGET).tex

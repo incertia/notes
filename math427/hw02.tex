@@ -1,0 +1,43 @@
+\documentclass{article}
+
+\usepackage{incertia}
+
+% setup the header
+\pagestyle{fancy}
+\lhead{Will Song}
+\chead{Math 427}
+\rhead{HW2}
+
+\begin{document}
+
+\begin{enumerate}
+
+\item We know that $ab \equiv 1 \pmod{n}$, which means that $ab = kn +
+1$, or $ab - kn = 1$ for some $k$. By Bezout, we know that $\gcd(a, n)
+\mid 1$, but $1 \mid \gcd(a, n)$ so $\gcd(a, n) = 1$. For the converse,
+We have by Bezout again some integer $k$ such that $ab + kn = 1$, so
+this implies that there is some $b$ such that $ab = 1 - kn \equiv 1
+\pmod{n}$.
+
+\item
+\begin{enumerate}[(a)]
+\item $\lbrace 0, 1, 2, 3 \rbrace \xrightarrow{x \mapsto x^2} \lbrace 0,
+1, 0, 1 \rbrace$.
+\item $a^2 + b^2 - 3 \equiv -3, -2, -1 \pmod{3}$, none of which are $0$.
+\end{enumerate}
+
+\item $[a] + ([b] + [c]) = [a] + [b + c] = [a + (b + c)] = [(a + b) + c]
+= [a + b] + [c] = ([a] + [b]) + [c]$ by associativity on $\ZZ$.
+
+\item Take two elements $a, b \in G$. $(ab)^n = a^n b^n = 1$ so $G$ is
+closed. $z^{-1} = \frac{1}{z} \in G$ because $\frac{1^n}{z^n} =
+\frac{1}{1} = 1$. We also have associativity due to complex numbers.
+
+\item Here we induct on $n$. $a^{-1} = \left(a^1\right)^{-1}$ is
+trivially true. $a^{-n} = a^{-1} a^{-(n - 1)} = a^{-1} \left(a^{n -
+1}\right)^{-1} = \left(a a^{n - 1}\right)^{-1} = \left(a^n\right)^{-1}$
+because $a$ commutes with itself.
+
+\end{enumerate}
+
+\end{document}
