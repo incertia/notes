@@ -1,0 +1,99 @@
+\documentclass{article}
+
+\usepackage{incertia}
+
+% setup the header
+\pagestyle{fancy}
+\lhead{Will Song}
+\chead{Phys 325}
+\rhead{HW2}
+
+\begin{document}
+
+\section{Homework 2}
+
+\begin{prb}[Mixed Dependencies]
+A particle of mass $m$ moves under the influence of $\vec{F} = -ktv
+\hat{v}$ where $k$ is a positive constant. At time $t = 0$ the particle
+passes through the origin with velocity $v_0 \hat{x}$, where $v_0$ is a
+positive constant.
+\begin{enumerate}[(a)]
+\item Calculate the particle's velocity $\vec{v}(t)$ for $t \geq 0$.
+\item How much time does it take for the particle to stop?
+\item What is the maximum $x$ position reached by the particle?
+\end{enumerate}
+\end{prb}
+
+\begin{proof}[Solution]
+We have $-kt\vec{v} = -ktv \hat{v} = \vec{F} = m\vec{a} = m \frac{d
+\vec{v}}{dt}$, which generalizes to $-ktv_i = m \frac{dv_i}{dt}$ due to
+Cartesian coordinates. This simplifies to
+\[ -\frac{k}{m}tdt = \frac{dv_i}{v_i}, \]
+which has the convenient solution
+\[ \begin{aligned}
+&& -\frac{k}{2m}t^2 &= \ln v_i + C \\
+&\implies& Ae^{-\frac{k}{2m}t^2} &= v_i \\
+&\implies& v_i &= v_{i_0} \exp\left(-\frac{k}{2m}t^2\right). \\
+\end{aligned} \]
+Combine this with $\vec{v}_0 = (v_0, 0, 0)$ to get
+\[ \boxed{\vec{v} = v_0 \exp \left(-\frac{k}{2m}t^2\right) \hat{x}}.
+\quad \textrm{(a)} \]
+Due to exponential greatness, it takes infinite time for the particle to
+stop, or $\boxed{v \xrightarrow[t \to \infty]{} 0} \quad \textrm{(b)}$.
+
+The $x$ component of $\vec{v}$ never changes sign (exponential
+greatness) so we just compute the integral from $0$ to $\infty$.
+\[ \begin{aligned}
+x &= v_0 \int_0^\infty e^{-\frac{k}{2m}t^2} dt \\
+&= \boxed{\sqrt{\frac{m \pi}{2k}}} \quad \textrm{(c)}
+\end{aligned} \]
+\end{proof}
+
+\begin{prb}[Position Dependent?]
+A particle of mass $m$ is constrained to move along the positive $x$
+axis under the influence of $\vec{F} = -\frac{K}{x^2}\hat{x}, K > 0$. At
+time $t = 0$, the particle is released from rest at position $x_0 > 0$.
+Compute the first time where $x = 0$.
+\end{prb}
+
+\begin{proof}[Solution]
+We begin by writing
+\[ -\frac{K}{x^2} = F = ma = m \frac{dv}{dt} = m \frac{dv}{dt}
+\frac{dx}{dx} = m v \frac{dv}{dx}. \]
+This simplies into
+\[ \begin{aligned}
+&& -\frac{Kdx}{x^2} &= mvdv \\
+&\implies& \frac{K}{x} &= \frac{1}{2}mv^2 + C \\
+&\implies& \frac{K}{x} &= \frac{1}{2}mv^2 + \frac{K}{x_0} \\
+&& v^2 &= \frac{2K}{m}\left(\frac{1}{x} - \frac{1}{x_0}\right) \\
+&\implies& \frac{dx}{dt} &= \sqrt{\frac{2K}{m}\left(\frac{1}{x} -
+\frac{1}{x_0}\right)} \\
+&& \frac{dx}{\sqrt{\frac{1}{x} - \frac{1}{x_0}}} &= \sqrt{\frac{2K}{m}}
+dt \\
+&& \frac{\left(u + \frac{1}{x_0}\right)^2 du}{\sqrt{u}} &=
+\sqrt{\frac{2K}{m}} dt \quad u = \frac{1}{x} - \frac{1}{x_0} \\
+\end{aligned} \]
+\end{proof}
+
+\newpage
+
+\[ \begin{aligned}
+F &= -kv^\beta \quad \beta = \frac{3}{2} \\
+m \frac{dv}{dt} &= -k v^{\frac{3}{2}} \\
+v^{-\frac{3}{2}} dv &= -\frac{k}{m} dt \\
+-2v^{-\frac{1}{2}} + c &= -\frac{k}{m}t \\
+\frac{1}{\sqrt{v}} - \frac{1}{\sqrt{v_0}} &= \frac{k}{2m} t \\
+\frac{1}{\sqrt{v}} &= \frac{k}{2m} t + \frac{1}{\sqrt{v_0}} \\
+\frac{dx}{dt} = v &= \frac{1}{\dfrac{k^2 t^2}{4m^2} +
+\dfrac{kt}{m\sqrt{v_0}} + \dfrac{1}{v_0}} \\
+&= \frac{v_0}{\dfrac{k^2t^2v_0}{4m^2} + \dfrac{kt\sqrt{v_0}}{m} + 1} \\
+dx &= \frac{4m^2 v_0 dt}{k^2 t^2 v_0 + 4mkt \sqrt{v_0} + 4m^2} \\
+&= \frac{4m^2 v_0 dt}{\left(kt \sqrt{v_0} + 2m\right)^2} \\
+&= \frac{4m^2 \sqrt{v_0} du}{k u^2} \quad u = kt\sqrt{v_0} + 2m \quad du
+= k \sqrt{v_0} dx \\
+x &= -\frac{4m^2 \sqrt{v_0}}{ku} \\
+&= -\frac{4m^2\sqrt{v_0}}{k^2 t\sqrt{v_0} + 2km} +
+\frac{2m\sqrt{v_0}}{k} \\
+\end{aligned} \]
+
+\end{document}
