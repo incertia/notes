@@ -98,14 +98,15 @@ Notice that this bijection is linear, or
 \[ \varphi(\lambda x + \mu y) = \lambda\varphi(x) + \mu\varphi(y) \]
 
 Now notice that $S_n$ acts on $\mathcal{F}(\lbrace 1, 2, \dots,
-n\rbrace)$ via $\sigma \cdot f = f \circ \sigma$. This also gives a
+n\rbrace)$ via $\sigma \cdot f = f \circ \sigma^{-1}$. This also gives a
 group action on $\RR^n$, namely
-\[ \sigma \cdot (x_1, x_2, \dots, x_n) = (x_{\sigma(1)}, \dots,
-x_{\sigma(n)}). \]
+\[ \sigma \cdot (x_1, x_2, \dots, x_n) = (x_{\sigma^{-1}(1)}, \dots,
+x_{\sigma^{-1}(n)}). \]
 
 For each $\sigma \in S_n$, we now define the map $\psi(\sigma) : \RR^n
 \to \RR^n$ by
-\[ (x_1, \dots, x_n) \mapsto (x_{\sigma(1)}, \dots, x_{\sigma(n)}) \]
+\[ (x_1, \dots, x_n) \mapsto (x_{\sigma^{-1}(1)}, \dots,
+x_{\sigma^{-1}(n)}) \]
 Notice how $\psi(\sigma)$ is linear so $\psi(\sigma) \in GL(\RR^n)$.
 Compatability of group action gives us that $\psi$ is a homomorphism
 from $S_n \to GL(\RR^n)$, so it is a representation.

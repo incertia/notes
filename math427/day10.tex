@@ -1,6 +1,6 @@
-\section{Day 10}
+\section{September 16, 2015}
 
-\subsection{More Permutations}
+\subsection{``Unique Factorization'' of Symmetric Group}
 We spent a lot of time yesterday laying the groundwork for a very
 important ``factorization'' theorem regarding permutations.
 
@@ -50,6 +50,49 @@ nontrivial permutation $\sigma \in \aut(X)$ and write $\sigma = \sigma_1
 \circ \sigma_2 \circ \cdots \circ \sigma_r = \tau_1 \circ \tau_2 \circ
 \cdots \circ \tau_s$ where the $\sigma_i$ are pairwise distinct and the
 $\tau_i$ are pairwise distinct.
+
+Pick some $\sigma_i$, we will get that $\sigma_i = \tau_j$ for some $j$.
+This is because we have some $x$ such that $\sigma_{j \neq i}(x) \neq y$
+and $\sigma_i(x) = y$. There is some $\tau_j$ such that $\tau_j(x) \neq
+x$. Suppose $\tau_{k \neq j}(z) = y$. Then $\tau(x) = \tau(z) = y$ but
+$x$ and $z$ are in two different cycles of $\tau$ which is a
+contradiction, so $\tau_j(x) = y$. We can now ``factor'' out $\sigma_i$
+and $\tau_j$ and apply the induction hypothesis.
 \end{proof}
 
 \subsection{Group Action}
+
+\begin{df}
+Let $X$ be a set. We say a group $G$ \textbf{acts} on $X$ via an
+\textbf{action} $\alpha$ if there exists an $\alpha : G \times X \to X$
+notated $g \cdot x = \alpha(g, x)$ such that
+\begin{enumerate}
+\item $e \cdot x = x, \forall x \in X$.
+\item $g \cdot (h \cdot x) = (gh) \cdot x, \forall x \in X$.
+\end{enumerate}
+\end{df}
+
+\begin{ex}
+$\aut(X)$ acts on $X$ via function application.
+\end{ex}
+
+\begin{df}
+Let the set of all real valued functions on a set $X$ be notated as
+$\mathcal{F}(X) = \lbrace f : X \to \RR \rbrace$.
+\end{df}
+
+\begin{ex}
+If $G$ acts on $X$, then $G$ acts on $\mathcal{F}(X)$ via $(gf)(x) =
+f(g^{-1}x)$.
+\end{ex}
+
+\begin{proof}
+We clearly have $(ef)(x) = f(x)$. Now compute
+\[ \begin{aligned}
+((gh)f)(x) &= f((gh)^{-1}x) \\
+&= f((h^{-1}g^{-1})x) \\
+&= f(h^{-1}(g^{-1}x) \\
+&= (hf)(g^{-1}x) \\
+&= (g(hf))(x) \\
+\end{aligned} \]
+\end{proof}
