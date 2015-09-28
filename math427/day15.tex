@@ -1,0 +1,112 @@
+\section{September 28, 2015}
+
+\subsection{Review}
+
+\begin{ex}
+We extend the example from yesterday and show $\ZZ / ab \ZZ \iso \ZZ / a
+\ZZ \times \ZZ / b \ZZ$ for $(a, b) = 1$.
+\end{ex}
+
+\begin{proof}
+Recall that $(a, b) = 1, a \mid bq \implies a \mid q$. Now we define the
+homomorphism $f : \ZZ \to \ZZ / a \ZZ \times \ZZ / b \ZZ$ given by $k
+\mapsto ([k]_a, [k]_b)$. We can compute $\ker(f) = ab\ZZ$. First
+isomorphism theorem gives us that there is a well defined injective
+homomorphism $\overline{f} : \ZZ / ab \ZZ \to \ZZ / a \ZZ \times \ZZ / b
+\ZZ$ given by $[k]_{ab} \mapsto ([k]_a, [k]_b)$. Comparing the sizes of
+both groups, we get that this morphism is surjective so it is also an
+isomorphism between the two groups.
+\end{proof}
+
+\subsection{Unrelated Things}
+
+We also give an application of Lagrange's Theorem.
+
+\begin{lem}
+\label{lagrange2}
+Suppose $G$ is a finite group and $g \in G$. Then
+\[ g^{|G|} = e. \]
+\end{lem}
+
+\begin{proof}
+By Lagrange's Theorem, we have
+\[ |G| = |\langle g \rangle||G/\langle g \rangle|. \]
+We also have $\langle g \rangle \iso \ZZ / n \ZZ$ where $n = |\langle g
+\rangle|$ and $g^n = e$. Now compute
+\[ g^{|G|} = g^{|\langle g \rangle||G / \langle g \rangle|} = e^{|G /
+\langle g \rangle|} = e. \]
+\end{proof}
+
+\begin{thm}[Euler's Totient Theorem]
+If $(a, n) = 1$, then $a^{\varphi(n)} \equiv 1 \pmod{n}$.
+\end{thm}
+
+\begin{proof}
+Let $(\ZZ / n \ZZ)^{\times}$ be the group of units of $\ZZ / n \ZZ$, aka
+$\lbrace [a] \mid (a, n) = 1 \rbrace$. We have $|(\ZZ / n \ZZ)^\times| =
+\varphi(n)$. Now just use \ref{lagrange2}.
+\end{proof}
+
+\subsection{Sign Homomorphism for Symmetric Groups}
+
+\begin{df}
+A permutation $\tau \in S_n$ is called a \textbf{transposition} if
+$\tau = (ij)$.
+\end{df}
+
+\begin{thm}
+We have the homomorphism $\sgn : S_n \to \lbrace \pm 1 \rbrace$ such
+that given $\tau \in S_n$ a transposition, $\sgn(\tau) = -1$.
+\end{thm}
+
+\subsection{A Brief Note in Representation Theory}
+Let $V$ be a vector space. We have a group $GL(V)$ whose elements are
+invertible linear maps $T : V \to V$ under composition. In fact, we have
+the isomorphism $GL_n(\RR) \iso GL(\RR^n)$. These two things are not
+quite the same. The left consists of matrices and the right consists of
+linear maps.
+
+\begin{df}
+A (real) \textbf{representation} of a group $G$ on a (real) vector space
+$V$ is a homomorphism
+\[ \varphi : G \to GL(V). \]
+\end{df}
+
+\begin{ex}
+The dihedral group $D_{2n}$ has canonical representation $\varphi :
+D_{2n} \to GL_2(\RR)$ where
+\[ \rho \mapsto \begin{pmatrix} \cos \frac{2\pi}{n} & -\sin
+\frac{2\pi}{n} \\ \sin \frac{2\pi}{n} & \cos \frac{2\pi}{n}
+\end{pmatrix} \quad \tau \mapsto \begin{pmatrix} 1 & 0 \\ 0 & -1
+\end{pmatrix} \]
+and $\rho$ is a rotation and $\tau$ is a reflection.
+\end{ex}
+
+\begin{ex}
+$S_n$ has a canonical represnetation on $\RR^n$.
+
+We have the isomorphism
+$\varphi : \RR^n \leftarrow \mathcal{F}(\lbrace 1, 2, \dots, n\rbrace)$
+given by
+\[ (x_1, x_2, \dots, x_n) \mapsfrom \left(\begin{aligned}
+1 &\mapsto x_1 \\
+2 &\mapsto x_2 \\
+&\vdots \\
+n &\mapsto x_n
+\end{aligned}\right) \]
+Notice that this bijection is linear, or
+\[ \varphi(\lambda x + \mu y) = \lambda\varphi(x) + \mu\varphi(y) \]
+
+Now notice that $S_n$ acts on $\mathcal{F}(\lbrace 1, 2, \dots,
+n\rbrace)$ via $\sigma \cdot f = f \circ \sigma$. This also gives a
+group action on $\RR^n$, namely
+\[ \sigma \cdot (x_1, x_2, \dots, x_n) = (x_{\sigma(1)}, \dots,
+x_{\sigma(n)}). \]
+
+For each $\sigma \in S_n$, we now define the map $\psi(\sigma) : \RR^n
+\to \RR^n$ by
+\[ (x_1, \dots, x_n) \mapsto (x_{\sigma(1)}, \dots, x_{\sigma(n)}) \]
+Notice how $\psi(\sigma)$ is linear so $\psi(\sigma) \in GL(\RR^n)$.
+Compatability of group action gives us that $\psi$ is a homomorphism
+from $S_n \to GL(\RR^n)$, so it is a representation.
+\end{ex}
