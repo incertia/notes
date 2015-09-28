@@ -1,1 +1,95 @@
 \section{Day 9}
+
+\subsection{Permutation Groups}
+
+Recall that $\aut(X) = \lbrace \varphi : X \biject X \rbrace$.
+
+\begin{df}
+The \textbf{permutation group} $S_n$ is defined as
+\[ S_n = \aut(\lbrace 1, 2, \dots, n \rbrace). \]
+\end{df}
+
+\begin{rem}
+\[ |S_n| = n!. \]
+\end{rem}
+
+\begin{proof}
+Let $\sigma \in S_n$. There are $n$ choices for $\sigma(1)$, $n - 1$
+choices for $\sigma(2)$, and so on.
+\end{proof}
+
+We can notate permutations as
+\[ \sigma = \begin{pmatrix}
+1 & 2 & \cdots & n \\
+\sigma(1) & \sigma(2) & \cdots & \sigma(n) \\
+\end{pmatrix} \]
+
+We can also use a slightly less verbose version called \textbf{cycle
+notation}, in which we write $\sigma$ as a product of cycles $a_1 a_2
+\cdots a_n$ in which $a_1 \xrightarrow{\sigma} a_2 \xrightarrow{\sigma}
+\cdots \xrightarrow{\sigma} a_n \xrightarrow{\sigma} a_1$. For example,
+we can write
+\[ \sigma = \begin{pmatrix}
+1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+4 & 6 & 3 & 2 & 7 & 1 & 5 \\
+\end{pmatrix} = (1426)(3)(57) \in S_7. \]
+
+We can view each independent cycle as a seperate permutation in $S_n$
+that permutes the denoted elements but fixes everything else. i.e.
+\[ S_7 \ni (1234) = \begin{pmatrix}
+1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+2 & 3 & 4 & 1 & 5 & 6 & 7 \\
+\end{pmatrix} \]
+and we can view the multiplication as the composition in $S_n$.
+
+\begin{df}
+Above, we used cycle without defining what a cycle is. A permutation
+$\sigma \in S_n$ is a \textbf{cycle} of length $r \leq n$ if $\exists$
+distinct $x_1, x_2, \dots, x_r \in \lbrace 1, 2, \dots, n \rbrace$.
+\begin{enumerate}
+\item $\sigma(x_i) = x_{i + 1}$
+\item $\sigma(x) = x$ for all $x \neq x_i$.
+\end{enumerate}
+This leads to the natural definition of cycle notation stated above.
+\end{df}
+
+\begin{df}
+Let $\sigma \in S_n$. We say that $x$ is \textbf{fixed} by $\sigma$ if
+$\sigma(x) = x$. Otherwise $x$ is \textbf{moved}.
+\end{df}
+
+\begin{df}
+Two permutations $\sigma, \tau \in S_n$ are said to be \textbf{disjoint}
+if for all $x \in \lbrace 1, 2, \dots, n \rbrace$,
+\begin{itemize}
+\item $x$ moved by $\sigma$ $\implies$ $x$ fixed by $\tau$.
+\item $x$ moved by $\tau$ $\implies$ $x$ fixed by $\sigma$.
+\end{itemize}
+Notice here we don't care if both $\sigma, \tau$ fix the same elemnts.
+They just can't move the same elements.
+\end{df}
+
+\begin{lem}
+Let $\sigma, \tau \in S_n$ be two disjoint permutations (different from
+cycles!). Then $\sigma \circ \tau = \tau \circ \sigma$.
+\end{lem}
+
+\begin{proof}
+We have three cases.
+\begin{enumerate}
+\item $x$ is fixed by $\sigma$ and $\tau$.
+\item $x$ is moved by $\sigma$.
+\item $x$ is moved by $\tau$.
+\end{enumerate}
+Case 1 is trivial as $\sigma(\tau(x)) = x = \tau(\sigma(x))$.
+
+For case 2, let $y = \sigma(x) \neq x$. We have $\sigma(y) =
+\sigma(\sigma(x))$. If $\sigma(y) = \sigma(x) = y$, then $\sigma$ is not
+a bijection so we have $\sigma(y) \neq y$, or $y$ is moved by $\sigma$,
+so $y$ is fixed in $\tau$. $x$ is also fixed in $\tau$ because $x$ is
+moved by $\sigma$, so we have $\tau(\sigma(x)) = \sigma(x) =
+\sigma(\tau(x))$.
+
+Case 3 is exactly the same as the above but with $\sigma$ and $\tau$
+interchanged.
+\end{proof}
