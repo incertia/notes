@@ -1,0 +1,59 @@
+\section{Day 14}
+
+\subsection{Review}
+
+Last time, we covered two big ideas.
+\begin{enumerate}
+\item Let $N$ be a normal subgroup of $G$. Then the cosets $G/N$ form a
+group with the natural operation $(aN)(bN) = (ab)N$.
+\item The First Isomorphism Theorem, or let $\varphi : G \to H$ be a
+homomorphism. Then $\varphi$ induces a well defined isomorphism
+$\overline{\varphi} : G / \ker \varphi \to \im \varphi$ given by
+$\overline{\varphi}(a \ker \varphi) = \varphi(a)$ with a nice
+commutative square.
+\end{enumerate}
+
+\subsection{Examples}
+\begin{ex}
+Let $\varphi : \RR \to \CC^*$ be given by $\theta \mapsto e^{2 \pi i
+\theta}$. Then $\im \varphi = \varphi(\RR) = \lbrace z \in C^* : |z| = 1
+\rbrace = S^1$ and $\ker \varphi = \lbrace \theta : e^{2 \pi i \theta} =
+1 \rbrace = \ZZ$. The isomorphism theorem tells us that the isomorphism
+$\overline{\varphi} : \RR / \ZZ \to S^1$ is well defined.
+\end{ex}
+
+\begin{ex}
+We have the natural isomorphisms between $\ZZ / n\ZZ \sim \frac{1}{n}
+\ZZ / \ZZ \sim \mu_n$.
+\end{ex}
+
+\subsection{Products of groups}
+Let $K, H$ be two groups. We can turn their cartesian product into a
+group by doing things element wise, or
+\[ (k_1, h_1) \cdot (k_2, h_2) = (k_1 k_2, h_1 h_2 \]
+is a group.
+
+We have some nice properties as well.
+\begin{enumerate}
+\item We have projection maps $\pi_K : K \times H \to K$ and $\pi_H : K
+\times H \to H$.
+\item For all pairs of homomorphisms $\varphi : G \to K, \psi : G \to
+H, \exists ! \quad \varphi \times \psi : G \to K \times H$ a
+homomorphism.
+\end{enumerate}
+
+\begin{ex}
+$\ZZ / 6 \ZZ \iso \ZZ / 2 \ZZ \times \ZZ / 3 \ZZ$.
+\end{ex}
+
+\begin{proof}
+We have the obvious
+homomorphism $f : \ZZ \to \ZZ / 2 \ZZ \times \ZZ / 3 \ZZ$ given by $k
+\mapsto ([k]_2, [k]_3)$. Combined with the fact that $\ker f = 6\ZZ$,
+the first isomorphism theorem says that $\overline{f} : \ZZ / 6 \ZZ \to
+\ZZ / 2 \ZZ \times \ZZ / 3 \ZZ$ given by $[k]_6 \mapsto ([k]_2, [k]_3)$
+is a well defined isomorphism.
+\end{proof}
+
+\subsection{New Things?}
+Nope. There was a quiz.
