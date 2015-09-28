@@ -7,4 +7,40 @@ important ``factorization'' theorem regarding permutations.
 \begin{thm}
 Every permutation $\sigma \in S_n$ can be written as a unique product of
 disjoint cycles up to order.
+
+We can restate in the following way. Let $X$ be a set of finite
+elements. Then any $\sigma \in \aut(X)$ can be written as a unique
+product of disjoint cycles.
 \end{thm}
+
+\begin{proof}
+We first prove the existence of such a product by induction on $|X|$. If
+$|X| = 1$, then $\aut(X) = \lbrace \id_X \rbrace$. Now suppose that it
+is true for all $k \leq n$. Let $\sigma \in X, \sigma \neq \id, |X| = n
++ 1$.  Because $\sigma \neq \id$, we have some $x$ such that $\sigma(x)
+\neq x$ and we can create a chain $x_0 = x$, $x_i = \sigma(x_{i - 1})$
+for $i > 0$. Clearly not all of these are distinct because $X$ is
+finite.
+
+Now we take the largest $k$ such that $x_0, x_1, \dots, x_k$ are
+distinct. We claim that $\sigma(x_k) = x_0$.
+
+Suppose $\sigma(x_k) = x_i, i > 0$. Then $\sigma(x_k) = \sigma(x_{i -
+1})$ and $\sigma$ being a bijection implies that $x_k = x_{i - 1}$,
+which is a contradiction because $x_0, x_1, \dots, x_k$ are all
+distinct.
+
+We now define the sets $X_1 = \lbrace x_0, x_1, \dots, x_k \rbrace, Y =
+X \setminus X_1$. By construction, $\sigma(X_1) = X_1$ so $\sigma(Y) =
+Y$. Now let
+\[ \sigma_1 = \left\lbrace\begin{aligned}
+\sigma(x) &\quad x \in X \\
+x &\quad x \in Y \\
+\end{aligned}\right. \quad \sigma_2 = \left\lbrace\begin{aligned}
+x &\quad x \in X \\
+\sigma(x) &\quad x \in Y \\
+\end{aligned}\right. \]
+This gives $\sigma_1, \sigma_2$ as disjoint permutations and $\sigma_2$
+is a product of disjoint permutations by inductive assumption so we are
+done.
+\end{proof}
