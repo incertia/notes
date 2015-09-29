@@ -1,1 +1,117 @@
-\section{Day 11}
+\section{September 18, 2015}
+
+\subsection{More Subgroups}
+
+\begin{prop}
+\label{homomorphismidea}
+Let $G$ be a group and let $G \ni g \neq e$. Let $\varphi : \ZZ \to
+\langle g \rangle$ be given by $k \mapsto g^k$. Then either
+\begin{enumerate}
+\item $\varphi$ is an isomorphism.
+\item $\exists n \geq 0 \st \overline{\varphi} :  \ZZ / n \ZZ \to
+\langle g \rangle, \overline{\varphi}([k]) = g^k$ is a well defined
+isomorphism.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+If $\varphi$ is injective, then $\varphi$ is an isomorphism so suppose
+$\varphi$ is not injective. Then we have some $k > l$ such that
+$\varphi(k) = \varphi(l)$, or $g^{k - l} = e$, or $\exists m \st g^m =
+e$. Let $n$ be the minimum of these numbers.
+
+All that remains to check is that $\overline{\varphi}$ is a well defined
+homomorphism, but this is obvious.
+\begin{enumerate}
+\item $[k] = [l] \implies k = l + tn \implies \overline{\varphi}([k]) =
+g^{l + tn} = g^l e^t = g^l = \overline{\varphi}([l])$.
+\item $\overline{\varphi}([k] + [l]) = \overline{\varphi}([k + l]) =
+g^{k + l} = g^k g^l = \overline{\varphi}([k]) \overline{\varphi}([j])$.
+\item $\overline{\varphi}$ is clearly surjective because for each $g^k
+\in \cycgroup{g}$, we have $[k] \mapsto g^k$. Now suppose
+$\overline{\varphi}([a]) = \overline{\varphi}([b])$. This implies $g^a =
+g^b$, or $g^{a - b} = e$, or $n \mid a - b$, so $[a] = [b]$.
+\end{enumerate}
+\end{proof}
+
+\begin{rem}
+We can imagine this situation with the following commutative diagram.
+\begin{center}
+\begin{tikzpicture}[scale=2.5, nodes={scale=1.2}]
+\node (Z) at (0, 1) {$\ZZ$};
+\node (g) at (1, 1) {$\cycgroup{g}$};
+\node (znz) at (0, 0) {$\ZZ / n \ZZ$};
+\path[->]
+(Z) edge node[above]{$\varphi$} (g)
+(Z) edge node[left]{$\pi$} (znz);
+\path[->, dashed]
+(znz) edge node[below]{$\overline{\varphi}$} (g);
+\end{tikzpicture}
+\end{center}
+\end{rem}
+
+We now generalize \ref{homomorphismidea} to homomorphisms in general.
+
+\begin{df}
+Let $\varphi : G \to H$ be a homomorphism. Let the \textbf{kernel} of
+$\varphi$, denoted $\ker(\varphi)$ to be the set $\lbrace g \in G :
+\varphi(g) = e_H \rbrace$.
+\end{df}
+
+\begin{prop}[Kernel Injectivity Relation]
+Let $\varphi : G \to H$ be a homomorphism. Then
+\[ \forall a, b \in G \quad \varphi(a) = \varphi(b) \iffarrow ab^{-1}
+\in \ker(\varphi). \]
+More specifically, $\ker(\varphi) = \lbrace e_G \rbrace \iffarrow
+\varphi$ is injective.
+\end{prop}
+
+\begin{proof}
+\[ \begin{aligned}
+ab^{-1} \in \ker(\varphi) &\iffarrow e_H = \varphi(ab^{-1}) = \varphi(a)
+\varphi(b^{-1}) = \varphi(a) \varphi(b)^{-1} \\
+&\iffarrow e_h \varphi(b) = \varphi(a) \varphi(b)^{-1} \varphi(b) \\
+&\iffarrow \varphi(b) = \varphi(a) \\
+\end{aligned} \]
+
+Now suppose $\ker(\varphi) = \lbrace e_G \rbrace$ and $\varphi(a) =
+\varphi(b)$. Then $ab^{-1} \in \ker(\varphi) \implies ab^{-1} = e_G
+\implies a = b$. Conversely suppose $\varphi$ is injective and $a \in
+\ker(\varphi)$. Then $\varphi(a) = e_H = \varphi(e_G)$. Injectivity of
+$\varphi$ gives $a = e_G$.
+\end{proof}
+
+\begin{df}
+A subgroup $H \leq G$ is called \textbf{normal} if $\forall g \in G, h
+\in H$, $ghg^{-1} \in H$.
+\end{df}
+
+\begin{prop}
+Let $\varphi : G \to H$ be a homomorphism. Then $\ker \varphi$ is a
+normal subgroup of $G$.
+\end{prop}
+
+\begin{proof}
+$ $
+\begin{enumerate}
+\item $g_1, g_2 \in \ker \varphi \implies g_1 g_2 \in \ker \varphi$ because
+$\varphi(g_1 g_2) = \varphi(g_1) \varphi(g_2) = e_H e_H = e_H$.
+\item $e_G \in \ker \varphi$ because $e_H = \varphi(g) = \varphi(e_G g)
+= \varphi(e_G) \varphi(g) = \varphi(e_G), \forall g \in \ker \varphi$.
+\item $g \in \ker \varphi \implies g^{-1} \in \ker \varphi$ because $e_H
+= \varphi(e_G) = \varphi(g g^{-1}) = \varphi(g) \varphi(g^{-1})$.
+\item $ghg^{-1} \in \ker \varphi$ because $\varphi(ghg^{-1}) =
+\varphi(g) \varphi(h) \varphi(g^{-1}) = \varphi(g) \varphi(g^{-1}) =
+\varphi(gg^{-1}) = e_H$.
+\end{enumerate}
+\end{proof}
+
+\begin{rem}
+If $G$ is abelian, then any subgroup $H \leq G$ is normal.
+\end{rem}
+
+\begin{ex}
+$\det : GL_n(\RR) \to \RR^\times$ is a homomorphism. We also have
+$SL_2(\RR) = \ker(\det) = \lbrace A \in GL_n(\RR) : \det A = 1 \rbrace$
+is a normal subgroup.
+\end{ex}
