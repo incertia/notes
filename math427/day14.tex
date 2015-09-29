@@ -1,4 +1,4 @@
-\section{Day 14}
+\section{September 25, 2015}
 
 \subsection{Review}
 
@@ -23,14 +23,26 @@ $\overline{\varphi} : \RR / \ZZ \to S^1$ is well defined.
 \end{ex}
 
 \begin{ex}
-We have the natural isomorphisms between $\ZZ / n\ZZ \sim \frac{1}{n}
-\ZZ / \ZZ \sim \mu_n$.
+We have the natural isomorphisms between $\ZZ / n\ZZ \iso \frac{1}{n}
+\ZZ / \ZZ \iso \mu_n$.
+
+Some elaboration... To get $\ZZ / n\ZZ \iso \frac{1}{n}\ZZ / \ZZ$, we
+use the map $\varphi : \ZZ \to \frac{1}{n}\ZZ, k \mapsto \frac{k}{n}$
+composed with the map $\pi : \frac{1}{n}\ZZ \to \frac{1}{n}\ZZ / \ZZ$.
+Clearly $\pi \circ \varphi$ is a homomorphism and $\ker(\pi \circ
+\varphi) = \lbrace k : \frac{k}{n} \in \ZZ \rbrace = n\ZZ$. Then the
+first isomorphism theorem gets us that there is some unique and well
+defined isomorphism $\overline{\pi \circ \varphi} : \ZZ / n\ZZ \to
+\frac{1}{n}\ZZ / \ZZ, a + n\ZZ \mapsto \frac{a}{n} + \ZZ$.
+
+We also have the silly isomorphism $\psi : \frac{1}{n}\ZZ \surj \mu_n$
+by $\frac{k}{n} \mapsto e^{\frac{2 i \pi k}{n}}$ which has kernel $\ZZ$.
 \end{ex}
 
 \subsection{Products of groups}
 Let $K, H$ be two groups. We can turn their cartesian product into a
 group by doing things element wise, or
-\[ (k_1, h_1) \cdot (k_2, h_2) = (k_1 k_2, h_1 h_2 \]
+\[ (k_1, h_1) \cdot (k_2, h_2) = (k_1 k_2, h_1 h_2) \]
 is a group.
 
 We have some nice properties as well.
