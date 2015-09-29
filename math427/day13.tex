@@ -55,7 +55,34 @@ that the following square commutes.
 \path[->] (G)   edge         node[above]{$\varphi$}            (H)
           (G)   edge         node[left] {$\pi$}                (ker)
           (ker) edge[dashed] node[below]{$\overline{\varphi}$} (im);
-\path[right hook->] (im) edge node[right]{$i$} (H);
+\path[right hook->] (im) edge node[right]{$\id$} (H);
 \end{tikzpicture}
 \end{center}
+or in other words, $\overline{\varphi}(aN) = \varphi(a)$.
 \end{thm}
+
+\begin{proof}
+Let $N = \ker\varphi$.
+\begin{enumerate}
+\item We first verify that $\overline\varphi$ is well defined, which is
+easy because if $aN = bN$, then $b = an$ for some $n \in \ker\varphi$ so
+\[ \overline\varphi(bN) = \varphi(b) = \varphi(an) =
+ \varphi(a)\varphi(n) = \varphi(a) = \overline\varphi(aN). \]
+\item $\overline\varphi$ is a homomorphism because
+\[ \overline\varphi((aN)(bN)) = \overline\varphi((ab)N) = \varphi(ab) =
+\varphi(a)\varphi(b) = \overline\varphi(aN) \overline\varphi(bN). \]
+\item $\overline\varphi$ is clearly surjective so we verify injectivity
+by computing the kernel.
+\[ \ker\overline\varphi = \lbrace aN : \varphi(a) = e_H \rbrace =
+\lbrace aH : a \in N \rbrace = \lbrace N \rbrace = eH. \]
+\end{enumerate}
+\end{proof}
+
+\begin{ex}
+Let $G$ be some group and let $g \in G$. Define the homomorphism
+$\varphi : \ZZ \to G$ by $n \mapsto g^n$. Clearly $\varphi(\ZZ) =
+\cycgroup{g}$ and $\ker\varphi = n\ZZ$ for some $n \in \ZZ$. Then we
+by the first isomorphism theorem that there is a well defined
+isomorphism $\overline\varphi : \ZZ / n\ZZ \to \cycgroup{g}$ given by
+$k + n\ZZ \mapsto g^k$.
+\end{ex}
