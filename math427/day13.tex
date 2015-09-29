@@ -1,1 +1,61 @@
-\section{Day 13}
+\section{September 23, 2015}
+
+\subsection{More Cosets}
+
+\begin{prop}
+Let $H \leq G$.
+\[ H\,\textrm{normal} \iff aH = Ha. \]
+\end{prop}
+
+\begin{proof}
+If $H$ is normal, then
+\[ aH = \lbrace ah : h \in H \rbrace = \lbrace aa^{-1}ha : h \in H
+\rbrace = \lbrace ha : h \in H \rbrace \subseteq Ha. \]
+Similarly, $Ha \subseteq aH$ so $aH = Ha$.
+
+If $aH = Ha$, then $ah_1 = h_2a$, or $ah_1a^{-1} = h_2 \in H$, so $H$ is
+normal.
+\end{proof}
+
+\begin{cor}
+Let $H \leq G$ and let $\lvert G / H \rvert = 2$. Then $H$ is normal.
+\end{cor}
+
+\begin{proof}
+$G/H$ is composed of $H$ and $G \setminus H$. $H \backslash G$ is
+composed of $H$ and $G \setminus H$ as well. The left cosets are the
+right cosets.
+\end{proof}
+
+\begin{thm}
+Let $N \lhd G$ be a normal subgroup of $G$. Then the set of cosets $G /
+N$ is a group under the standard multiplication $(aN)(bN) = (ab)N$ and
+the projection map $\pi : G \surj G / N$ a homomorphism.
+\end{thm}
+
+\begin{proof}
+We confirm that multiplication is well defined. If $aN = a'N, bN = b'N$,
+then $a' = an_1, b' = bn_2$, or $a'b' = an_1bn_2 = abb^{-1}n_1bn_2 =
+abn_3n_2$. Confirming that $G/N$ is a group under this multiplication is
+trivial. Then by construction, we get that $\pi$ is a surjective
+homomorphism.
+\end{proof}
+
+\begin{thm}[First Isomorphism Theorem]
+Let $\varphi : G \to H$ be a homomorphism. Then there is a unique
+isomorphism $\overline{\varphi} : G / \ker\varphi \to \varphi(G)$ such
+that the following square commutes.
+\begin{center}
+\begin{tikzpicture}[scale=3, nodes={scale=1.2}]
+\node (G)   at (0, 1) {$G$};
+\node (H)   at (2, 1) {$H$};
+\node (ker) at (0, 0) {$G / \ker\varphi$};
+\node (im)  at (2, 0) {$\varphi(G)$};
+
+\path[->] (G)   edge         node[above]{$\varphi$}            (H)
+          (G)   edge         node[left] {$\pi$}                (ker)
+          (ker) edge[dashed] node[below]{$\overline{\varphi}$} (im);
+\path[right hook->] (im) edge node[right]{$i$} (H);
+\end{tikzpicture}
+\end{center}
+\end{thm}
