@@ -60,18 +60,18 @@ $\varphi$, denoted $\ker(\varphi)$ to be the set $\lbrace g \in G :
 
 \begin{prop}[Kernel Injectivity Relation]
 Let $\varphi : G \to H$ be a homomorphism. Then
-\[ \forall a, b \in G \quad \varphi(a) = \varphi(b) \iffarrow ab^{-1}
-\in \ker(\varphi). \]
-More specifically, $\ker(\varphi) = \lbrace e_G \rbrace \iffarrow
-\varphi$ is injective.
+\[ \forall a, b \in G \quad \varphi(a) = \varphi(b) \iff ab^{-1} \in
+\ker(\varphi). \]
+More specifically, $\ker(\varphi) = \lbrace e_G \rbrace \iff \varphi$ is
+injective.
 \end{prop}
 
 \begin{proof}
 \[ \begin{aligned}
-ab^{-1} \in \ker(\varphi) &\iffarrow e_H = \varphi(ab^{-1}) = \varphi(a)
-\varphi(b^{-1}) = \varphi(a) \varphi(b)^{-1} \\
-&\iffarrow e_h \varphi(b) = \varphi(a) \varphi(b)^{-1} \varphi(b) \\
-&\iffarrow \varphi(b) = \varphi(a) \\
+ab^{-1} \in \ker(\varphi) &\iff e_H = \varphi(ab^{-1}) = \varphi(a)
+\varphi(b^{-1}) = \varphi(a) \varphi(b)^{-1} \\ &\iff e_h \varphi(b) =
+\varphi(a) \varphi(b)^{-1} \varphi(b) \\
+&\iff \varphi(b) = \varphi(a) \\
 \end{aligned} \]
 
 Now suppose $\ker(\varphi) = \lbrace e_G \rbrace$ and $\varphi(a) =
