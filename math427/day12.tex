@@ -1,1 +1,55 @@
-\section{Day 12}
+\section{September 21, 2015}
+
+\subsection{Cosets}
+
+\begin{df}
+Let $H \leq G$. Define a relation $\sim$ on $G$ by
+\[ a \sim b \iff ab^{-1} \in H, \]
+or
+\[ \exists h \in H \st a = hb. \]
+\end{df}
+
+\begin{prop}
+$\sim$ is an equivalence relation.
+\end{prop}
+
+\begin{proof}
+$ $
+\begin{enumerate}
+\item $\forall g \in G, gg^{-1} = e \in H \implies a \sim a$.
+\item If $a \sim b$, then $a = hb \implies b = h^{-1}a$, but $h^{-1} \in
+H$ so $b \sim a$.
+\item Suppose $a \sim b$ and $b \sim c$. Then $a = h_1 b, b = h_2 c$,
+and $a = (h_1 h_2)c$ so $a \sim c$.
+\end{enumerate}
+\end{proof}
+
+\begin{df}
+The equivalence classes of $\sim$ are called the \textbf{right cosets}
+of $H$, notated by
+\[ H \backslash G = \left\lbrace Ha = \lbrace ha : h \in H \rbrace : a
+\in G \right\rbrace. \]
+\end{df}
+
+\begin{rem}
+We have some nice properties.
+\begin{enumerate}
+\item $Ha = Hb \iff a \sim b \iff ab^{-1} \in H \iff \exists h \st a =
+hb$.
+\item $Ha \cap Hb \neq \varnothing \implies Ha = Hb \implies a = hb$.
+\item Let $\varphi : G \to K$ be a homomorphism. We know that
+$\varphi(a) = \varphi(b) \iff ab^{-1} \in \ker\varphi$ so we have
+\[ \varphi(a) = \varphi(b) \iff (\ker\varphi)a = (\ker\varphi)b \]
+\end{enumerate}
+\end{rem}
+
+\begin{df}
+We can mirror this, but on the left to get the \textbf{left cosets} of
+$H$, notated by
+\[ G / H = \left\lbrace aH = \lbrace ah : h \in H \rbrace : a \in G
+\right\rbrace. \]
+\end{df}
+
+\begin{rem}
+$Ha \neq aH$ unless $H$ is normal.
+\end{rem}
