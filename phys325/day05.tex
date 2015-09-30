@@ -1,0 +1,59 @@
+\section{Day 5}
+
+\subsection{Centrifugal Force Things}
+Consider the acceleration in cylindrical coordinates.
+\[ \vec{a} = \hat{s} (\ddot{s} - s \dot{\phi}) + \cdots. \]
+$\ddot{s}$ is the familiar acceleration of the radial coordinate.
+However, $-s\dot{\phi}$ is non-zero and keeps the rotating object
+constrained to the circle it's moving along. However, in an accelerating
+circular frame of reference, this term appears on the other side of the
+equation.
+
+\subsection{Terminal Velocity}
+This occurs when there is some extra force $\left(\sum kv^{e_j}\right)
+\hat{v}$. When there is some other (semi-)constant force, we have
+$\vec{F} + \vec{F}_d = m \dot{\vec{v}}$, and $\dot{\vec{v}} \to 0$ for
+some sufficiently large time $t$, we will reach some constant velocity,
+which we term terminal velocity.
+
+\subsection{Homework Remarks}
+A useful trick for solving integrals of the form $\int_0^\infty e^{-t^2}
+dt$ is to square and get the form $\iint e^{-(x^2 + y^2)} dx dy$ and
+switch to polar coordinates to introduce $\int e^{-r^2} r dr d \theta$.
+
+\subsection{Rocket Motion}
+A rocket ejects exhaust out the back end with some speed $v_{e}$ relative
+to the rocket. Suppose there is also some external force $\pvec{F}'$,
+which is usually $0$, or gravity.
+
+\begin{rem}
+Here we introduce the actual form of Newton's second law.
+\[ \vec{F} = \frac{d\vec{p}}{dt} \]
+This equation never lies.
+\end{rem}
+
+Let the initial mass and velocity of the rocket be $m_0, v_0$,
+respectively. After some timestep $\Delta t$, we have speed $v = v_0 +
+\Delta v$ and eject $m_e$ exhaust mass at speed $v_e$, so our rocket
+mass is now $m = m_0 - m_e$. Here we have the forms for momentum in this
+case
+\[ \begin{aligned}
+p &= m_0 v_0 \\
+p' &= mv + m_e(v_0 - v_e) \\
+&= (m - m_e)(v_0 + \Delta v) + m_e(v_0 - v_e) \\
+&= m_0 (v_0 + \Delta v) - m_e (v_e + \Delta v) \\
+\end{aligned} \]
+The difference yields
+\[ \Delta p = m_0 \Delta v + \Delta m v_e + \Delta m \Delta v, \]
+which implies
+\[ \frac{dp}{dt} = m_0 \frac{dv}{dt} + \frac{dm}{dt} v_e. \]
+Now we rearrange the force equation to get
+\[ F' - \dot{m}v_e = m \dot{v}. \]
+We also coin the term $-\dot{m}v_e$ as \textbf{thrust}.
+
+When $F' = 0$, we have
+\[ \begin{aligned}
+-\dot{m} v_e &= m \dot{v} \\
+-\frac{dm}{m} &= \frac{dv_e}{v_e} \\
+\end{aligned} \]
+After some integration, we get $v(m) = v_0 + v_e \ln \frac{m_0}{m}$.
