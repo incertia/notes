@@ -1,0 +1,67 @@
+\documentclass{article}
+
+\usepackage{incertia}
+
+% setup the header
+\pagestyle{fancy}
+\lhead{Will Song}
+\chead{Math 427}
+\rhead{HW5}
+
+\begin{document}
+
+\begin{enumerate}
+
+\item If $n \in H \leq \ZZ$, then one of $n, -n \geq 0$ so we can take
+the smallest positive element of $H$, which we shall name $d$. Clearly
+$d\ZZ \leq H$. Now suppose there is some $c$ not in $d\ZZ$ but in $H$.
+Then $c = qd + r$ with $0 < r < d$, so $H \ni r = c - qd > 0$
+contradicts the minimality of $d$.
+
+\item $H = \lbrace \id, (12) \rbrace$. By Lagrange's Theorem, we have
+$\frac{6}{2} = 3$ cosets. The right cosets are
+\[ H \backslash G = \lbrace \lbrace \id, (12) \rbrace, \lbrace (23),
+(123) \rbrace, \lbrace (31), (321) \rbrace \rbrace. \]
+The left cosets are
+\[ G / H = \lbrace \lbrace \id, (12) \rbrace, \lbrace (23), (321)
+\rbrace, \lbrace (31), (123) \rbrace \rbrace. \]
+Left cosets are not right cosets so $H$ is not normal in $S_3$.
+
+\item We cannot find $f^{-1}(1)$ because $f(n) > 0$.
+
+We can define a left inverse $g : \NN \to \NN, 1 \mapsto 1, 1 < n
+\mapsto n - 1$ such that $g \circ f = \id_\NN$, but we cannot have a
+right inverse because there is no $k \in \NN$ such that $f(k) = 1$.
+
+\item
+\begin{enumerate}[(a)]
+\item $\varphi_g \circ \varphi_{g^{-1}} = \id = \varphi_{g^{-1}} \circ
+\varphi_g$. This is true by compatibility of group action (we get the
+trivial action under composition.
+
+\item $\Phi(gh) = \varphi_{gh} = \varphi_g \circ \varphi_h = \Phi(g)
+\circ \Phi(h)$.
+\end{enumerate}
+
+\item We have both compatability and identity from the group axioms.
+i.e. $e \cdot g = eg = g$ and $(gh) \cdot x = g \cdot (h \cdot x)$ from
+associativity.
+
+\item For compatability, $(gh) \cdot x = (gh)x(gh)^{-1} =
+g(hxh^{-1})g^{-1} = g \cdot (h \cdot x)$. Identity is trivial.
+
+\item Because $\lvert G / H \rvert = 2$, $H$ is normal and $G / H =
+\lbrace H, G \setminus H = K \rbrace$. If we want $\ker \varphi = H$,
+then we just define $\varphi : H \ni h \mapsto 1, K \ni k \mapsto -1$.
+Because $H$ is the identity in the group $G / H$, $K \cdot K = H$ must
+be true and $\varphi((k_1h_1)(k_2h_2)) = \varphi(h_3 h_4) = 1$ by
+definition. It is easy to check that $\varphi(hk) = -1$ so $\varphi$ is
+a homomorphism and we are done.
+
+\item $hkh^{-1}k^{-1} = k_2k^{-1} \in K$ and $hkh^{-1}k^{-1} = hh_2 \in
+H$ by normality on $H$ and $K$ so we get $hkh^{-1}k^{-1} \in H \cap K$,
+or $hkh^{-1}k^{-1} = e \implies hk = kh$.
+
+\end{enumerate}
+
+\end{document}
