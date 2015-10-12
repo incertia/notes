@@ -1,0 +1,123 @@
+\section{October 2, 2015}
+
+\subsection{Orbits and Stabilizers}
+Recall that the stabilizer of an element $x$ are the elements $g \in G$
+that fix $x$ under the action.
+
+\begin{df}
+Similarly, we define the \textbf{orbit} of $G$ on an element $x$ to be
+\[ Gx = \lbrace gx \mid g \in G \rbrace. \]
+\end{df}
+
+\begin{prop}
+The map $\psi : G / \stab(x) \to Gx, a \stab(x) \mapsto ax$ is a well
+defined bijection.
+\end{prop}
+
+\begin{proof}
+$ $
+\begin{enumerate}
+\item Suppose $a\stab(x) = b\stab(x)$ for some $a, b \in G$. Then $a =
+bh$ for some $h \in \stab(x)$. Now compute
+\[ ax = (bh)x = b(hx) = bx \]
+to get that $\psi$ is well defined.
+\item $\psi$ is obviously surjective. $y \in Gx \implies y = gx$ and
+$g \stab(x) \xmapsto{\psi} gx = y$.
+\item To get that $\psi$ is injective, compute
+\[ \begin{aligned}
+\psi(a \stab(x)) &= \psi(b \stab(x)) \\
+ax &= bx \\
+b^{-1}ax &= ex = x \\
+&\Downarrow \\
+b^{-1}a &\in \stab(x) \\
+&\Downarrow \\
+a &= hb, h \in \stab(x) \\
+a\stab(x) &= b\stab(x). \\
+\end{aligned} \]
+\end{enumerate}
+\end{proof}
+
+\begin{ex}
+We introduce a very silly example.
+
+Consider $SO_2(\RR)$ and the point $P = (r, 0)$. $SO_2(\RR)(P) = \lbrace
+(x, y) \mid x^2 + y^2 = r^2 \rbrace$ and $\stab(P) = \lbrace I \rbrace$.
+Then the map
+\[ \begin{aligned}
+SO_2(\RR) / \stab(P) = SO_2(\RR) &\longrightarrow SO_2(\RR)(P) \\
+A &\longmapsto AP \\
+\end{aligned} \]
+is a bijection.
+\end{ex}
+
+\begin{cor}[Orbit Stabilizer Theorem]
+We have the following relationship for all $x \in X$.
+\[ \lvert Gx \rvert \lvert \stab(x) \rvert = \lvert G \rvert. \]
+\end{cor}
+
+\begin{proof}
+We have that $\lvert G / \stab(x) \rvert = \lvert Gx \rvert$ and
+Lagrange tells us $\lvert G \rvert = \lvert G / \stab(x) \rvert \lvert
+\stab(x) \rvert$.
+\end{proof}
+
+\begin{prop}
+Orbits form a valid partition and equivalence relation. i.e.
+\[ x \sim y \iff x = gy \quad g \in G. \]
+\end{prop}
+
+\begin{proof}
+We want to show that if $Gx \cap Gy \neq \varnothing$, then $Gx = Gy$.
+So suppose $z \in Gx, Gy$ so $z = g_1 x = g_2 y$. Then $x = g_1^{-1}(g_2
+y) = (g_1^{-1} g_2) y \in Gy \implies gx = g((g_1^{-1}g_2)y) \implies Gx
+\subseteq Gy$. Similarly, $Gy \subseteq Gx$ so $Gx = Gy$. The valid
+partitioning gives us an equivalence relation.
+\end{proof}
+
+\begin{prop}
+\label{actionbijection}
+There is a bijection between actions of $G$ on $X$ and homomorphisms $G
+\to \aut(X)$.
+\end{prop}
+
+\begin{proof}
+Given an action, we get maps $\varphi_g : X \to X, x \xmapsto{\varphi_g}
+gx$ which have left and right inverse $\varphi_{g^{-1}}$ so $\varphi_g
+\in \aut(X)$. Group action compatability tells us that $a(bx) = (ab)x$,
+or $(\varphi_a \circ \varphi_b)(x) = \varphi_a(\varphi_b(x)) =
+\varphi_{ab}(x)$. Which gives that the mapping $G \to \aut(X), g \mapsto
+\varphi_g$ is a homomorphism.
+
+Conversely, given a homomorphism $\psi : G \to \aut(X)$, we can define
+an action with $gx = \psi(g)(x)$. By homomorphism properties, it is
+trivial to prove that this is indeed an action.
+\end{proof}
+
+\begin{rem}
+There are two important actions of a group onto itself. Left
+multiplication ($x \mapsto gx$) and conjugation ($x \mapsto gxg^{-1}$).
+\end{rem}
+
+\begin{df}
+Orbits of conjugation are called \textbf{conjugacy classes}.
+\end{df}
+
+\begin{thm}[Cayley]
+\label{cayleythm}
+Left multiplication defines an injective homomorphism $\varphi : G \inj
+\sym(G)$.
+\end{thm}
+
+\begin{proof}
+Left multiplication is an action so we get a homomorphism by
+\ref{actionbijection}.
+
+We then compute the kernel. If $g \in \ker \varphi$, then $ge = e
+\implies g = e$ so $\ker \varphi = \lbrace e \rbrace$.
+\end{proof}
+
+\begin{rem}
+\ref{cayleythm} basically says that every group is isomorphic to some
+subgroup of its symmetric group, or you can embed every group into its
+symmetric group.
+\end{rem}
