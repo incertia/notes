@@ -1,0 +1,60 @@
+\documentclass{article}
+
+\usepackage{incertia}
+
+% setup the header
+\pagestyle{fancy}
+\lhead{Will Song}
+\chead{Math 427}
+\rhead{HW6}
+
+\begin{document}
+
+\begin{enumerate}
+
+\item We want $gng^{-1} \in N$ for all $n \in N, g \in G$, but $n = (k,
+e_H)$ and $(k_1, h) \cdot (k, e_H) \cdot (k_1^{-1}, h^{-1}) = (k_1 k
+k_1^{-1}, e_H) \in N$. To get isomorphism between $(K \times H) / N$, we
+use the silly projection homomorphism $\pi : K \times H \to H$ given by
+$(k, h) \xmapsto{\pi} h$ which clearly has kernel $K \times \lbrace e_H
+\rbrace$ and image $H$. Then just apply the first isomorphism theorem.
+
+\item
+\begin{enumerate}[(a)]
+\item Let $\tau$ be the $r$-cycle and $\rho$ be $\tau$ conjugated with
+$\sigma$. We show that if $\tau(i) = j$, then $\rho(\sigma(i)) =
+\sigma(j)$, but this is simple because $\rho(\sigma(i)) =
+\sigma\tau\sigma^{-1}\sigma(i) = \sigma\tau(i) = \sigma(j)$. But
+$\sigma$ is just a reordering of $[1..n]$ so $\rho$ has the same cycle
+structure as $\tau$. Namely, if $\tau$ fixes $x$ then $\rho$ fixes
+$\sigma(x)$.  If $\tau$ does not fix $x$ then $x = i_k$ and
+$\rho(\sigma(i_k)) = \sigma(i_{k + 1})$.
+
+\item No. Compute $(23)(1234)(32) = (1324) \not \in \cycgroup{1234}$.
+\end{enumerate}
+
+\item Suppose $g_1, g_2 \in Z(G)$. To get $g_1 g_2 \in Z(G)$, we want
+$z(g_1g_2) = (g_1g_2)z$, but we have $z(g_1g_2) = (zg_1)g_2 = (g_1z)g_2
+= g_1(zg_2) = g_1(g_2z) = (g_1g_2)z$. $Z(G)$ is trivially normal because
+$gzg^{-1} = z \in Z(G)$. $Z(D_8) = \lbrace e, \rho^2 \rbrace$ and
+$D(S_3) = \lbrace () \rbrace$.
+
+\item Consider $D_8$. It is easily verifiable that $D_8$ is not normal
+in $S_4$ (when taking the symmetric group representation), but $\lbrace
+1, \rho^2 \rbrace$ is indeed normal in $D_8$. A rather silly example is
+a group $G$ with a not normal subgroup $H$, because $H$ is also a normal
+subgroup of $H$.
+
+\item
+\begin{enumerate}[(a)]
+\item We want $(a, a)(b, b) \in D$, but $(a, a)(b, b) = (ab, ab) \in D$
+by definition.
+\item $D$ is normal in $G \times G$, or $(g_1, g_2) (a, a) (g_1^{-1},
+g_2^{-1}) = (b, b)$. This is the same as $(g_1 a, g_2 a) = (b g_1, b
+g_2)$ for some $b \in G, \forall a, g_1, g_2 \in G$. However, there is
+the special case $aa = ba$, which implies $a = b$ so $G$ is commutative.
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}
