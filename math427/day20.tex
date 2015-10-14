@@ -1,0 +1,116 @@
+\section{October 9, 2015}
+
+\subsection{Things}
+Recall that there is a canonical bijection between $G / \orb(x) \biject
+Gx$.
+
+\begin{df}
+A point $x \in X$ is called a \textbf{fixed point} of the action $G
+\times X \to X$ if $\orb(x) = G$.
+\end{df}
+
+\begin{ex}
+$(x, x, x, x, \dots, x) \in \RR^n$ is a fixed point under the standard
+action given by $S_n$.
+\end{ex}
+
+\begin{ex}
+There are no fixed points on a group $G$ by left multiplication unless
+$\lvert G \rvert = 1$.
+\end{ex}
+
+\begin{df}
+The set of all fixed points by conjugation is called the \textbf{center}
+of $G$. This is denoted by
+\[ Z(G) = \lbrace g \in G \mid zg = gz, \forall z \in G \rbrace. \]
+\end{df}
+
+\begin{rem}
+$Z(G)$ is an abelian subgroup and hence it is normal.
+\end{rem}
+
+\begin{df}
+Let $G$ act on itself by conjugation. We call the stabilizers of $x$ via
+this action the \textbf{centralizer} of $x$, denoted
+\[ \cent_G(x) = \stab(x) = \lbrace g \in G \mid gxg^{-1} = x \rbrace. \]
+We can extend this to a subset $S \subseteq G$ by
+\[ \cent_G(S) = \lbrace g \in G \mid gsg^{-1} = s, \forall s \in S
+\rbrace. \]
+\end{df}
+
+\begin{df}
+Similarly, we define the \textbf{normalizer} of a subset $S \subseteq
+G$ to be
+\[ \normal_G(S) = \lbrace g \in G \mid gsg^{-1} \in S, \forall s \in S
+\rbrace. \]
+\end{df}
+
+\begin{rem}
+$x \in Z(\cent_G(x))$.
+\end{rem}
+
+\begin{prop}
+Suppose $G$ is a finite group and $\lvert G \rvert = p^k$ for some prime
+$p$. Then $p \mid \lvert Z(G) \rvert$. In particular, $\lvert Z(G)
+\rvert \geq p$.
+\end{prop}
+
+\begin{proof}
+The proof requires the so called \textbf{conjugacy class equation}.
+\begin{lem}[Class Equation]
+Let $G$ be a finite group. Then choose representative elements $x_i$
+from each orbit of $G$ (there are finitely many!) and we have
+\[ \lvert G \rvert = \lvert Z(G) \rvert + \sum_{i} \frac{\lvert G
+\rvert}{\lvert \cent_G(x_i) \rvert}. \]
+\end{lem}
+\begin{proof}
+$G$ is finite so it has finitely many orbits under conjugation. In
+particular, there are finitely many orbits $\mathcal{O}_1, \dots,
+\mathcal{O}_n$ with size $> 1$. The union of the singleton orbits is
+just $Z(G)$. Now we choose representative elements from the
+non-singleton orbits $x_i \in \mathcal{O}_i, \forall i \in [1..n]$ and
+we trivially have that
+\[ \lvert G \rvert = \lvert Z(G) \rvert + \sum_i \lvert Gx_i \rvert. \]
+Now recall that $\lvert Gx_i \rvert = \lvert G / \stab(x_i) \rvert =
+\lvert G / \cent_G(x_i) \rvert = \frac{\lvert G \rvert}{\lvert
+\cent_G(x_i) \rvert}$ where the equalities come from the canonical
+bijection from orbit to stabilizer coset group, definition of
+centralizer, and Lagrange's theorem. This yields the desired result.
+\end{proof}
+
+Now by the class equation, we have that
+\[ p^k = \lvert Z(G) \rvert + \sum_i \frac{p^k}{\lvert \cent_G(x_i)
+\rvert|}. \]
+We also have $\lvert G / \cent_G(x_i) \rvert > 1 \quad \forall i$ so $p
+\mid \frac{p^k}{\lvert \cent_G(x_i) \rvert} \quad \forall i$ from
+Lagrange. This implies that $p$ divides the difference, or $p \mid
+\lvert Z(G) \rvert$.
+\end{proof}
+
+\begin{prop}
+This is also more of an example, but whatever. Suppose $\lvert G \rvert
+= p^2$ for some prime $p$. Then either $G \iso \ZZ / p^2 \ZZ$ or $G \iso
+\ZZ / p \ZZ \times \ZZ / p \ZZ$. In particular, $G$ is abelian.
+\end{prop}
+
+\begin{proof}
+Take some $g \in G, g \neq e$ and look at $\cycgroup{g}$. Either $\lvert
+\cycgroup{g} \rvert = p$ or $\lvert \cycgroup{g} \rvert = p^2$. If
+$\lvert \cycgroup{g} \rvert = p^2$, then $G = \cycgroup{g} \iso \ZZ /
+p^2 \ZZ$.
+
+Else, suppose there is no $g \in G, g \neq e$ such that $\cycgroup{g} =
+G$. We then get $\lvert \cycgroup{g} \rvert = p$ for all $g \in G$. We
+also have that $Z(G) \geq p$, so pick some $g \in Z(G)$ and $h \in G
+\setminus \cycgroup{g}$. Then $\cycgroup{h} \cap \cycgroup{g} = \lbrace
+e \rbrace$. We also have that
+\[ g^k h^l = h^l g^k \quad \forall k, l \in \ZZ \]
+because $g \in Z(G) \implies \cycgroup{g} \subseteq Z(G)$. Now consider
+the map $f : \cycgroup{h} \times \cycgroup{g} \to G$ given by $(h^k,
+g^l) \xmapsto{f} h^k g^l$. This is trivially a homomorphism by
+commutative properties of $\cycgroup{g}$. This is also trivially
+injective and by comparing cardinalities of the left and right, we get
+that this $f$ is bijective so it is an isomorphism. $\cycgroup{h},
+\cycgroup{g}$ are both isomorphic to $\ZZ / p \ZZ$ so $G \iso \ZZ / p
+\ZZ \times \ZZ / p \ZZ$.
+\end{proof}
