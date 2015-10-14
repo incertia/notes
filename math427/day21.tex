@@ -1,0 +1,43 @@
+\section{October 12, 2015}
+
+\subsection{Cauchy's Theorem}
+
+\begin{thm}[Cauchy]
+Suppose $G$ is a finite group and there is a prime $p \mid \lvert Z(G)
+\vert$. Then $G$ has an element of order $p$.
+\end{thm}
+
+\begin{proof}
+We wish to show that $\exists a \st a^p = e$. Consider the subset of
+$G^p$ such that all elements multiply to $e$, or
+\[ X = \lbrace (a_1, \dots, a_p) \mid a_i \in G, a_1 a_2 \cdots a_n = e
+\rbrace. \]
+We wish to show that $\exists a \in G \st (a, \dots, a) \in X$. First we
+trivially establish the fact that $X$ is nonempty.
+
+Consider the function $f : G^p \to G^p$ given by $(g_1, \dots, g_p)
+\xmapsto{f} (g_p, g_1, \dots, g_{p - 1})$. This is clearly a bijection
+within $X$. In fact, we hav $f^p = \id_X, f \in \aut(X)$ and we can
+define the map $\ZZ / p \ZZ \to \aut(X), [k] \mapsto f^k$ as an
+injective homomorphism, which in turn gives us an action on $X$. Namely
+$[k] \cdot x = f^k(x)$. This turns to problem into showing that $\exists
+x \in X \st [k]x = x \quad \forall [k] \in \ZZ / p \ZZ$.
+
+Notice that the map $G^{p - 1} \to X, (g_1, \dots, g_{p - 1}) \mapsto
+(g_1, \dots, g_{p - 1}, (g_1 \cdots g_{p - 1})^{-1})$ is a bijection, so
+we have $\lvert X \rvert = \lvert G^{p - 1} \rvert$. Because $p \mid
+\lvert G \rvert$, we have $p \mid \lvert X \rvert$ as well.
+
+Also notice that
+\[ \forall x \in X \quad \lvert \ZZ / p \ZZ \cdot x \rvert \mid \lvert
+\ZZ / p \ZZ \rvert = p \]
+by \ref{orbitstabilizer} (Orbit Stabilizer Theorem), which implies that
+$\lvert \ZZ / p \ZZ \cdot x \rvert = 1, p$.
+
+Let $n$ be the number of singleton orbits and let $l$ be the number of
+orbits with $p$ elements. Then we have $p \mid \lvert X \rvert = n + lp
+\implies p \mid n$. We also have $n \geq 1$ because $(e, e, \dots, e)
+\in X$ is fixed. $n > 1$ because $p \mid n$. This means that $f$ fixes
+$(g_1, g_2, \dots, g_p) \xmapsto{f} (g_p, g_1, \dots, g_{p - 1}),
+\prod_i g_i = e \implies g_1 = g_2 = \cdots = g_p \neq e$.
+\end{proof}
