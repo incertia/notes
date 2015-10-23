@@ -1,0 +1,81 @@
+\section{October 14, 2015}
+
+\subsection{Review}
+Last time, we saw that given $K, N \leq G, N \lhd G$ and $f : N \times K
+\to G, (n, k) \mapsto nk$ is a bijection, we can define a multiplication
+on $N \times K$ so that $f$ is a homomorphism.
+
+\begin{lem}
+Let $N \lhd G, K \leq G$. Then $NK = \lbrace nk \mid n \in N, k \in G
+\rbrace$ is a subgroup of $G$.
+\end{lem}
+
+\begin{proof}
+We want $(n_1 k_1)(n_2 k_2)^{-1} \in NK$, so we compute
+\[ (n_1 k_1)(n_2 k_2) = n_1 k_1 k_2^{-1} n_2^{-1} = n_1 (k_1 k_2^{-1})
+n_2^{-1} (k_1 k_2^{-1})^{-1} (k_1 k_2^{-1}) = n_1 n_3 k_3 \in NK. \]
+\end{proof}
+
+\subsection{More Semidirect Products}
+Recall that $\rho : K \to \aut(N)$ gives an action of $K$ on $N$, namely
+$k \cdot n = \rho(k)(n)$. Moreover, $k \cdot (n_1 n_2) = \rho(k)(n_1
+n_2) = \rho(k)(n_1) \rho(k)(n_2) = (k \cdot n_1)(k \cdot n_2)$.
+
+\begin{thm}
+\label{externalsemiprod}
+Let $K, N$ be two groups, $\rho : K \to \aut(N)$ a homomorphism and $K
+\times N \to N, k \cdot n = \rho(k)(n)$ be the corresponding action.
+Then the operation $* : (N \times K) \times (N \times K) \to N \times K$
+given by $(n_1, k_1) * (n_2, k_2) = (n_1 (k_1 \cdot n_2)), k_1 k_2)$ is
+an associative binary operation that turns $N \times K$ into a group.
+This group is denoted $N \rtimes_\rho K$.
+\end{thm}
+
+\begin{proof}
+Trivial.
+\end{proof}
+
+\begin{note}
+At this point, I would like to distinguish between \textbf{internal
+semidirect products} and \textbf{external semidirect products}. An
+internal product is formed when we take some group and form a semidirect
+product structure out of subgroups, while an external product has the
+notion of taking two completely unrelated groups (except by action via
+group automorphisms), and forming a new group. More preciselly,
+splitting $G \to N \rtimes K$ would be forming an internal product while
+combining $N, K \to N \rtimes K$ would be forming an external product.
+\end{note}
+
+\begin{ex}
+$\RR^{\times}$ acts on $\RR$ by isomorphisms given by multiplication,
+and we have the properties $a \cdot b = ab, a(b + c) = ab + ac$. By
+\ref{externalsemiprod}, we get that $\RR \rtimes \RR^\times$ is a group
+with multiplication $(b, a) * (b', a') = (b + ab', aa')$. We claim that
+$\RR \rtimes \RR^\times \iso \aff(\RR)$.
+\end{ex}
+
+\begin{proof}[Reason]
+Consider $\varphi : \RR \rtimes \RR^\times \to \aff(\RR)$ given by $(b, a)
+\mapsto \lbrace x \mapsto ax + b \rbrace$. Now compute
+\[ \begin{aligned}
+(\varphi(b, a) \circ \varphi(b', a'))(x) &= \varphi(b, a)(a'x + b') \\
+&= a(a'x + b') + b \\
+&= b + ab' + aa'x \\
+&= \varphi((b, a) * (b', a'))(x) \\
+\end{aligned} \]
+\end{proof}
+
+\begin{rem}
+$\widetilde{N} = N \times \lbrace e \rbrace \iso N$ and $\widetilde{K} =
+\lbrace e \rbrace \times K \iso K$. The action of $\widetilde{K}$ on
+$\widetilde{N}$ by conjugation recovers the action of $K$ on $N$.
+\end{rem}
+
+\begin{ex}
+If $G$ is abelian, then the inverse map $g \mapsto g^{-1}$ is trivially
+an isomorphism, which gives that there is some map $\ZZ / 2 \ZZ
+\xrightarrow{\rho} \aut(G)$ with $\rho([1]) = \lbrace g \mapsto g^{-1}
+\rbrace$ gives us a semidirect product $G \rtimes_\rho \ZZ / 2 \ZZ$.
+Taking $G = \ZZ / n \ZZ$, we trivially get $\ZZ / n \ZZ \rtimes_\rho \ZZ
+/ 2 \ZZ \iso D_{2n}$.
+\end{ex}
