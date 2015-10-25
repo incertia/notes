@@ -2,16 +2,13 @@ TEX=latexmk -pdf
 TARGET=math347
 ASY=asy
 
-all: hw01.pdf
+all: hw01.pdf hw02.pdf
 
 $(TARGET).pdf: $(TARGET).tex day*.tex
 	$(TEX) $(TARGET).tex
 
 %.pdf: %.tex
 	$(TEX) $<
-
-$(TARGET)-%.pdf: $(TARGET)-%.asy
-	$(ASY) $<
 
 .PHONY: clean
 
