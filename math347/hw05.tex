@@ -1,0 +1,120 @@
+\documentclass{article}
+
+\usepackage{incertia}
+
+% setup the header
+\pagestyle{fancy}
+\lhead{Will Song}
+\chead{Math 347}
+\rhead{HW5}
+
+\begin{document}
+
+\section{Homework 5}
+
+\begin{enumerate}
+
+\item
+\begin{enumerate}[(a)]
+\item
+Trivially $1 = \frac{1 - r^{0 + 1}}{1 - r} = 1$, and $\frac{1 -
+r^{n + 1}}{1 - r} + r^{n + 1} = \frac{1 - r^{n + 1} + r^{n + 1} - r^{n +
+2}}{1 - r} = \frac{1 - r^{n + 2}}{1 - r}$ so we are done by induction.
+
+\item
+We factor out $r^m$ and use the formula to get
+\[ r^m \left(\frac{1 - r^{n - m + 1}}{1 - r}\right). \]
+
+\item
+This is trivial. $r^m > r^m - r^{n + 1} > 0$.
+
+\item Clearly $L = 0$ is definitely a lower bound. Namely, $r > 0
+\implies r^k > 0 \quad \forall k$. Now suppose for the sake of
+contradiction that $L > 0$ is also a lower bound. To be precise, we will
+specify $L$ as a greatest lower bound. This implies that $L < r^{k + 1}
+< r^{k}$ for any choice of $k$. The inequality here is strict because of
+$L = r^{k}$ for some $k$, then $r^{k + 1} < L$, and $L$ would not be a
+lower bound anymore. Dividing by $r$ yields $L < \frac{L}{r} < r^k$ for
+any choice of $k$, meaning $\frac{L}{r}$ is also a lower bound
+larger than the greatest lower bound $L$, which is a contradiction.
+Hence $L = 0$ is the greatest lower bound.
+\end{enumerate}
+
+\item
+The monic integer polynomial
+\[ \left(X - \left(\sqrt{2} + \sqrt{7}\right)\right)\left(X -
+\left(\sqrt{2} - \sqrt{7}\right)\right)\left(X - \left(-\sqrt{2} +
+\sqrt{7}\right)\right)\left(X - \left(-\sqrt{2} - \sqrt{7}\right)\right)
+\]
+kills $\alpha = \sqrt{2} + \sqrt{7}$. For clarification purposes, the
+above polynomial expands into
+\[ X^4 - 18X^2 + 25. \]
+
+\item
+We split the absolute value into two cases.
+\begin{enumerate}[(a)]
+\item
+$\frac{m}{n} \geq \frac{4}{7}$. We can write this as $\frac{7m - 4n}{7n}
+< \frac{1}{10n}$, or $70m - 40n < 7$. The condition implies $70m - 40n
+\geq 0$ and the LHS being $0$ modulo $10$ implies $70m - 40n = 0$, which
+in turn implies $\frac{m}{n} = \frac{4}{7}$.
+\item
+$\frac{m}{n} \leq \frac{4}{7}$. We rewrite as $\frac{7m - 4n}{7n} >
+-\frac{1}{10n}$. We follow analogous steps (clearing denominators, using
+the condition inequality) to again arrive at $\frac{m}{n} =
+\frac{4}{7}$.
+\end{enumerate}
+
+\item
+\begin{enumerate}[(a)]
+\item
+$f$ has left and right inverse $g(a, b) = (b - a, a)$.
+\item
+We have $m^2 + 1$ pairs $x_k$ and only $m^2$ pairs in $\ZZ / m \ZZ
+\times \ZZ / m \ZZ$.
+\item
+Apply $f^{-1}$ $k$ times to the equation $x_k = x_l$.
+\item $x_0 = (0, 1)$ generates the Fibonacci numbers. More specifically,
+the first coordinate in $x_j$ is $F_j \pmod{m}$. Above we saw that there
+is some $x_k = (0, 1), 0 < k \leq m^2$, whose first coordinate is $F_k
+\equiv 0 \pmod{m}$.
+\end{enumerate}
+
+\item We subtract two versions of the condition from each other to get
+\[ a_n^2 = 2a_{n}a_{n + 1} - 2a_{n - 1}a_{n}, \]
+which easily implies that either $a_n = 0$ or
+\[ a_n = 2a_{n + 1} - 2a_{n - 1}, \]
+which rearranges into
+\[ a_{n + 2} = \frac{1}{2}a_{n + 1} + a_{n}. \]
+Now suppose that $a_n = 0$ for some value of $n$. Then $a_{n + 1} =
+ta_{n - 1}$ and
+\[ \sum_{i = 0}^{n + 1}a_i^2 = 2a_{n + 1}a_{n + 2} + 3 = \sum_{i = 0}^{n
+- 1} a_i^2 + a_n^2 + a_{n + 1}^2 = 2a_{n - 1}a_{n} + 3 + 0 + a_{n + 1}^2
+= 3 + a_{n + 1}^2, \]
+but
+\[ \sum_{i = 0}^{n + 1}a_i^2 = 2a_{n + 1}a_{n + 2} + 3, \]
+which implies that
+\[ a_{n + 1}^2 = 2a_{n + 1}a_{n + 2}. \]
+If $a_{n - 1} \neq 0$, then $a_{n + 1} = ta_{n - 1} \neq 0$ so we divide
+to get
+\[ a_{n + 1} = 2a_{n + 2}, \]
+which also simplifies into
+\[ a_{n + 2} = \frac{1}{2}a_{n + 1} + a_n, \]
+so the recurrence formula works if $a_n = 0$ and $a_{n - 1} \neq 0$. If
+$a_n = 0$ and $a_{n - 1} = 0$ but $a_{n - 2} \neq 0$, then we can apply
+the recurrence relation to get $a_{n} = \frac{1}{2}a_{n - 1} + a_{n -
+2}$, but solving this yields $a_{n - 2} = 0$, which is a contradiction.
+We then easily compute $r = -1$ to arrive at the final answer of
+\[ \boxed{r = -1 \quad s = \frac{1}{2} \quad t = 1}. \]
+
+Additionally, I would like to remark here that the derived linear
+formula can only produce one zero value before reverting to a non-zero
+sequence.  We start off with two non-zero values, so the first zero that
+is produced is preceeded by a non-zero value. Call this first zero
+$a_n$.  Then $a_{n + 1}$ is non-zero because $a_{n - 1}$ is non-zero and
+$a_{n + 2}$ is non-zero because $a_{n + 1}$ is non-zero, and we revert
+back to a sequence starting with two non-zero values.
+
+\end{enumerate}
+
+\end{document}
