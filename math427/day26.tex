@@ -1,0 +1,105 @@
+\section{October 26, 2015}
+
+\subsection{Integral Domains}
+
+\begin{df}
+Let $R$ be a ring, $b \in R, b \neq 0$. $b$ is called a \textbf{zero
+divisor} if $\exists a \in R, a \neq 0 \st ab = 0$ or $ba = 0$.
+\end{df}
+
+\begin{ex}
+We have $\begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}$ as a zero divisor
+of itself in $GL_2(\RR)$.
+\end{ex}
+
+\begin{ex}
+$2 \cdot 3 = 0$ in $\ZZ / 6 \ZZ$.
+\end{ex}
+
+\begin{prop}
+Zero divisors cannot be units and units cannot be zero divisors.
+\end{prop}
+
+\begin{proof}
+Suppose $d \in $ is a unit and zero divisor. Then $\exists b \in R \st b
+\neq 0, db = 0$. Also $\exists u \in R \st ud = 1$. Then compute
+\[ 0 = u \cdot 0 = u \cdot (db) = (ud)b = 1 \cdot b = b \]
+to get a contradiction.
+\end{proof}
+
+\begin{rem}
+Fields have no zero divisors. Consequently, any subring of a field has
+no zero divisors.
+\end{rem}
+
+\begin{df}
+A commutative ring with identity and no zero divisors is called an
+\textbf{integral domain}.
+\end{df}
+
+\begin{prop}
+Suppose $R$ is a ring with $a, b, c \in R$, $a \neq 0$ is not a zero
+divisor. Then
+\[ ab = ac \implies b = c. \]
+\end{prop}
+
+\begin{proof}
+Rewrite as
+\[ ab - ac = 0 \implies a(b - c) = 0 \implies b - c = 0 \implies b = c.
+\]
+\end{proof}
+
+\begin{rem}
+This forms the basis for the \textbf{cancellation law} in integral
+domains.
+\end{rem}
+
+\begin{rem}
+$\ZZ / n \ZZ$ is an integral domain $\iff$ $n$ is prime.
+\end{rem}
+
+\begin{prop}
+Any finite integral domain is a field.
+\end{prop}
+
+\begin{proof}
+Let $D$ be a finite integral domain, $a \in D, a \neq 0$. We want to
+find an $x \in D$ such that $ax = 1$. Instead, we show that the map $L_a
+: D \surj D, x \xmapsto{L_a} ax$ is surjective. By cancellation, we have
+that $L_a(b) = L_a(c) \implies b = c$ so $L_a : D \inj D$ is injective.
+$D$ is finite so $D$ is also surjective.
+\end{proof}
+
+\begin{prop}
+Let $D$ be an integral domain. Then for all $f, g \in D[X]$, we have
+\[ \deg(fg) = \deg f + \deg g. \]
+\end{prop}
+
+\begin{proof}
+Suppose $f, g \neq 0$. $\deg f = n \geq 0, \deg g = m \geq 0$. Then
+perform polynomial multiplication. Namely,
+\[ (a_0 + \cdots + a_n X^n)(b_1 + \cdots b_mX^m) = c_0 + \cdots + a_n
+b_m X^{n + m} \]
+and $a_n b_m \neq 0$.
+\end{proof}
+
+\begin{cor}
+$D[X]$ is integral if $D$ is integral.
+\end{cor}
+
+\subsection{More Ideals}
+
+\begin{ex}
+$\cycgroup{2, x}$ is not principal in $\ZZ[x]$.
+\end{ex}
+
+\begin{proof}
+Suppose $\cycgroup{2, x} = \cycgroup{a(x)}$ for some $a(x) \in \ZZ[x]$.
+Then $2 = a(x) q(x)$ for some $q(x) \in \ZZ[x]$ so
+\[ 0 = \deg 2 = \deg a(x) + \deg q(x) \implies a(x) = a \in \ZZ \quad
+q(x) = q \in \ZZ \implies 2 = aq \implies a = \pm 1, \pm 2. \]
+However, $\pm 1 \not \in \cycgroup{2, x}$ so $a = \pm 2$. This means
+that $\exists r(x) \in \ZZ[x]$ such that $x = 2 \cdot r(x)$ so $r(x) =
+b_0 + b_1 x$ for some $b_0, b_1$ and $2r(x) = 2b_0 + 2b_1 x \implies b_0
+= 0, 1 = 2b_1$ but then $b_1$ is not an integer.
+\end{proof}
