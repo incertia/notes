@@ -13,6 +13,37 @@
 \begin{enumerate}
 
 \item
+Suppose for the sake of contradiction that $n$ is not prime.
+$x \in \cycgroup{1_R} \implies x \in R$ which gives us that there is
+some $a, b \in \cycgroup{1_R} \subseteq R, \varphi : \cycgroup{1_R} \to
+\ZZ / n \ZZ, a, b \neq 0$ such that $\varphi(ab) = 0$, but $R$ is an
+integral domain so zero divisors like this is impossible.
+
+\item
+\begin{enumerate}[(a)]
+\item
+Take some $n \in N, r \in R, n^k = 0$ and compute $(nr)^k = n^k r^k$ by
+commutativity.
+
+\item
+If $R / N$ has a non-zero nilpotent element $aN$, then $(aN)^k = (a^k)N
+= 0N \implies aN = 0N$.
+
+\item
+Suppose $n \in N$ with $n^k = 0, n^{k - 1} \neq 0$. Then $0 = \varphi(0)
+= \varphi(n^k) = \varphi(n) \varphi(n^{k - 1})$ so at least one of
+$\varphi(n), \varphi(n^{k - 1}) = 0$ but any one of these gives that the
+other is $0$ due to $(k - 1, k) = 1$. Basically if $\varphi(n) = 0$,
+then $\varphi(n)^{k - 1} = \varphi(n^{k - 1}) = 0$ and $\varphi(n^{k -
+1}) = 0$ gives us $\varphi(n) = 0$ by $\left(n^{k - 1}\right)^{k - 1} =
+n$. This implies that $n \in \ker \varphi$ and $N \subseteq \ker
+\varphi$
+\end{enumerate}
+
+\item
+Rewrite as $a^2 = 1a$. Suppose $a \neq 0$. From the cancellation law of
+integral domains, we get $a = 1$. $a = 0$ also clearly solves this
+equation.
 
 \end{enumerate}
 
