@@ -1,1 +1,20 @@
 \section{October 28, 2015}
+
+\subsection{Polynomial Rings Over Fields are Euclidean}
+
+\begin{thm}
+Let $F$ be a field with $f, d \in F[X]$ and $g \neq 0$. Then $\exists !$
+$q, r \in F[X]$ such that
+\begin{enumerate}
+\item $f = qd + r$.
+\item $\deg r < \deg d$.
+\end{enumerate}
+\end{thm}
+
+\begin{proof}
+Existence is easy. If $\deg f > \deg d$, then $f = 0d + f$, so we now
+suppose that $\deg f \geq \deg d$ and induct on $n$. If $n = 0$, then $f
+= c_1 \in F, d = c_2 \in F, c_2 \neq 0$, and $c_1 = \left(b_0
+a_0^{-1}\right) a_0 + 0$. so it holds for $n = 0$. Now assume it holds
+for all $c, d \in F[X]$ with $\deg c < n$.
+\end{proof}
