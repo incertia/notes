@@ -2,7 +2,7 @@ TEX=latexmk -pdf
 TARGET=phys325
 ASY=asy
 
-all: $(TARGET).pdf hw01.pdf hw02.pdf
+all: $(TARGET).pdf hw01.pdf hw02.pdf hw03.pdf
 
 $(TARGET).pdf: $(TARGET).tex day*.tex
 	$(TEX) $(TARGET).tex

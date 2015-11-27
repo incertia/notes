@@ -1,0 +1,86 @@
+\documentclass{article}
+
+\usepackage{incertia}
+
+% setup the header
+\pagestyle{fancy}
+\lhead{Will Song}
+\chead{Phys 325}
+\rhead{HW3}
+
+\begin{document}
+
+\section{Homework 3}
+
+\begin{prb}[Maximizing Momentum]
+\label{prb1}
+Consider a rocket with initial mass $m_0$, exhaust speed
+$v^{\textrm{ex}}$, accelerating from rest in free space. For what value
+of $m$ is $p$ maximized?
+\end{prb}
+
+\begin{proof}[Solution]
+We refer to the rocket physics equation.
+\[ m\dot{v} = -\dot{m}v^{\textrm{ex}} + F^{\textrm{ext}}, \]
+but $F^{\textrm{ext}} = 0$ so
+\[ m\dot{v} = -\dot{m}v^{\textrm{ex}}. \]
+We now split into differentials to get
+\[ \begin{aligned}
+m \frac{dv}{dt} &= -\frac{dm}{dt}v^{\textrm{ex}} \\
+m dv            &= -v^{\textrm{ex}} dm \\
+dv              &= -\frac{v^{\textrm{ex}}}{m} dm. \\
+\end{aligned} \]
+Now we integrate to get momentum.
+\[ \begin{aligned}
+\int_0^v dv &= -\int_{m_0}^m \frac{v^{\textrm{ex}}}{m} dm \\
+v &= v^{\textrm{ex}} \ln \frac{m_0}{m} \\
+p = mv &= mv^{\textrm{ex}} \ln \frac{m_0}{m} \\
+\end{aligned} \]
+To maximize momentum, we must have $\frac{dp}{dm} = 0$, so we
+differentiate in $m$ to get
+\[ \frac{dp}{dm} = v^{\textrm{ex}}\left(\ln \frac{m_0}{m} - 1\right) \]
+To get $\frac{dp}{dm} = 0$, we need $\ln \frac{m_0}{m} = 1$, or $m_0 =
+me$. This rearranges to $\boxed{m = \frac{m_0}{e}}$.
+\end{proof}
+
+\begin{prb}[Staged Rockets]
+A rocket with intial mass $m_0$ ejects fuel at $v^{\textrm{ex}}$ and
+accelerates from rest in free space.
+\begin{enumerate}[(a)]
+\item
+Suppose the rocket carries $\lambda = 80\%$ of its initial mass as fuel.
+What is the final speed of the rocket after all the fuel is burned?
+\item
+Suppose the rocket carries $\lambda = 40\%$ of its fuel in each of its
+two fuel tanks, each weighing $0.1 m_0$. The rocket jettisons the first
+fuel tank upon completion and starts the second stage. Again, compute
+the final speed once all the fuel is burned. Also compare this to part
+(a).
+\end{enumerate}
+\textbf{Note}: A tank being jettisoned simply means that it is detached
+(i.e. $v = 0$), and not ejected at some speed $v > 0$.
+\end{prb}
+
+\begin{proof}[Solution]
+$ $
+\begin{enumerate}[(a)]
+\item
+Again we refer to the rocket physics equation for free space.
+\[ m\dot{v} = -\dot{m}v^{\textrm{ex}}. \]
+In Problem~\ref{prb1}, we found that
+\[ v = v^{\textrm{ex}} \ln \frac{m_0}{m}. \]
+We set $m = 0.2 m_0$ to get
+\[ \boxed{v = v^{\textrm{ex}} \ln 5 \approx 1.61 v^{\textrm{ex}}}. \]
+\item
+It's the same principle, but this time, we treat $v$ in the velocity
+equation as a sort of $\Delta v$ and add them up for the two stages.
+Hence, we get
+\[ \boxed{v = \Delta v_1 + \Delta v_2 = v^{\textrm{ex}} \left( \ln
+\frac{1}{0.6} + \ln \frac{0.5}{0.1} \right) \approx 2.12
+v^{\textrm{ex}}} \]
+Notice how this is faster than the speed we achieved in (a). In fact,
+the second stage is precisely (a) but with half the mass.
+\end{enumerate}
+\end{proof}
+
+\end{document}
