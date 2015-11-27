@@ -66,34 +66,234 @@ This simplies into
 &\implies& \frac{K}{x} &= \frac{1}{2}mv^2 + C \\
 &\implies& \frac{K}{x} &= \frac{1}{2}mv^2 + \frac{K}{x_0} \\
 && v^2 &= \frac{2K}{m}\left(\frac{1}{x} - \frac{1}{x_0}\right) \\
-&\implies& \frac{dx}{dt} &= \sqrt{\frac{2K}{m}\left(\frac{1}{x} -
+&\implies& \frac{dx}{dt} &= -\sqrt{\frac{2K}{m}\left(\frac{1}{x} -
 \frac{1}{x_0}\right)} \\
-&& \frac{dx}{\sqrt{\frac{1}{x} - \frac{1}{x_0}}} &= \sqrt{\frac{2K}{m}}
-dt \\
-&& \frac{\left(u + \frac{1}{x_0}\right)^2 du}{\sqrt{u}} &=
-\sqrt{\frac{2K}{m}} dt \quad u = \frac{1}{x} - \frac{1}{x_0} \\
+\end{aligned} \]
+We now make the substitution $x = x_0 \sin^2 \alpha$ because we only
+care about $x \geq 0$ and we don't really care about whether or not $x <
+-x_0$. This gives us
+\[ \begin{aligned}
+\frac{dx}{dt} &= -\sqrt{\frac{2K}{m x_0} \left( \frac{1}{\sin^2 \alpha}
+- 1 \right)} \\
+&= -\sqrt{\frac{2K}{mx_0}} \cot \alpha \\
+\frac{d(x_0 \sin^2 \alpha)}{- \sqrt{\frac{2K}{mx_0}} \cot \alpha} &= dt
+\\
+t &= \int_{\dfrac{\pi}{2}}^0 \frac{2 x_0 \sin \alpha \cos \alpha d
+\alpha}{-\sqrt{\dfrac{2K}{mx_0}} \cot \alpha} \\
+&= 2 \int_{\dfrac{\pi}{2}}^0 \frac{x_0 \sin^2 \alpha d \alpha}{-\sqrt{
+\dfrac{2K}{mx_0}}} \\
+&= \int_0^{\dfrac{\pi}{2}} \sqrt{\frac{2mx_0^3}{K}} \sin^2 \alpha d
+\alpha \\
+&= \sqrt{\frac{2mx_0^3}{K}} \int_0^{\dfrac{\pi}{2}} \frac{1 - \cos(2
+\alpha)}{2} d \alpha \\
+&= \boxed{\sqrt{\frac{mx_0^3}{8K}} \pi}.
 \end{aligned} \]
 \end{proof}
 
-\newpage
+\begin{prb}[More Drag]
+Suppose a block with mass $m$ slides on a frictionless surface with
+speed $v_0$ in the $+x$ direction at $t = 0$. The block experiences a
+drag force of form
+\[ \vec{F}(v) = -k v^\beta \hat{v}, \]
+where $k, \beta$ are positive constants.
 
+Where does the block stop and how long does it take to stop for the
+following cases?
+\begin{enumerate}[(a)]
+\item $\beta = 0$.
+\item $\beta = \frac{3}{2}$.
+\item $\beta = \frac{1}{2}$. Also change the experiment so that the
+block is now falling downwards so it also experiences gravity.
+Experimenters determine that the block's terminal velocity
+$v_{\textrm{TER}} = \SI{50}{m/s}$. Approximate $g = \SI{10}{m/s^2}$ and
+compute the times when the block reaches $50\%, 90\%, 99\%$, and
+$99.9\%$ of its final speed $v_{\textrm{TER}}$.
+\end{enumerate}
+\end{prb}
+
+\begin{proof}[Solution]
+$ $
+\begin{enumerate}[(a)]
+\item
+We start out by plugging. If $\beta = 0$, then we have constant drag
+force
+\[ \vec{F} = -k\hat{v}, \]
+which simplifies to
+\[ dv = -\frac{k}{m} dt, \]
+or
+\[ v = -\frac{k}{m} t + v_0, \]
+which has zero $t = \frac{mv_0}{k}$.  We integrate again to find
+\[ x = -\frac{k}{m}t^2 + v_0 t, \]
+so the block stops at
+\[ \boxed{t = \frac{v_0 m}{k} \quad x = \frac{mv_0^2}{2k}}. \]
+\item
+Again we start by substituting for $\beta$.
 \[ \begin{aligned}
-F &= -kv^\beta \quad \beta = \frac{3}{2} \\
 m \frac{dv}{dt} &= -k v^{\frac{3}{2}} \\
-v^{-\frac{3}{2}} dv &= -\frac{k}{m} dt \\
--2v^{-\frac{1}{2}} + c &= -\frac{k}{m}t \\
-\frac{1}{\sqrt{v}} - \frac{1}{\sqrt{v_0}} &= \frac{k}{2m} t \\
-\frac{1}{\sqrt{v}} &= \frac{k}{2m} t + \frac{1}{\sqrt{v_0}} \\
+v^{-\frac{3}{2}} dv &= -\frac{k}{m} dt, \\
+\end{aligned} \]
+which integrates to
+\[ -2v^{-\frac{1}{2}} + c = -\frac{k}{m}t, \]
+which, after solving for $c$ by plugging in $t = 0$, becomes
+\[ \frac{1}{\sqrt{v}} - \frac{1}{\sqrt{v_0}} = \frac{k}{2m} t, \]
+which rearranges nicely to form
+\[ \frac{1}{\sqrt{v}} = \frac{k}{2m} t + \frac{1}{\sqrt{v_0}}. \]
+Inverting and squaring, we arrive at
+\[ \begin{aligned}
 \frac{dx}{dt} = v &= \frac{1}{\dfrac{k^2 t^2}{4m^2} +
 \dfrac{kt}{m\sqrt{v_0}} + \dfrac{1}{v_0}} \\
 &= \frac{v_0}{\dfrac{k^2t^2v_0}{4m^2} + \dfrac{kt\sqrt{v_0}}{m} + 1} \\
 dx &= \frac{4m^2 v_0 dt}{k^2 t^2 v_0 + 4mkt \sqrt{v_0} + 4m^2} \\
-&= \frac{4m^2 v_0 dt}{\left(kt \sqrt{v_0} + 2m\right)^2} \\
-&= \frac{4m^2 \sqrt{v_0} du}{k u^2} \quad u = kt\sqrt{v_0} + 2m \quad du
-= k \sqrt{v_0} dx \\
+&= \frac{4m^2 v_0 dt}{\left(kt \sqrt{v_0} + 2m\right)^2}, \\
+\end{aligned} \]
+but fear not, because we can use the very nice substitution
+\[ u = kt\sqrt{v_0} + 2m \quad du = k \sqrt{v_0} dx \]
+to get
+\[ \begin{aligned}
+dx &= \frac{4m^2 \sqrt{v_0} du}{k u^2} \\
 x &= -\frac{4m^2 \sqrt{v_0}}{ku} \\
 &= -\frac{4m^2\sqrt{v_0}}{k^2 t\sqrt{v_0} + 2km} +
-\frac{2m\sqrt{v_0}}{k} \\
+\frac{2m\sqrt{v_0}}{k}. \\
 \end{aligned} \]
+An equivalent form would be
+\[ x = \frac{2m}{k} \left(\sqrt{v_0} - \frac{1}{\dfrac{1}{\sqrt{v_0}} +
+\dfrac{kt}{2m}} \right). \]
+By observation of the velocity equation, we notice that $v
+\xrightarrow{t \to \infty} 0$, so we plug into the position equation to
+get
+\[ \boxed{t \to \infty \quad x = \frac{2m\sqrt{v_0}}{k}}. \]
+\item
+Again we start by substituting for $\beta$, but this time we also add in
+gravity.
+\[ F = -k\sqrt{v} + mg. \]
+We reach terminal velocity when there is no force, or $mg = k \sqrt{v}$,
+or
+\[ v_{\textrm{TER}} = \left(\frac{mg}{k}\right)^2. \]
+We will store this equation in our memory for now. Next, we determine a
+nice form for velocity by using the force equation again.
+\[ \frac{dv}{dt} = g - \frac{k}{m}\sqrt{v} = g \left(1 -
+\frac{k}{mg}\sqrt{v}\right) = g\left(1 - \sqrt{\frac{v}{v_T}}\right). \]
+This rearranges to
+\[ \frac{dv}{1 - \sqrt{\dfrac{v}{v_T}}} = g dt, \]
+which integrates to
+\[ gt = \left. -2v_T \left(\sqrt{\frac{v}{v_T}} + \ln
+\left(\sqrt{\frac{v}{v_T}} - 1\right)\right) \right \vert_0^v = -2v_T
+\left(\sqrt{\frac{v}{v_t}} + \ln \left(1 - \sqrt{\frac{v}{v_T}}\right)
+\right). \]
+By setting $\frac{v}{v_T} \in \lbrace 0.5, 0.9, 0.99, 0.999 \rbrace$, we
+get $\boxed{t = \SI{5.21}{s}, \SI{20.21}{s}, \SI{43.01}{s},
+\SI{66.01}{s}}$.
+\end{enumerate}
+\end{proof}
+
+\begin{prb}[Velocity Dependent, but not Drag]
+A particle with charge $q$ moves through a constant magnetic field with
+$\vec{B} = B \hat{z}, B > 0$, so the particle experiences Lorentz force
+$\vec{F} = q\vec{v} \times \vec{B}$. Assume the effects of gravity are
+trivial. Let the particle's intial velocity at $t = 0$ be $\vec{v}_0 =
+(v_{0_x}, v_{0_y}, v_{0_z})$ and position be $\vec{r}_0 = (x_0, y_0,
+0)$.
+
+\begin{enumerate}[(a)]
+\item
+Warmup question. Show that expressions of the form $A \cos \omega
+t + B \sin \omega t$ are interchangeable with expressions of the form $C
+\sin(\omega t + \phi)$.
+\item
+Use Newton's Laws to obtain differential equations describing the
+particle's velocity in $x, y, z$ componenets.
+\item
+Compute $\vec{v}(t)$.
+\item
+Compute $\vec{r}(t)$.
+\item
+The trajectory obtained is called a \textbf{helix}. Sketch it and
+calculate its two dimension, diameter and pitch (rise per full turn).
+\end{enumerate}
+\end{prb}
+
+\begin{proof}[Solution]
+To switch between the two, we need magnitutdes of both to be equal, but
+that's easy because we can expand to get $A = C\sin\phi, B = C\cos\phi$.
+This yields the obvious transformations
+\[\boxed{C = \sqrt{A^2 + B^2} \quad \phi = \arctan \frac{A}{B}.} \quad
+\textrm{(a)} \]
+Next, we compute $\vec{F} = q\vec{v} \times \vec{B} = q(v_x, v_y, v_z)
+\times (0, 0, B) = q(Bv_y, -Bv_x, 0)$ and we obtain partial differential
+equations
+\[ \boxed{\left\lbrace \begin{aligned}
+\frac{\partial v_x}{\partial t} &= \frac{qB}{m} v_y \\
+\frac{\partial v_y}{\partial t} &= -\frac{qB}{m} v_x \\
+\frac{\partial v_z}{\partial t} &= 0. \\
+\end{aligned}\right.} \quad \textrm{(b)} \]
+The coupling of the partial derivatives motivates us to apply
+$\frac{\partial}{\partial t}$ to each equation, which gives us a better
+set of partial differential equations.
+\[ \left\lbrace \begin{aligned}
+\frac{\partial^2 v_x}{\partial t^2} &= -\left(\frac{qB}{m}\right)^2 v_x
+\\
+\frac{\partial^2 v_y}{\partial t^2} &= -\left(\frac{qB}{m}\right)^2 v_y
+\\
+\frac{\partial^2 v_z}{\partial t^2} &= 0, \\
+\end{aligned} \right. \]
+which have the very natural solution
+\[ \boxed{\left\lbrace \begin{aligned}
+v_x       &= v \sin(\omega t + \phi) \\
+v_y       &= v \cos(\omega t + \phi) \\
+v_z       &= v_{0_z} \\
+\end{aligned} \quad \begin{aligned}
+v         &= \sqrt{v_x^2 + v_y^2} \\
+\omega    &= \frac{qB}{m} \\
+\tan \phi &= \frac{v_{0_x}}{v_{0_y}}. \\
+\end{aligned} \right.} \quad \textrm{(c)} \]
+\textbf{Note}: The best way to see the $\tan \phi$ condition is to set
+$t = 0$.
+
+To find position, we just integrate normally (for example, $r_x = x_0 +
+\int_0^t v \sin(\omega s + \phi) ds$) to arrive at
+\[ \boxed{\left\lbrace \begin{aligned}
+r_x &= x_0 - \frac{v}{\omega}\cos(\omega t + \phi) +
+\frac{v_{0_y}}{\omega} \\
+r_y &= y_0 + \frac{v}{\omega}\sin(\omega t + \phi) -
+\frac{v_{0_x}}{\omega} \\
+r_z &=  v_{0_z} t. \\
+\end{aligned} \right.} \quad \textrm{(d)} \]
+
+Here is a picture of a helix starting on the $x$ axis.
+\begin{center}
+\begin{asy}
+import three;
+import graph3;
+import solids;
+
+settings.render = 0;
+settings.prc = false;
+settings.multisample = 1;
+
+size(5cm);
+
+currentprojection = perspective(10, 10, 10);
+
+// helix functions
+real hx(real t) { return 4 * cos(2pi * t); }
+real hy(real t) { return 4 * sin(2pi * t); }
+real hz(real t) { return t; }
+
+// draw axes
+draw(L = Label("$x$", position = Relative(1.1), align = SW), O -- 5X,
+black + 0.75, Arrow3);
+draw(L = Label("$y$", position = Relative(1.1), align = SE), O -- 5Y,
+black + 0.75, Arrow3);
+draw(L = Label("$z$", position = Relative(1.1), align =  N), O -- 6Z,
+black + 0.75, Arrow3);
+
+// draw helix
+draw(graph(hx, hy, hz, 0, 4, operator ..), Arrow3);
+\end{asy}
+\end{center}
+Our particular helix has parameters $d = 2r = 2\frac{v}{\omega} =
+\frac{2m}{qB}\sqrt{v_{0_x}^2 + v_{0_y}^2}$ and pitch $\delta z = v_{0_z}
+T = v_{0_z} \frac{2\pi}{\omega} = \frac{2 \pi m}{qB} v_{0_z}$.
+\end{proof}
 
 \end{document}
